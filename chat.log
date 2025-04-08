@@ -1,0 +1,257 @@
+2025-04-08 17:59:38,665 - INFO - Use pytorch device_name: cuda
+2025-04-08 17:59:38,665 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 17:59:39,166 - INFO - Loading faiss with AVX512 support.
+2025-04-08 17:59:39,181 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 17:59:39,184 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 17:59:41,494 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:03:16,566 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:03:16,566 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:03:18,334 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:06:00,789 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:06:00,789 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:06:01,105 - INFO - Loading faiss with AVX512 support.
+2025-04-08 18:06:01,117 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 18:06:01,120 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 18:06:02,896 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:07:41,490 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:07:41,491 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:07:41,804 - INFO - Loading faiss with AVX512 support.
+2025-04-08 18:07:41,816 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 18:07:41,819 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 18:07:43,695 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:12:16,102 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:12:16,102 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:12:16,411 - INFO - Loading faiss with AVX512 support.
+2025-04-08 18:12:16,423 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 18:12:16,425 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 18:12:18,102 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:16:33,117 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:16:33,118 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:16:33,436 - INFO - Loading faiss with AVX512 support.
+2025-04-08 18:16:33,449 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 18:16:33,451 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 18:16:33,635 - INFO - 知识库更新成功！
+2025-04-08 18:16:35,269 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:23:10,381 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:23:10,381 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:23:10,705 - INFO - Loading faiss with AVX512 support.
+2025-04-08 18:23:10,719 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 18:23:10,721 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 18:23:10,909 - INFO - 知识库更新成功！
+2025-04-08 18:23:13,118 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:29:16,493 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:29:16,493 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:29:17,031 - INFO - Loading faiss with AVX512 support.
+2025-04-08 18:29:17,044 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 18:29:17,047 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 18:29:17,109 - INFO - 知识库更新成功！
+2025-04-08 18:29:19,413 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:48:35,999 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:48:35,999 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:48:36,346 - INFO - Loading faiss with AVX512 support.
+2025-04-08 18:48:36,359 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 18:48:36,361 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 18:48:36,553 - INFO - 知识库更新成功！
+2025-04-08 18:48:37,569 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 404 Not Found"
+2025-04-08 18:49:29,744 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:49:29,745 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:49:30,078 - INFO - Loading faiss with AVX512 support.
+2025-04-08 18:49:30,091 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 18:49:30,093 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 18:49:30,291 - INFO - 知识库更新成功！
+2025-04-08 18:49:31,459 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:49:47,431 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:49:47,431 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:49:47,723 - INFO - 知识库更新成功！
+2025-04-08 18:49:48,865 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:49:58,358 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:49:58,358 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:49:58,617 - INFO - 知识库更新成功！
+2025-04-08 18:49:59,673 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:51:37,759 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:51:37,759 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:51:38,040 - INFO - 知识库更新成功！
+2025-04-08 18:51:39,168 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:51:46,817 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:51:46,817 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:51:47,082 - INFO - 知识库更新成功！
+2025-04-08 18:51:48,170 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:53:52,977 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:53:52,977 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:53:53,315 - INFO - Loading faiss with AVX512 support.
+2025-04-08 18:53:53,338 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 18:53:53,340 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 18:53:53,504 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 404 Not Found"
+2025-04-08 18:54:39,343 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:54:39,344 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:54:39,664 - INFO - Loading faiss with AVX512 support.
+2025-04-08 18:54:39,678 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 18:54:39,680 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 18:54:39,869 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:58:29,941 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:58:29,941 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:58:30,263 - INFO - Loading faiss with AVX512 support.
+2025-04-08 18:58:30,276 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 18:58:30,278 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 18:58:30,502 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 18:59:57,094 - INFO - Use pytorch device_name: cuda
+2025-04-08 18:59:57,094 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 18:59:57,423 - INFO - Loading faiss with AVX512 support.
+2025-04-08 18:59:57,436 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 18:59:57,439 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 18:59:57,668 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 19:00:36,374 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:00:36,374 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:00:36,688 - INFO - Loading faiss with AVX512 support.
+2025-04-08 19:00:36,701 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 19:00:36,704 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 19:00:36,934 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 19:01:46,107 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:01:46,107 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:01:46,439 - INFO - Loading faiss with AVX512 support.
+2025-04-08 19:01:46,451 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 19:01:46,454 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 19:01:46,675 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 19:02:22,779 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:02:22,780 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:02:23,109 - INFO - Loading faiss with AVX512 support.
+2025-04-08 19:02:23,122 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 19:02:23,125 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 19:02:23,334 - INFO - 知识库更新成功！
+2025-04-08 19:02:24,389 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 19:03:05,310 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:03:05,310 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:03:05,310 - WARNING - No sentence-transformers model found with name ./bge-base-zh-v1.5. Creating a new one with mean pooling.
+2025-04-08 19:03:19,149 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:03:19,149 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:03:19,149 - WARNING - No sentence-transformers model found with name ./bge-base-zh-v1.5. Creating a new one with mean pooling.
+2025-04-08 19:06:28,927 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:06:28,927 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:06:29,440 - INFO - Loading faiss with AVX512 support.
+2025-04-08 19:06:29,452 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 19:06:29,455 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 19:06:29,520 - INFO - 知识库更新成功！
+2025-04-08 19:06:30,612 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 19:06:47,592 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:06:47,592 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:06:48,066 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<VoiceAssistant.chat_once() done, defined at /home/wuye/vscode/chatbox/tts.py:49> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/tts.py", line 62, in <module>
+    asyncio.run(va.chat_once())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/tts.py", line 52, in chat_once
+    qa= KnowledgeQA()
+        ^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model.py", line 45, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model.py", line 53, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1674, in _load_sbert_model
+    module = module_class(model_name_or_path, cache_dir=cache_folder, backend=self.backend, **kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/models/Transformer.py", line 85, in __init__
+    self.tokenizer = AutoTokenizer.from_pretrained(
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/transformers/models/auto/tokenization_auto.py", line 973, in from_pretrained
+    return tokenizer_class.from_pretrained(pretrained_model_name_or_path, *inputs, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/transformers/tokenization_utils_base.py", line 2062, in from_pretrained
+    return cls._from_pretrained(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/transformers/tokenization_utils_base.py", line 2283, in _from_pretrained
+    tokenizer_file_handle = json.load(tokenizer_file_handle)
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+                 ^^^^^^^^^
+  File "<frozen codecs>", line 322, in decode
+KeyboardInterrupt
+2025-04-08 19:06:59,802 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:06:59,802 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:07:00,137 - INFO - Loading faiss with AVX512 support.
+2025-04-08 19:07:00,150 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 19:07:00,153 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 19:07:00,377 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 19:08:25,930 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:08:25,930 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:09:12,642 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:09:12,642 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:09:57,079 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:09:57,079 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:09:57,379 - INFO - Loading faiss with AVX512 support.
+2025-04-08 19:09:57,393 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 19:09:57,395 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 19:10:52,470 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:10:52,470 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:10:52,745 - INFO - Loading faiss with AVX512 support.
+2025-04-08 19:10:52,756 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 19:10:52,759 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 19:11:03,226 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:11:03,226 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:11:03,509 - INFO - Loading faiss with AVX512 support.
+2025-04-08 19:11:03,520 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 19:11:03,523 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 19:11:15,402 - INFO - Use pytorch device_name: cuda
+2025-04-08 19:11:15,402 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-08 19:11:15,674 - INFO - Loading faiss with AVX512 support.
+2025-04-08 19:11:15,686 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-08 19:11:15,689 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-08 19:11:38,522 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 19:11:50,887 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-08 19:12:13,279 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main.py:7> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main.py", line 46, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main.py", line 33, in main
+    query = voice.listen()
+            ^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/tts.py", line 37, in listen
+    audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/speech_recognition/__init__.py", line 460, in listen
+    for a in result:
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/speech_recognition/__init__.py", line 530, in _listen
+    buffer = source.stream.read(source.CHUNK)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/speech_recognition/__init__.py", line 191, in read
+    return self.pyaudio_stream.read(size, exception_on_overflow=False)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/pyaudio.py", line 608, in read
+    return pa.read_stream(self._stream, num_frames, exception_on_overflow)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt

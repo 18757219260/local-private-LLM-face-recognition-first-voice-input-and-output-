@@ -15,6 +15,7 @@ import asyncio
 import nest_asyncio
 import time
 
+
 nest_asyncio.apply()
 
 # 配置日志
@@ -24,12 +25,12 @@ logging.basicConfig(
     handlers=[logging.FileHandler("chat.log"), logging.StreamHandler()]
 )
 
-class KnowledgeQA:
+class KnowledgeQA_v2:
     def __init__(
         self,
         knowledge_path: str = "knowledge.json",
         faiss_index_path: str = "faiss_index",
-        llm_model: str = "mistral",
+        llm_model: str = "EntropyYue/chatglm3",
         history_log: str = "chat_history.json",
     ):
         """
@@ -70,7 +71,7 @@ class KnowledgeQA:
             question = item.get("question", "")
             for answer in item.get("answer", []):
                 docs.append(Document(
-                    page_content=answer,
+                    page_content=f"Q: {question}\nA: {answer}",
                     metadata={
                         "question": question,
                         "source": self.knowledge_path,
@@ -137,7 +138,7 @@ class KnowledgeQA:
         knowledge = self._load_knowledge()
         docs = self._create_documents(knowledge)
         chunks = self._split_documents(docs)
-        self.vectorstore.add_documents(chunks)
+        self.vectorstore = FAISS.from_documents(chunks, self.embedding_model)
         self.vectorstore.save_local(self.faiss_index_path)
         logging.info("知识库更新成功！")
 
@@ -145,14 +146,21 @@ class KnowledgeQA:
         """
         用户提问接口。整合历史上下文，向 LLM 提问并记录回答。
         """
-        history = "\n".join(
+        # 检查 knowledge.json 是否有更新
+        knowledge_last_modified = os.path.getmtime(self.knowledge_path)
+        if hasattr(self, "last_knowledge_update") and self.last_knowledge_update != knowledge_last_modified:
+            logging.info("知识库有更新，正在重新加载...")
+            self.update_knowledge()
+            self.last_knowledge_update = knowledge_last_modified  # 更新最后更新时间
+        history = "".join(
             f"[{h.get('timestamp', 'N/A')}] User: {h.get('user', '')}\nBot: {h.get('bot', '')}"
             for h in self.conversation_history[-5:]
         )
         full_query = f"Conversation History:\n{history}\n\n新问题: {question}"
-        result = self.qa_chain.invoke({"query": full_query})
+        result = self.qa_chain.invoke({"query": question})  # 使用简化查询
         answer = result["result"]
-  
+
+        # 保存对话历史
         record = {
             "timestamp": datetime.now().isoformat(),
             "user": question,
@@ -187,7 +195,7 @@ def main():
 
     col1, col2 = st.columns([1, 3])
     with col1:
-        st.image("/home/wuye/vscode/chatbox/a9b65894-4916-4291-aec5-083e8db149d1.png", width=200)
+        st.image("/home/wuye/vscode/chatbox/images/a9b65894-4916-4291-aec5-083e8db149d1.png", width=200)
     with col2:
         st.title("🍠 甘薯知识助手🍠 ")
     st.markdown('<p style="font-size:20px; font-weight:bold;">请输入关于甘薯的问题，例如：甘薯的储存方法</p>', unsafe_allow_html=True)
@@ -200,7 +208,8 @@ def main():
         my_bar = st.empty()
         my_bar.progress(0)
         talk.text("🧠 正在进行头脑风暴...🥱")
-        qa_system = KnowledgeQA()
+        qa_system = KnowledgeQA_v2()
+        qa_system.update_knowledge()
         time.sleep(1)
         my_bar.progress(30)
         talk.text("😈好像找到答案了？！🤔")
