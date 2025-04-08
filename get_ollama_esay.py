@@ -103,7 +103,7 @@ class KnowledgeQA:
         """
         初始化问答链（基于向量检索 + Ollama 本地大模型）。
         """
-        llm = OllamaLLM(base_url='http://localhost:11434', model=self.llm_model, temperature=0.3)
+        llm = OllamaLLM(base_url='http://localhost:11434', model=self.llm_model, temperature=0.1)
         
         return RetrievalQA.from_chain_type(
             llm=llm,
