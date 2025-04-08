@@ -23,7 +23,7 @@ async def main():
 
             if not face_detected:
                 
-                await voice.speak(f"11{name}我是你的私人专属甘薯助手，你有什么问题吗？")
+                await voice.speak(f"{name}我是你的私人专属甘薯助手，你有什么问题吗？")
                 face_detected = True
 
         cv2.imshow('Face Recognition', frame)
@@ -35,7 +35,7 @@ async def main():
             if query:
                 answer = qa.ask(query)
                 print("模型答案是:\n"+answer)
-                await voice.speak("11" + answer)
+                await voice.speak( answer)
 
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break

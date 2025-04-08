@@ -25,12 +25,12 @@ logging.basicConfig(
     handlers=[logging.FileHandler("chat.log"), logging.StreamHandler()]
 )
 
-class KnowledgeQA_v2:
+class KnowledgeQA:
     def __init__(
         self,
         knowledge_path: str = "knowledge.json",
         faiss_index_path: str = "faiss_index",
-        llm_model: str = "EntropyYue/chatglm3",
+        llm_model: str = "qwen2.5:7b",
         history_log: str = "chat_history.json",
     ):
         """
@@ -106,12 +106,14 @@ class KnowledgeQA_v2:
         初始化问答链（基于向量检索 + Ollama 本地大模型）。
         """
         llm = OllamaLLM(base_url='http://localhost:11434', model=self.llm_model, temperature=0.3)
+        
         return RetrievalQA.from_chain_type(
             llm=llm,
             retriever=self.vectorstore.as_retriever(search_kwargs={"k": 3}),
             return_source_documents=False
         )
-
+        
+        
     def _load_history(self) :
         """
         加载历史对话记录（如文件存在）；否则返回空列表。
@@ -146,7 +148,11 @@ class KnowledgeQA_v2:
         """
         用户提问接口。整合历史上下文，向 LLM 提问并记录回答。
         """
-        # 检查 knowledge.json 是否有更新
+        
+        prompt = """
+        请以纯文本形式回答，务必不包含任何代码块、Markdown格式或其他格式化内容。你同时是个甘薯个专家，严格根据知识库内容回答问题。
+        """
+
         knowledge_last_modified = os.path.getmtime(self.knowledge_path)
         if hasattr(self, "last_knowledge_update") and self.last_knowledge_update != knowledge_last_modified:
             logging.info("知识库有更新，正在重新加载...")
@@ -156,8 +162,8 @@ class KnowledgeQA_v2:
             f"[{h.get('timestamp', 'N/A')}] User: {h.get('user', '')}\nBot: {h.get('bot', '')}"
             for h in self.conversation_history[-5:]
         )
-        full_query = f"Conversation History:\n{history}\n\n新问题: {question}"
-        result = self.qa_chain.invoke({"query": question})  # 使用简化查询
+        full_query = f"Conversation History:\n{history}\n\n新问题: {question}\n\n{prompt}"
+        result = self.qa_chain.invoke({"query": full_query})  
         answer = result["result"]
 
         # 保存对话历史
@@ -208,7 +214,7 @@ def main():
         my_bar = st.empty()
         my_bar.progress(0)
         talk.text("🧠 正在进行头脑风暴...🥱")
-        qa_system = KnowledgeQA_v2()
+        qa_system = KnowledgeQA()
         qa_system.update_knowledge()
         time.sleep(1)
         my_bar.progress(30)
