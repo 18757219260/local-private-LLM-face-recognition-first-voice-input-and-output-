@@ -79,7 +79,7 @@ class FaceRecognizer:
             matches = face_recognition.compare_faces(
                 list(self.known_faces.values()), 
                 face_encoding,
-                tolerance=0.4
+                tolerance=0.35
             )
             
             name = "who?"
@@ -90,7 +90,7 @@ class FaceRecognizer:
             
             if True in matches:
                 best_match_index = face_distances.argmin()
-                if face_distances[best_match_index] < 0.5:  # 双重验证
+                if face_distances[best_match_index] < 0.4:  # 双重验证
                     name = list(self.known_faces.keys())[best_match_index]
             
             # 添加坐标转换
@@ -127,8 +127,6 @@ if __name__ == "__main__":
             if not ret:
                 print("无法获取视频帧")
                 break
-
-            # 优化显示流程
             display_frame = cv2.cvtColor(frame, cv2.COLOR_RGB2BGR)
             
             results, _ = recognizer.recognize_faces(frame)
@@ -136,8 +134,8 @@ if __name__ == "__main__":
             for (top, right, bottom, left), name in results:
                 color = (0, 255, 0) if name != "who?" else (0, 0, 255)
                 cv2.rectangle(display_frame, (left, top), (right, bottom), color, 2)
-                cv2.putText(display_frame, name, (left, top-30),  # 调整文字位置
-                           cv2.FONT_HERSHEY_SIMPLEX, 1.2, color, 3)  # 增大字号
+                cv2.putText(display_frame, name, (left, top-30), 
+                           cv2.FONT_HERSHEY_SIMPLEX, 1.2, color, 3) 
                 
             cv2.imshow('Face Recognition', display_frame)
             

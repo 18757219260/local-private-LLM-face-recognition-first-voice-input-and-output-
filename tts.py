@@ -29,7 +29,7 @@ class VoiceAssistant:
         while pygame.mixer.music.get_busy():
             await asyncio.sleep(0.1)
 
-    def listen(self, timeout=8, phrase_time_limit=6):
+    def listen(self, timeout=6, phrase_time_limit=8):
         with self.microphone as source:
             print("🎤 请开始说话...")
             self.recognizer.adjust_for_ambient_noise(source, duration=0.8)
@@ -53,7 +53,7 @@ class VoiceAssistant:
             answer = qa.ask(question)
             question = f"你刚才说的是：{question}"
             print("用户提问：", question)
-            answer = f"模型回答是：{answer}"
+            answer = f"回答是：{answer}"
             print("🤖 助手回答：", answer)
             await self.speak('11'+answer)
 

@@ -3,8 +3,6 @@ import os
 import logging
 from datetime import datetime
 from typing import List, Dict, Any
-import edge_tts
-import streamlit as st
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
 from langchain.text_splitter import RecursiveCharacterTextSplitter
@@ -12,8 +10,7 @@ from langchain_core.documents import Document
 from langchain.chains import RetrievalQA
 from langchain_ollama import OllamaLLM
 import nest_asyncio
-import time
-import asyncio
+
 nest_asyncio.apply()
 
 logging.basicConfig(
@@ -138,66 +135,3 @@ class KnowledgeQA:
         answer = result["result"]
         
         return answer
-
-
-    
-
-
-def speek(text: str, filename: str = "audio.mp3"):
-    """异步语音合成"""
-    async def async_tts():
-       
-        communicate = edge_tts.Communicate(
-            text=text,
-            voice="zh-CN-XiaoxiaoNeural",  
-            rate="+10%"  
-        )
-        await communicate.save(filename)
-
-
-    asyncio.run(async_tts())
-
-
-
-
-def main():
-    st.set_page_config(page_title="甘薯知识助手", layout="wide")
-
-    col1, col2 = st.columns([1, 3])
-    with col1:
-        st.image("/home/wuye/vscode/chatbox/images/a9b65894-4916-4291-aec5-083e8db149d1.png", width=200)
-    with col2:
-        st.title("🍠 甘薯知识助手🍠 ")
-    st.markdown('<p style="font-size:20px; font-weight:bold;">请输入关于甘薯的问题，例如：甘薯的储存方法</p>', unsafe_allow_html=True)
-    query = st.text_input("", key="input")
-    talk = st.empty()
-    talk.text("🤖等待投喂问题ing...😴")
-    
-    if query:
-        
-        my_bar = st.empty()
-        my_bar.progress(0)
-        talk.text("🧠 正在进行头脑风暴...🥱")
-        qa_system = KnowledgeQA()
-        # qa_system.update_knowledge()
-        time.sleep(1)
-        my_bar.progress(30)
-        talk.text("😈好像找到答案了？！🤔")
-        my_bar.progress(60)
-        answer = qa_system.ask(query)
-        talk.text("🎉 答案已找到！😻")
-        my_bar.progress(90)
-        st.markdown(f"### 答案\n{answer}")
-
-        talk.text("🔊 生成语音中...")
-        speek(answer)
-        st.audio("audio.mp3")
-        my_bar.progress(100)
-
-        if os.path.exists("audio.mp3"):
-            os.remove("audio.mp3")
-        my_bar.empty()
-        talk.empty()
-
-if __name__ == "__main__":
-    main()
