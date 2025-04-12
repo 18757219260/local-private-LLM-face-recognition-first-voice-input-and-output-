@@ -10,6 +10,7 @@ from langchain_core.documents import Document
 from langchain.chains import RetrievalQA
 from langchain_ollama import OllamaLLM
 import nest_asyncio
+import time
 
 nest_asyncio.apply()
 
@@ -102,11 +103,11 @@ class KnowledgeQA:
         """
         初始化问答链（基于向量检索 + Ollama 本地大模型）。
         """
-        llm = OllamaLLM(base_url='http://localhost:11434', model=self.llm_model, temperature=0.1)
+        llm = OllamaLLM(base_url='http://localhost:11434', model=self.llm_model, temperature=0.4)
         
         return RetrievalQA.from_chain_type(
             llm=llm,
-            retriever=self.vectorstore.as_retriever(search_kwargs={"k": 3}),
+            retriever=self.vectorstore.as_retriever(search_kwargs={"k": 2}),
             return_source_documents=False
         )
         
@@ -123,15 +124,18 @@ class KnowledgeQA:
     #     logging.info("知识库更新成功！")
 
     def ask(self, question: str) -> str:
+        start=time.time()   
         """
         用户提问接口。整合历史上下文，向 LLM 提问并记录回答。
         """
         
         prompt = """
-        请以纯文本形式回答,务必不包含任何代码块、Markdown格式或其他格式化内容。你同时是个甘薯个专家,严格根据知识库内容回答问题，对知识库简化输出为一段！！！！
+        你是个甘薯个专家请以纯文本形式回答,输出为一段。如果输入问题和甘薯一点关系都没有，请直接回答“我不知道”。输出的内容要简洁明了，避免使用复杂的术语和长句子。请确保回答是准确的，并且与问题相关。请不要添加任何额外的解释或背景信息。
         """
         query = f"问题: {question}\n\n{prompt}"
         result = self.qa_chain.invoke({"query": query})  
         answer = result["result"]
+        end=time.time()
+        logging.info(f"模型问答耗时: {end-start:.2f}秒")
         
         return answer

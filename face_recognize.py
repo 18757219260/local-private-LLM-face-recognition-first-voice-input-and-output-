@@ -3,6 +3,7 @@ import face_recognition
 import os
 from PIL import Image
 import numpy as np
+import time
 class FaceRecognizer:
 
     def __init__(self):
@@ -15,18 +16,20 @@ class FaceRecognizer:
     def _init_known_faces(self):
         """优化人脸数据加载方式"""
         face_map = {
-            "wudawang": "images/zhenyu.jpg",
+            
             "jiazhuo": "images/jiazhuo.jpg",
             "yuhui": "images/yuhui.jpg",
             "dongyihao": "images/yihao.jpg",
             "cjh": "images/jianhao.jpg",
+            "wudawang": "images/zhenyu.jpg",
         }
         
         for name, file in face_map.items():
             img_path = os.path.join(file)
             img= Image.open(img_path)
-            img.thumbnail((800, 800)) 
-            img= np.array(img)
+            if img.size[0] > 400 or img.size[1] > 400:
+                img.thumbnail((400, 400))
+            img = np.array(img)
                 
             try:
                 
@@ -45,30 +48,29 @@ class FaceRecognizer:
         """优化摄像头初始化"""
         self.cap = cv2.VideoCapture(0)
         # 设置摄像头参数
-        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)  
-        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
+        self.cap.set(cv2.CAP_PROP_FRAME_WIDTH, 320)  
+        self.cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
         self.cap.set(cv2.CAP_PROP_FPS, 30)  # 设置帧率
 
     def get_frame(self):
-        """优化帧获取"""
+        
         ret, frame = self.cap.read()
-        if ret:
+        if ret : 
             return ret, cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
         return ret, None
 
     def recognize_faces(self, frame):
         """优化识别流程"""
-        
+        start=time.time()
         face_locations = face_recognition.face_locations(
             frame, 
-            model="cnn",         
+            model="hog",         
             number_of_times_to_upsample=1  
         )
         
         face_encodings = face_recognition.face_encodings(
             frame, 
-            face_locations,      
-            model="large"         
+            face_locations,model="large"         
         )
 
         results = []
@@ -90,14 +92,14 @@ class FaceRecognizer:
             
             if True in matches:
                 best_match_index = face_distances.argmin()
-                if face_distances[best_match_index] < 0.4:  # 双重验证
+                if face_distances[best_match_index] < 0.4:  
                     name = list(self.known_faces.keys())[best_match_index]
-            
-            # 添加坐标转换
             top, right, bottom, left = self._convert_coordinates(frame, (top, right, bottom, left))
             
             results.append(((top, right, bottom, left), name))
             current_names.append(name)
+            end=time.time()
+            print(f"人脸识别识别耗时: {end-start:.2f}秒")
             
         return results, (current_names[0] if current_names else "")
 
@@ -117,6 +119,8 @@ class FaceRecognizer:
         if self.cap and self.cap.isOpened():
             self.cap.release()
         cv2.destroyAllWindows()
+
+#测试
 
 if __name__ == "__main__":
     recognizer = FaceRecognizer()

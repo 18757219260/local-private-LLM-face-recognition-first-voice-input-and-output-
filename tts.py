@@ -4,6 +4,7 @@ import pygame
 import edge_tts
 import speech_recognition as sr
 from qa_model import KnowledgeQA
+import time
 
 class VoiceAssistant:
     def __init__(self, voice="zh-CN-XiaoxiaoNeural"):
@@ -13,6 +14,7 @@ class VoiceAssistant:
         pygame.mixer.init()
 
     async def speak(self, text: str):
+        start=time.time()
         communicate = edge_tts.Communicate(
             text=text,
             voice=self.voice,
@@ -28,11 +30,14 @@ class VoiceAssistant:
         pygame.mixer.music.play()
         while pygame.mixer.music.get_busy():
             await asyncio.sleep(0.1)
+        end=time.time()
+        print("语音说话耗时：", end-start)
 
     def listen(self, timeout=6, phrase_time_limit=8):
         with self.microphone as source:
             print("🎤 请开始说话...")
             self.recognizer.adjust_for_ambient_noise(source, duration=0.8)
+            start=time.time()
             try:
                 audio = self.recognizer.listen(source, timeout=timeout, phrase_time_limit=phrase_time_limit)
                 message = self.recognizer.recognize_google(audio, language="zh-CN")
