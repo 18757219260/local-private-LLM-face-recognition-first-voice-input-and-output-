@@ -1008,3 +1008,102 @@ Traceback (most recent call last):
     return pa.read_stream(self._stream, num_frames, exception_on_overflow)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 KeyboardInterrupt
+2025-04-22 21:15:05,862 - INFO - Use pytorch device_name: cuda
+2025-04-22 21:15:05,862 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-22 21:15:06,330 - INFO - Loading faiss with AVX512 support.
+2025-04-22 21:15:06,349 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-22 21:15:06,352 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 18:49:13,710 - INFO - Use pytorch device_name: cuda
+2025-04-23 18:49:13,719 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 18:49:14,050 - INFO - Loading faiss with AVX512 support.
+2025-04-23 18:49:14,060 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 18:49:14,063 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 18:49:17,919 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-23 18:49:19,573 - INFO - 模型问答耗时: 5.49秒
+2025-04-23 18:49:44,686 - INFO - Use pytorch device_name: cuda
+2025-04-23 18:49:44,687 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 18:49:45,185 - INFO - Loading faiss with AVX512 support.
+2025-04-23 18:49:45,197 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 18:49:45,200 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 18:49:45,789 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-23 18:49:46,571 - INFO - 模型问答耗时: 1.36秒
+2025-04-23 18:50:11,027 - INFO - Use pytorch device_name: cuda
+2025-04-23 18:50:11,027 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 18:50:11,355 - INFO - Loading faiss with AVX512 support.
+2025-04-23 18:50:11,366 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 18:50:11,368 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 18:50:11,825 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-23 18:50:15,144 - INFO - 模型问答耗时: 3.76秒
+2025-04-23 18:51:07,854 - INFO - Use pytorch device_name: cuda
+2025-04-23 18:51:07,854 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 18:51:08,174 - INFO - Loading faiss with AVX512 support.
+2025-04-23 18:51:08,185 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 18:51:08,188 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 18:51:08,802 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-23 18:51:10,952 - INFO - 模型问答耗时: 2.75秒
+2025-04-23 18:57:14,661 - INFO - Use pytorch device_name: cuda
+2025-04-23 18:57:14,661 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 18:57:14,985 - INFO - Loading faiss with AVX512 support.
+2025-04-23 18:57:14,997 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 18:57:14,999 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 18:58:10,501 - INFO - Use pytorch device_name: cuda
+2025-04-23 18:58:10,502 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 18:58:10,823 - INFO - Loading faiss with AVX512 support.
+2025-04-23 18:58:10,834 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 18:58:10,837 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 18:59:58,394 - INFO - Use pytorch device_name: cuda
+2025-04-23 18:59:58,395 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 18:59:58,717 - INFO - Loading faiss with AVX512 support.
+2025-04-23 18:59:58,729 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 18:59:58,732 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 19:15:50,351 - INFO - Use pytorch device_name: cuda
+2025-04-23 19:15:50,352 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 19:15:50,689 - INFO - Loading faiss with AVX512 support.
+2025-04-23 19:15:50,711 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 19:15:50,713 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 19:16:49,393 - INFO - Use pytorch device_name: cuda
+2025-04-23 19:16:49,393 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 19:16:49,856 - INFO - Loading faiss with AVX512 support.
+2025-04-23 19:16:49,872 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 19:16:49,877 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 19:17:50,631 - INFO - Use pytorch device_name: cuda
+2025-04-23 19:17:50,631 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 19:17:50,952 - INFO - Loading faiss with AVX512 support.
+2025-04-23 19:17:50,964 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 19:17:50,966 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 19:17:58,667 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-23 19:18:03,456 - INFO - 模型问答耗时: 6.90秒
+2025-04-23 19:19:32,181 - INFO - Use pytorch device_name: cuda
+2025-04-23 19:19:32,181 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 19:19:32,635 - INFO - Loading faiss with AVX512 support.
+2025-04-23 19:19:32,651 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 19:19:32,656 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 19:21:04,996 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-23 19:21:05,115 - INFO - 模型问答耗时: 0.71秒
+2025-04-23 19:22:02,680 - INFO - Use pytorch device_name: cuda
+2025-04-23 19:22:02,680 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 19:22:03,173 - INFO - Loading faiss with AVX512 support.
+2025-04-23 19:22:03,189 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 19:22:03,194 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 19:23:08,130 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-23 19:23:08,249 - INFO - 模型问答耗时: 0.67秒
+2025-04-23 19:24:01,654 - INFO - Use pytorch device_name: cuda
+2025-04-23 19:24:01,654 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 19:24:02,117 - INFO - Loading faiss with AVX512 support.
+2025-04-23 19:24:02,132 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 19:24:02,137 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 19:24:49,635 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-23 19:24:49,755 - INFO - 模型问答耗时: 0.37秒
+2025-04-23 19:24:59,289 - INFO - Use pytorch device_name: cuda
+2025-04-23 19:24:59,289 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-23 19:24:59,600 - INFO - Loading faiss with AVX512 support.
+2025-04-23 19:24:59,612 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 19:24:59,615 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 19:25:05,993 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-23 19:25:08,926 - INFO - 模型问答耗时: 3.49秒
+2025-04-23 19:25:33,924 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-23 19:25:33,988 - INFO - 模型问答耗时: 0.59秒
+2025-04-23 19:25:45,956 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-23 19:25:46,088 - INFO - 模型问答耗时: 0.47秒
+2025-04-23 19:25:57,771 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-23 19:25:57,894 - INFO - 模型问答耗时: 0.60秒

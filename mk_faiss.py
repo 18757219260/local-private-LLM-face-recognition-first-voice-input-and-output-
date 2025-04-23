@@ -19,7 +19,7 @@ class MkFaiss:
         self,
         knowledge_path: str = "knowledge.json",
         faiss_index_path: str = "faiss_index",
-        embedding_model_name: str = "./bge-base-zh-v1.5"
+        embedding_model_name: str = "bge-base-zh-v1.5"
     ):
  
         self.knowledge_path = knowledge_path
