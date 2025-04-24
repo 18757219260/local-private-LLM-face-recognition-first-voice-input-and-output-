@@ -27,7 +27,7 @@ class ASRhelper:
         self.p, self.stream = self.get_audio_stream()
 
     def get_audio_stream(self):
-        """Initialize and return an audio stream."""
+        """初始化输入音频流"""
         p = pyaudio.PyAudio()
         stream = p.open(format=self.FORMAT,
                         channels=self.CHANNELS,
@@ -38,7 +38,7 @@ class ASRhelper:
 
     def real_time_recognition(self):
         """Perform real-time speech recognition with VAD."""
-        print('*'*10,"可以说话咯😁","*"*10)
+        print('*'*40,"可以说话咯😁","*"*40)
 
         #输入流
         input= []

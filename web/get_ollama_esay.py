@@ -25,9 +25,9 @@ logging.basicConfig(
 class KnowledgeQA:
     def __init__(
         self,
-        knowledge_path: str = "knowledge.json",
-        faiss_index_path: str = "faiss_index",
-        llm_model: str = "qwen2.5:7b",
+        knowledge_path = "knowledge.json",
+        faiss_index_path = "../faiss_index",
+        llm_model = "qwen2.5:7b",
     ):
         """
         初始化知识问答系统，加载对话历史、嵌入模型、向量库和问答链。
@@ -36,7 +36,7 @@ class KnowledgeQA:
         self.faiss_index_path = faiss_index_path
         self.llm_model = llm_model
         self.embedding_model = HuggingFaceEmbeddings(
-            model_name="./bge-base-zh-v1.5",
+            model_name="../bge-base-zh-v1.5",
             encode_kwargs={'normalize_embeddings': True}
         )
         # self.embedding_model = self._init_embeddings()
@@ -141,9 +141,20 @@ class KnowledgeQA:
 
 
     
+def preprocess_text( text):
+    """
+    预处理文本，替换不标准的标点并清理可能导致问题的字符
+    """
+    text = text.replace("，", ",")
+    text = text.replace("。", ",")
+    text = text.replace("、", ",")
+    # text = re.sub(r'[\x00-\x1F\x7F]', '', text)
+    text = text.strip("，。！？")
+    # print(f"预处理后的文本：{text}")
+    return text
 
-
-def speek(text: str, filename: str = "audio.mp3"):
+def speek(text, filename= "audio.mp3"):
+    
     """异步语音合成"""
     async def async_tts():
        
@@ -165,7 +176,7 @@ def main():
 
     col1, col2 = st.columns([1, 3])
     with col1:
-        st.image("/home/wuye/vscode/chatbox/images/a9b65894-4916-4291-aec5-083e8db149d1.png", width=200)
+        st.image("../sweetpotato.png", width=200)
     with col2:
         st.title("🍠 甘薯知识助手🍠 ")
     st.markdown('<p style="font-size:20px; font-weight:bold;">请输入关于甘薯的问题，例如：甘薯的储存方法</p>', unsafe_allow_html=True)
@@ -185,12 +196,14 @@ def main():
         talk.text("😈好像找到答案了？！🤔")
         my_bar.progress(60)
         answer = qa_system.ask(query)
+        processed_answer = preprocess_text(answer)
         talk.text("🎉 答案已找到！😻")
         my_bar.progress(90)
         st.markdown(f"### 答案\n{answer}")
 
         talk.text("🔊 生成语音中...")
-        speek(answer)
+        
+        speek(processed_answer)
         st.audio("audio.mp3")
         my_bar.progress(100)
 

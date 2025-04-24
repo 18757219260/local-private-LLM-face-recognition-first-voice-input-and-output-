@@ -1,20 +1,16 @@
+import sys
+import os
+sys.path.append(os.path.abspath("/home/wuye/vscode/chatbox"))
 import asyncio
 import edge_tts
 import subprocess
 import io
 import logging
-from collections import deque
-from qa_model_easy import KnowledgeQA
 import time
+import re
 
-# 配置日志
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[logging.StreamHandler(), logging.FileHandler("chat.log")]
-)
 
-class EdgeTTSStreaming:
+class TTStreaming:
     def __init__(self, voice="zh-CN-XiaoyiNeural"):
         self.voice = voice
         self.is_speaking = False
@@ -28,8 +24,8 @@ class EdgeTTSStreaming:
         """
         text = text.replace("，", ",")
         text = text.replace("。", ",")
-        # text = re.sub(r'[\x00-\x1F\x7F]', '', text)
-        # text = text.strip("，。！？")
+        text = re.sub(r'[\x00-\x1F\x7F]', '', text)
+        text = text.strip("，。！？")
         print(f"预处理后的文本：{text}")
         return text
 
@@ -42,7 +38,7 @@ class EdgeTTSStreaming:
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
             )
-            logging.info("mpg123 进程启动")
+            print("mpg123 进程启动")
 
     async def stop_audio_player(self):
         """关闭 mpg123 进程"""
@@ -50,14 +46,14 @@ class EdgeTTSStreaming:
             self.mpg123_process.stdin.close()
             self.mpg123_process.wait()
             self.mpg123_process = None
-            logging.info("mpg123 进程关闭")
+            print("mpg123 进程关闭")
 
     async def stream_tts(self, text):
         if not text.strip():
-            logging.warning("文本为空，跳过语音合成")
+            logging.warning("文本为空!!，跳过语音播放‼️")
             return
         start_time = time.time()
-        communicate = edge_tts.Communicate(text, self.voice)
+        communicate = edge_tts.Communicate(text, self.voice,)
 
         async def audio_stream_handler():
             current_audio = io.BytesIO()
@@ -92,7 +88,7 @@ class EdgeTTSStreaming:
                 logging.error(f"音频播放任务错误: {e}")
 
         await asyncio.gather(audio_stream_handler(), audio_player())
-        logging.info(f"TTS 处理耗时: {time.time() - start_time:.2f}秒")
+        print(f"TTS 处理耗时: {time.time() - start_time:.2f}秒")
 
     async def speak(self, text):
         self.is_speaking = True
@@ -107,52 +103,3 @@ class EdgeTTSStreaming:
         """清理资源"""
         await self.stop_audio_player()
 
-async def main():
-    # 初始化 QA 和 TTS
-    qa = KnowledgeQA()
-    tts = EdgeTTSStreaming(voice="zh-CN-XiaoyiNeural")
-    
-    # 提问
-    question = "甘薯的贮藏特性"
-    logging.info(f"提问: {question}")
-
-    # 流式处理回答并实时语音输出
-    buffer = ""
-    min_length = 20  # 最小文本长度
-    trigger_length = 40  # 触发语音的字符数
-    timeout = 0.5  # 0.5秒超时触发语音
-    last_chunk_time = time.time()
-
-    async def text_producer():
-        """从 ask_stream 获取文本并放入队列"""
-        async for chunk in qa.ask_stream(question):
-            logging.info(f"🧠 输出块: {chunk}")
-            yield chunk
-      
-    async def text_consumer():
-        """处理文本并触发语音"""
-        nonlocal buffer, last_chunk_time
-        async for chunk in text_producer():
-            chunk=tts.preprocess_text(chunk)  # 预处理文本
-            buffer += chunk
-            last_chunk_time = time.time()
-
-            # 触发语音：达到 trigger_length 或超时
-            if len(buffer) >= trigger_length or (time.time() - last_chunk_time) >= timeout:
-                if len(buffer) >= min_length:
-                    logging.info(f"语音输出: {buffer}")
-                    await tts.speak(buffer)
-                    buffer = ""  # 清空缓冲区
-
-        # 处理剩余文本
-        if buffer and len(buffer) >= min_length:
-            logging.info(f"语音输出（剩余）: {buffer}")
-            await tts.speak('111'+buffer)
-
-    try:
-        await text_consumer()
-    finally:
-        await tts.shutdown()
-
-if __name__ == "__main__":
-    asyncio.run(main())

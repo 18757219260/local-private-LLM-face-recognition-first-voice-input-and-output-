@@ -56,3 +56,27 @@ If this is a private repository, make sure to pass a token having permission to 
 2025-04-23 16:59:51,178 - INFO - 生成 13 个文档分块
 2025-04-23 16:59:51,462 - INFO - 知识库更新成功！
 2025-04-23 16:59:51,462 - INFO - 向量数据库测试成功
+2025-04-23 22:14:42,377 - INFO - Use pytorch device_name: cpu
+2025-04-23 22:14:42,377 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-23 22:14:43,613 - INFO - 加载现有向量数据库: faiss_index
+2025-04-23 22:14:43,617 - INFO - Loading faiss with AVX512 support.
+2025-04-23 22:14:43,754 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-23 22:14:43,757 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-23 22:14:43,758 - INFO - 开始更新知识库
+2025-04-23 22:14:43,758 - INFO - 成功加载知识库: 9 条记录
+2025-04-23 22:14:43,758 - INFO - 生成 13 个文档
+2025-04-23 22:14:43,759 - INFO - 生成 13 个文档分块
+2025-04-23 22:14:45,202 - INFO - 知识库更新成功！
+2025-04-23 22:14:45,202 - INFO - 向量数据库测试成功
+2025-04-24 16:59:49,182 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:59:49,191 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-24 16:59:51,474 - INFO - 加载现有向量数据库: faiss_index
+2025-04-24 16:59:51,475 - INFO - Loading faiss with AVX512 support.
+2025-04-24 16:59:51,594 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-24 16:59:51,596 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-24 16:59:51,596 - INFO - 开始更新知识库
+2025-04-24 16:59:51,605 - INFO - 成功加载知识库: 9 条记录
+2025-04-24 16:59:51,605 - INFO - 生成 13 个文档
+2025-04-24 16:59:51,606 - INFO - 生成 13 个文档分块
+2025-04-24 16:59:51,860 - INFO - 知识库更新成功！
+2025-04-24 16:59:51,860 - INFO - 向量数据库测试成功

@@ -1,0 +1,49 @@
+2025-04-24 16:19:20,255 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:19:20,256 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-24 16:19:20,256 - WARNING - No sentence-transformers model found with name ./bge-base-zh-v1.5. Creating a new one with mean pooling.
+2025-04-24 16:19:46,160 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:19:46,160 - INFO - Load pretrained SentenceTransformer: ../bge-base-zh-v1.5
+2025-04-24 16:19:46,475 - INFO - Loading faiss with AVX512 support.
+2025-04-24 16:19:46,486 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-24 16:19:46,488 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-24 16:21:26,869 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:21:26,869 - INFO - Load pretrained SentenceTransformer: ../bge-base-zh-v1.5
+2025-04-24 16:21:29,984 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-24 16:23:30,435 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:23:30,435 - INFO - Load pretrained SentenceTransformer: ../bge-base-zh-v1.5
+2025-04-24 16:23:31,748 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-24 16:24:09,430 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:24:09,430 - INFO - Load pretrained SentenceTransformer: ../bge-base-zh-v1.5
+2025-04-24 16:24:10,765 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-24 16:24:51,999 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:24:51,999 - INFO - Load pretrained SentenceTransformer: ../bge-base-zh-v1.5
+2025-04-24 16:24:53,315 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-24 16:25:49,951 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:25:49,951 - INFO - Load pretrained SentenceTransformer: ../bge-base-zh-v1.5
+2025-04-24 16:25:51,266 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-24 16:28:15,959 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:28:15,959 - INFO - Load pretrained SentenceTransformer: ../bge-base-zh-v1.5
+2025-04-24 16:28:17,267 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-24 16:29:26,258 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:29:26,258 - INFO - Load pretrained SentenceTransformer: ../bge-base-zh-v1.5
+2025-04-24 16:29:27,581 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-24 16:31:07,974 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:31:07,974 - INFO - Load pretrained SentenceTransformer: ../bge-base-zh-v1.5
+2025-04-24 16:31:09,285 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-24 16:32:02,820 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:32:02,820 - INFO - Load pretrained SentenceTransformer: ../bge-base-zh-v1.5
+2025-04-24 16:32:03,147 - INFO - Loading faiss with AVX512 support.
+2025-04-24 16:32:03,158 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-24 16:32:03,161 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-24 16:32:04,397 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-24 16:34:16,894 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:34:16,894 - INFO - Load pretrained SentenceTransformer: ../bge-base-zh-v1.5
+2025-04-24 16:34:17,213 - INFO - Loading faiss with AVX512 support.
+2025-04-24 16:34:17,223 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-24 16:34:17,226 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-24 16:34:17,499 - INFO - 知识库更新成功！
+2025-04-24 16:34:18,795 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-24 16:35:00,826 - INFO - Use pytorch device_name: cuda
+2025-04-24 16:35:00,826 - INFO - Load pretrained SentenceTransformer: ../bge-base-zh-v1.5
+2025-04-24 16:35:01,196 - INFO - 知识库更新成功！
+2025-04-24 16:35:02,824 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
