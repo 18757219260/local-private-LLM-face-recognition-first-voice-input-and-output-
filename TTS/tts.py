@@ -10,10 +10,8 @@ import os
 import subprocess
 import logging
 from qa_model.qa_model_easy import KnowledgeQA
-from ASR.asr import ASRhelper
 import pyaudio
-from pydub import AudioSegment
-from io import BytesIO
+
 
 class TTSHelper:
     def __init__(self, voice, rate, volume):
@@ -36,7 +34,7 @@ class TTSHelper:
         text = text.replace("。", ",")
         text = text.replace("、", ",")
         text = re.sub(r'[\x00-\x1F\x7F]', '', text)
-        text = text.strip("，。！？")
+ 
         # print(f"预处理后的文本：{text}")
         return text
 

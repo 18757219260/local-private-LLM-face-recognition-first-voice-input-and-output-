@@ -206,3 +206,348 @@ KeyboardInterrupt
 2025-04-25 13:09:02,250 - INFO - 流式回答花费了 0.27 seconds
 2025-04-25 13:09:02,250 - INFO - 等待 1.5 秒后再次开始监听...
 2025-04-25 13:09:03,952 - INFO - mpg123 进程已关闭
+2025-04-25 13:16:46,333 - INFO - 正在初始化甘薯问答系统...
+2025-04-25 13:16:48,701 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:16:48,701 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:16:49,675 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:16:49,687 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:16:49,689 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:16:49,845 - INFO - 系统初始化完成
+2025-04-25 13:16:49,846 - INFO - mpg123播放器已启动
+2025-04-25 13:16:54,673 - INFO - 等待用户输入...
+2025-04-25 13:17:41,029 - INFO - 正在初始化甘薯问答系统...
+2025-04-25 13:17:43,462 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:17:43,462 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:17:44,435 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:17:44,447 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:17:44,450 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:17:44,622 - INFO - 系统初始化完成
+2025-04-25 13:17:44,623 - INFO - mpg123播放器已启动
+2025-04-25 13:17:49,351 - INFO - 等待用户输入...
+2025-04-25 13:17:55,723 - INFO - 用户问题: Tts，已经启动。
+2025-04-25 13:17:55,723 - INFO - 正在处理问题...
+2025-04-25 13:17:57,436 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:17:57,483 - INFO - 流式回答花费了 1.62 seconds
+2025-04-25 13:17:57,483 - INFO - 完整响应 (1.76秒)：我不知道
+2025-04-25 13:18:01,013 - INFO - 等待用户输入...
+2025-04-25 13:18:07,423 - INFO - 用户问题: 甘薯的贮藏特性。
+2025-04-25 13:18:07,423 - INFO - 正在处理问题...
+2025-04-25 13:18:07,728 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:18:11,156 - INFO - 流式回答花费了 3.73 seconds
+2025-04-25 13:18:11,156 - INFO - 完整响应 (3.73秒)：甘薯不同品种耐贮性差异大。紫薯比红薯耐贮藏，大叶红、烟薯25、济薯26等体积小、纺锤形、表皮薄、糖含量高的红薯耐贮性差；北京553、红香蕉等体积大、球形、表皮厚、糖含量低的红薯耐贮性稍好。
+2025-04-25 13:18:30,126 - INFO - 等待用户输入...
+2025-04-25 13:18:38,306 - INFO - 用户问题: 66个小时，五十五十五十五十五五十五十五十五十五十五十五十五十五十五十五十五十五十五十五十五十四十三十三十三十三十三十三十三十三十三十三嗯。
+2025-04-25 13:18:38,306 - INFO - 正在处理问题...
+2025-04-25 13:18:38,306 - INFO - 收到退出信号
+2025-04-25 13:18:38,307 - INFO - 收到退出信号
+2025-04-25 13:18:38,585 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:18:38,631 - INFO - 流式回答花费了 0.30 seconds
+2025-04-25 13:18:38,631 - INFO - 完整响应 (0.33秒)：我不知道
+2025-04-25 13:18:42,668 - INFO - 正在关闭系统...
+2025-04-25 13:18:43,169 - INFO - mpg123播放器已关闭
+2025-04-25 13:18:43,173 - INFO - 所有资源已清理，系统已安全关闭
+2025-04-25 13:19:00,639 - INFO - 正在初始化甘薯问答系统...
+2025-04-25 13:19:03,129 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:19:03,129 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:19:04,107 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:19:04,121 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:19:04,125 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:19:04,288 - INFO - 系统初始化完成
+2025-04-25 13:19:04,289 - INFO - mpg123播放器已启动
+2025-04-25 13:19:09,075 - INFO - 等待用户输入...
+2025-04-25 13:19:15,409 - INFO - 用户问题: 为中山。
+2025-04-25 13:19:15,410 - INFO - 正在处理问题...
+2025-04-25 13:19:15,867 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:19:15,913 - INFO - 流式回答花费了 0.36 seconds
+2025-04-25 13:19:15,913 - INFO - 完整响应 (0.50秒)：我不知道
+2025-04-25 13:19:19,206 - INFO - 等待用户输入...
+2025-04-25 13:19:25,611 - INFO - 用户问题: 的遇上处理该死的雨伤处理。
+2025-04-25 13:19:25,612 - INFO - 正在处理问题...
+2025-04-25 13:19:25,855 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:19:25,902 - INFO - 流式回答花费了 0.28 seconds
+2025-04-25 13:19:25,902 - INFO - 完整响应 (0.29秒)：我不知道
+2025-04-25 13:19:29,204 - INFO - 等待用户输入...
+2025-04-25 13:19:35,199 - INFO - 用户问题: 甘肃的玉商处理。
+2025-04-25 13:19:35,199 - INFO - 正在处理问题...
+2025-04-25 13:19:35,596 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:19:35,643 - INFO - 流式回答花费了 0.42 seconds
+2025-04-25 13:19:35,643 - INFO - 完整响应 (0.44秒)：我不知道
+2025-04-25 13:19:39,046 - INFO - 等待用户输入...
+2025-04-25 13:19:45,010 - INFO - 用户问题: 如何对甘肃省？
+2025-04-25 13:19:45,010 - INFO - 正在处理问题...
+2025-04-25 13:19:45,212 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:19:45,260 - INFO - 流式回答花费了 0.24 seconds
+2025-04-25 13:19:45,260 - INFO - 完整响应 (0.25秒)：我不知道
+2025-04-25 13:19:48,661 - INFO - 等待用户输入...
+2025-04-25 13:19:54,617 - INFO - 用户问题: 该死的包装方式。
+2025-04-25 13:19:54,618 - INFO - 正在处理问题...
+2025-04-25 13:19:54,862 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:19:55,112 - INFO - 流式回答花费了 0.48 seconds
+2025-04-25 13:19:55,112 - INFO - 完整响应 (0.49秒)：袋装、箱装。
+2025-04-25 13:19:58,869 - INFO - 等待用户输入...
+2025-04-25 13:20:04,995 - INFO - 用户问题: 甘肃的包装方式，单数的包装方式。
+2025-04-25 13:20:04,996 - INFO - 正在处理问题...
+2025-04-25 13:20:05,250 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:20:05,582 - INFO - 流式回答花费了 0.58 seconds
+2025-04-25 13:20:05,582 - INFO - 完整响应 (0.59秒)：甘肃的包装方式主要有袋装。
+2025-04-25 13:20:09,853 - INFO - 等待用户输入...
+2025-04-25 13:20:16,277 - INFO - 用户问题: 高端公司甘肃的使用建议。
+2025-04-25 13:20:16,277 - INFO - 正在处理问题...
+2025-04-25 13:20:16,582 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:20:16,628 - INFO - 流式回答花费了 0.34 seconds
+2025-04-25 13:20:16,628 - INFO - 完整响应 (0.35秒)：我不知道
+2025-04-25 13:20:19,983 - INFO - 等待用户输入...
+2025-04-25 13:20:26,387 - INFO - 用户问题: 金属的使用电子使用建议。
+2025-04-25 13:20:26,396 - INFO - 正在处理问题...
+2025-04-25 13:20:26,635 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:20:26,681 - INFO - 流式回答花费了 0.28 seconds
+2025-04-25 13:20:26,681 - INFO - 完整响应 (0.28秒)：我不知道
+2025-04-25 13:20:28,354 - INFO - 收到退出信号
+2025-04-25 13:20:30,209 - INFO - 正在关闭系统...
+2025-04-25 13:20:30,710 - INFO - mpg123播放器已关闭
+2025-04-25 13:20:30,714 - INFO - 所有资源已清理，系统已安全关闭
+2025-04-25 13:25:56,878 - INFO - 正在初始化甘薯问答系统...
+2025-04-25 13:25:59,230 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:25:59,230 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:26:00,251 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:26:00,262 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:26:00,265 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:26:00,436 - INFO - 系统初始化完成
+2025-04-25 13:26:00,437 - INFO - mpg123播放器已启动
+2025-04-25 13:26:04,959 - INFO - 等待用户输入...
+2025-04-25 13:26:11,610 - INFO - 用户问题: 甘薯的贮藏特性。
+2025-04-25 13:26:11,611 - INFO - 正在处理问题...
+2025-04-25 13:26:13,395 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:26:16,763 - INFO - 流式回答花费了 5.01 seconds
+2025-04-25 13:26:16,763 - INFO - 完整响应 (5.15秒)：甘薯不同品种耐贮性差异较大。紫薯比红薯耐贮藏，大叶红、烟薯25、济薯26等体积小、纺锤形、表皮薄、糖含量高的红薯耐贮性差，北京553、红香蕉等体积大、球形、表皮厚、糖含量低的红薯耐贮性稍好。
+2025-04-25 13:26:34,439 - INFO - 等待用户输入...
+2025-04-25 13:26:42,286 - INFO - 用户问题: 我3/26分钟小时早早早早早早点儿高的时候出场五十五十三五十三早早早早早早早早早早早早早那就去商场。
+2025-04-25 13:26:42,287 - INFO - 正在处理问题...
+2025-04-25 13:26:42,558 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:26:42,604 - INFO - 流式回答花费了 0.30 seconds
+2025-04-25 13:26:42,604 - INFO - 完整响应 (0.32秒)：我不知道
+2025-04-25 13:26:47,054 - INFO - 等待用户输入...
+2025-04-25 13:26:53,160 - INFO - 用户问题: 
+2025-04-25 13:26:53,661 - INFO - 等待用户输入...
+2025-04-25 13:26:59,616 - INFO - 用户问题: 
+2025-04-25 13:27:00,118 - INFO - 等待用户输入...
+2025-04-25 13:27:06,414 - INFO - 用户问题: 甘肃的猪头退休。
+2025-04-25 13:27:06,415 - INFO - 正在处理问题...
+2025-04-25 13:27:06,751 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:27:06,798 - INFO - 流式回答花费了 0.36 seconds
+2025-04-25 13:27:06,798 - INFO - 完整响应 (0.38秒)：我不知道
+2025-04-25 13:27:10,162 - INFO - 等待用户输入...
+2025-04-25 13:27:16,412 - INFO - 用户问题: 甘薯的食用建议。
+2025-04-25 13:27:16,412 - INFO - 正在处理问题...
+2025-04-25 13:27:16,746 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:27:18,473 - INFO - 流式回答花费了 2.05 seconds
+2025-04-25 13:27:18,473 - INFO - 完整响应 (2.06秒)：不宜生吃，需适当延长蒸煮时间，烂甘薯和发芽的甘薯不可食用，可制作主食和点心，与米面搭配食用能互补蛋白质。
+2025-04-25 13:27:27,766 - INFO - 等待用户输入...
+2025-04-25 13:27:34,146 - INFO - 用户问题: 知道城中之间那我就不知道了。
+2025-04-25 13:27:34,146 - INFO - 正在处理问题...
+2025-04-25 13:27:34,147 - INFO - 收到退出信号
+2025-04-25 13:27:34,491 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:27:34,538 - INFO - 流式回答花费了 0.37 seconds
+2025-04-25 13:27:34,538 - INFO - 完整响应 (0.39秒)：我不知道
+2025-04-25 13:27:37,982 - INFO - 正在关闭系统...
+2025-04-25 13:27:38,483 - INFO - mpg123播放器已关闭
+2025-04-25 13:27:38,492 - INFO - 所有资源已清理，系统已安全关闭
+2025-04-25 13:29:19,596 - INFO - 正在初始化甘薯问答系统...
+2025-04-25 13:29:21,947 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:29:21,947 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:29:22,970 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:29:22,981 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:29:22,984 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:29:23,152 - INFO - 系统初始化完成
+2025-04-25 13:29:23,153 - INFO - mpg123播放器已启动
+2025-04-25 13:29:27,925 - INFO - 等待用户输入...
+2025-04-25 13:29:34,588 - INFO - 用户问题: 那个王子。
+2025-04-25 13:29:34,588 - INFO - 正在处理问题...
+2025-04-25 13:29:34,954 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:29:34,999 - INFO - 流式回答花费了 0.26 seconds
+2025-04-25 13:29:34,999 - INFO - 完整响应 (0.41秒)：我不知道
+2025-04-25 13:29:38,327 - INFO - 等待用户输入...
+2025-04-25 13:29:44,732 - INFO - 用户问题: 颗星甘薯的贮藏特性。
+2025-04-25 13:29:44,732 - INFO - 正在处理问题...
+2025-04-25 13:29:45,062 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:29:47,048 - INFO - 流式回答花费了 2.31 seconds
+2025-04-25 13:29:47,048 - INFO - 完整响应 (2.32秒)：我知道不同品种耐贮性差异大，紫薯比红薯耐贮藏，北京553、红香蕉等体积大、球形、表皮厚、糖含量低的红薯耐贮性稍好。
+2025-04-25 13:29:58,849 - INFO - 等待用户输入...
+2025-04-25 13:30:06,270 - INFO - 用户问题: 我们从小时候到我们班，只不过含量低的不适应，毕竟生活。
+2025-04-25 13:30:06,271 - INFO - 正在处理问题...
+2025-04-25 13:30:06,631 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:30:06,677 - INFO - 流式回答花费了 0.38 seconds
+2025-04-25 13:30:06,677 - INFO - 完整响应 (0.41秒)：我不知道
+2025-04-25 13:30:10,026 - INFO - 等待用户输入...
+2025-04-25 13:30:16,199 - INFO - 用户问题: 我不知道。
+2025-04-25 13:30:16,199 - INFO - 正在处理问题...
+2025-04-25 13:30:16,407 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:30:16,456 - INFO - 流式回答花费了 0.25 seconds
+2025-04-25 13:30:16,456 - INFO - 完整响应 (0.26秒)：我不知道
+2025-04-25 13:30:18,246 - INFO - 收到退出信号
+2025-04-25 13:30:20,239 - INFO - 正在关闭系统...
+2025-04-25 13:30:20,740 - INFO - mpg123播放器已关闭
+2025-04-25 13:30:20,744 - INFO - 所有资源已清理，系统已安全关闭
+2025-04-25 13:32:59,585 - INFO - 正在初始化甘薯问答系统...
+2025-04-25 13:33:02,035 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:33:02,035 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:33:03,056 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:33:03,067 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:33:03,071 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:33:03,233 - INFO - 系统初始化完成
+2025-04-25 13:33:03,233 - INFO - 正在准备TTS音频: 甘薯知识问答系统已启动，请问您有什么关于甘薯的问题？...
+2025-04-25 13:33:05,862 - INFO - TTS音频准备完成，耗时: 2.63秒
+2025-04-25 13:33:05,865 - INFO - mpg123 进程开启
+2025-04-25 13:33:08,467 - INFO - TTS 处理总耗时: 5.23秒
+2025-04-25 13:33:09,969 - INFO - 等待用户输入...
+2025-04-25 13:33:16,371 - INFO - 用户问题: 新旺记记记记记记甘薯的贮藏特性。
+2025-04-25 13:33:16,371 - INFO - 正在处理问题...
+2025-04-25 13:33:16,831 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:33:17,197 - INFO - 正在准备TTS音频: 甘薯不同品种耐贮性差异较大。...
+2025-04-25 13:33:19,696 - INFO - TTS音频准备完成，耗时: 2.50秒
+2025-04-25 13:33:21,099 - INFO - TTS 处理总耗时: 3.90秒
+2025-04-25 13:33:21,602 - INFO - 正在准备TTS音频: 紫薯比红薯...
+2025-04-25 13:33:23,649 - INFO - TTS音频准备完成，耗时: 2.05秒
+2025-04-25 13:33:24,150 - INFO - TTS 处理总耗时: 2.55秒
+2025-04-25 13:33:24,653 - INFO - 正在准备TTS音频: 耐贮藏，大...
+2025-04-25 13:33:26,644 - INFO - TTS音频准备完成，耗时: 1.99秒
+2025-04-25 13:33:27,146 - INFO - TTS 处理总耗时: 2.49秒
+2025-04-25 13:33:27,651 - INFO - 正在准备TTS音频: 叶红、烟薯...
+2025-04-25 13:33:29,678 - INFO - TTS音频准备完成，耗时: 2.03秒
+2025-04-25 13:33:30,179 - INFO - TTS 处理总耗时: 2.53秒
+2025-04-25 13:33:30,684 - INFO - 正在准备TTS音频: 25、济薯...
+2025-04-25 13:33:32,760 - INFO - TTS音频准备完成，耗时: 2.08秒
+2025-04-25 13:33:33,260 - INFO - TTS 处理总耗时: 2.58秒
+2025-04-25 13:33:33,763 - INFO - 正在准备TTS音频: 26等体积...
+2025-04-25 13:33:35,820 - INFO - TTS音频准备完成，耗时: 2.06秒
+2025-04-25 13:33:36,322 - INFO - TTS 处理总耗时: 2.56秒
+2025-04-25 13:33:36,826 - INFO - 正在准备TTS音频: 小、纺锤形...
+2025-04-25 13:33:38,991 - INFO - TTS音频准备完成，耗时: 2.17秒
+2025-04-25 13:33:39,493 - INFO - TTS 处理总耗时: 2.67秒
+2025-04-25 13:33:39,994 - INFO - 正在准备TTS音频: 、表皮薄、...
+2025-04-25 13:33:41,959 - INFO - TTS音频准备完成，耗时: 1.97秒
+2025-04-25 13:33:42,461 - INFO - TTS 处理总耗时: 2.47秒
+2025-04-25 13:33:42,962 - INFO - 正在准备TTS音频: 糖含量高的...
+2025-04-25 13:33:45,188 - INFO - TTS音频准备完成，耗时: 2.23秒
+2025-04-25 13:33:45,691 - INFO - TTS 处理总耗时: 2.73秒
+2025-04-25 13:33:45,693 - INFO - 收到退出信号
+2025-04-25 13:33:46,194 - INFO - 正在准备TTS音频: 红薯耐贮性...
+2025-04-25 13:33:48,180 - INFO - TTS音频准备完成，耗时: 1.99秒
+2025-04-25 13:33:48,181 - INFO - mpg123 进程开启
+2025-04-25 13:33:48,682 - INFO - TTS 处理总耗时: 2.49秒
+2025-04-25 13:33:49,185 - INFO - 正在准备TTS音频: 差，北京5...
+2025-04-25 13:33:50,698 - INFO - 收到退出信号
+2025-04-25 13:33:51,406 - INFO - TTS音频准备完成，耗时: 2.22秒
+2025-04-25 13:33:51,906 - INFO - TTS 处理总耗时: 2.72秒
+2025-04-25 13:33:52,407 - INFO - 正在准备TTS音频: 53、红香蕉...
+2025-04-25 13:33:55,016 - INFO - TTS音频准备完成，耗时: 2.61秒
+2025-04-25 13:33:55,019 - INFO - mpg123 进程开启
+2025-04-25 13:33:55,620 - INFO - TTS 处理总耗时: 3.21秒
+2025-04-25 13:33:56,123 - INFO - 正在准备TTS音频: 等体积大、...
+2025-04-25 13:33:58,834 - INFO - TTS音频准备完成，耗时: 2.71秒
+2025-04-25 13:33:59,335 - INFO - TTS 处理总耗时: 3.21秒
+2025-04-25 13:33:59,836 - INFO - 正在准备TTS音频: 球形、表皮...
+2025-04-25 13:34:00,328 - INFO - 收到退出信号
+2025-04-25 13:34:02,040 - INFO - TTS音频准备完成，耗时: 2.20秒
+2025-04-25 13:34:02,043 - INFO - mpg123 进程开启
+2025-04-25 13:34:02,544 - INFO - TTS 处理总耗时: 2.71秒
+2025-04-25 13:34:03,047 - INFO - 正在准备TTS音频: 厚、糖含量...
+2025-04-25 13:34:03,048 - INFO - 收到退出信号
+2025-04-25 13:34:03,521 - INFO - 收到退出信号
+2025-04-25 13:34:03,521 - INFO - 收到退出信号
+2025-04-25 13:34:03,747 - INFO - 收到退出信号
+2025-04-25 13:34:03,759 - INFO - 收到退出信号
+2025-04-25 13:34:03,964 - INFO - 收到退出信号
+2025-04-25 13:34:04,282 - INFO - 收到退出信号
+2025-04-25 13:34:04,589 - INFO - 收到退出信号
+2025-04-25 13:34:04,589 - INFO - 收到退出信号
+2025-04-25 13:34:04,746 - INFO - 收到退出信号
+2025-04-25 13:34:05,111 - INFO - 收到退出信号
+2025-04-25 13:34:05,111 - INFO - 收到退出信号
+2025-04-25 13:34:05,111 - INFO - TTS音频准备完成，耗时: 2.06秒
+2025-04-25 13:34:05,112 - INFO - mpg123 进程开启
+2025-04-25 13:34:05,614 - INFO - TTS 处理总耗时: 2.57秒
+2025-04-25 13:34:05,614 - INFO - 收到退出信号
+2025-04-25 13:34:06,117 - INFO - 正在准备TTS音频: 低的红薯耐...
+2025-04-25 13:34:08,260 - INFO - TTS音频准备完成，耗时: 2.14秒
+2025-04-25 13:34:08,263 - INFO - mpg123 进程开启
+2025-04-25 13:34:08,764 - INFO - TTS 处理总耗时: 2.65秒
+2025-04-25 13:34:09,267 - INFO - 正在准备TTS音频: 贮性稍好。...
+2025-04-25 13:34:09,969 - INFO - 收到退出信号
+2025-04-25 13:34:10,178 - INFO - 收到退出信号
+2025-04-25 13:34:11,362 - INFO - TTS音频准备完成，耗时: 2.10秒
+2025-04-25 13:34:11,863 - INFO - TTS 处理总耗时: 2.60秒
+2025-04-25 13:41:28,287 - INFO - 正在初始化甘薯问答系统...
+2025-04-25 13:41:30,764 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:41:30,764 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:41:31,760 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:41:31,773 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:41:31,775 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:41:31,946 - INFO - 系统初始化完成
+2025-04-25 13:41:31,947 - INFO - mpg123播放器已启动
+2025-04-25 13:41:36,563 - INFO - 等待用户输入...
+2025-04-25 13:42:16,665 - INFO - 正在初始化甘薯问答系统...
+2025-04-25 13:42:19,308 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:42:19,308 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:42:20,206 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:42:20,217 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:42:20,219 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:42:20,391 - INFO - 系统初始化完成
+2025-04-25 13:42:20,392 - INFO - mpg123播放器已启动
+2025-04-25 13:42:25,460 - INFO - 等待用户输入...
+2025-04-25 13:42:32,277 - INFO - 用户问题: 甘肃省铸造特性中。
+2025-04-25 13:42:32,277 - INFO - 正在处理问题...
+2025-04-25 13:42:34,064 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:42:34,111 - INFO - 流式回答花费了 1.69 seconds
+2025-04-25 13:42:34,111 - INFO - 完整响应 (1.83秒)：我不知道
+2025-04-25 13:42:37,822 - INFO - 等待用户输入...
+2025-04-25 13:42:44,486 - INFO - 用户问题: 甘薯的贮藏可信？
+2025-04-25 13:42:44,486 - INFO - 正在处理问题...
+2025-04-25 13:42:44,779 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:42:47,225 - INFO - 流式回答花费了 2.72 seconds
+2025-04-25 13:42:47,225 - INFO - 完整响应 (2.74秒)：甘薯贮藏需考虑品种特性，如紫薯、大叶红等耐贮性差，而北京553、红香蕉等耐贮性稍好。我国是甘薯生产大国，主要种植在淮海平原、长江流域和东南沿海等地。
+2025-04-25 13:43:05,692 - INFO - 等待用户输入...
+2025-04-25 13:43:12,393 - INFO - 用户问题: 如果。
+2025-04-25 13:43:12,393 - INFO - 正在处理问题...
+2025-04-25 13:43:12,733 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:43:12,780 - INFO - 流式回答花费了 0.36 seconds
+2025-04-25 13:43:12,780 - INFO - 完整响应 (0.39秒)：我不知道
+2025-04-25 13:43:14,018 - INFO - 收到退出信号
+2025-04-25 13:43:16,710 - INFO - 正在关闭系统...
+2025-04-25 13:43:17,211 - INFO - mpg123播放器已关闭
+2025-04-25 13:43:17,218 - INFO - 所有资源已清理，系统已安全关闭
+2025-04-25 13:44:39,243 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:44:39,244 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:44:40,215 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:44:40,228 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:44:40,231 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:50:39,296 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:50:39,296 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:50:40,414 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:50:40,426 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:50:40,428 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:51:02,222 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:51:02,223 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:51:03,272 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:51:03,283 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:51:03,285 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:51:39,089 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:51:39,089 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:51:40,105 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:51:40,117 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:51:40,119 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:54:34,192 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:54:34,192 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:54:35,209 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:54:35,221 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:54:35,223 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:54:43,699 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:54:43,754 - INFO - 问答耗时: 1.80秒
+2025-04-25 13:54:55,735 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:54:55,785 - INFO - 问答耗时: 0.47秒
+2025-04-25 13:55:08,484 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:55:08,535 - INFO - 问答耗时: 0.44秒
+2025-04-25 13:55:20,162 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:55:20,213 - INFO - 问答耗时: 0.40秒
+2025-04-25 13:55:31,773 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:55:35,561 - INFO - 问答耗时: 4.11秒

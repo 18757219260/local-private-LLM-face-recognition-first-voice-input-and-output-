@@ -17,7 +17,7 @@ async def run_interaction():
             # 步骤 1：语音转文本（阻塞）
             print("\n📢 等待语音输入...")
             question = asr.real_time_recognition()
-            
+            question = question['result'][0]
             if not question:
                 continue  # 没识别到就跳过
 

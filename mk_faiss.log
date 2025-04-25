@@ -80,3 +80,42 @@ If this is a private repository, make sure to pass a token having permission to 
 2025-04-24 16:59:51,606 - INFO - 生成 13 个文档分块
 2025-04-24 16:59:51,860 - INFO - 知识库更新成功！
 2025-04-24 16:59:51,860 - INFO - 向量数据库测试成功
+2025-04-25 14:06:01,818 - INFO - Use pytorch device_name: cuda
+2025-04-25 14:06:01,827 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-25 14:06:02,163 - INFO - 加载现有向量数据库: faiss_index
+2025-04-25 14:06:02,164 - INFO - Loading faiss with AVX512 support.
+2025-04-25 14:06:02,272 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 14:06:02,274 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 14:06:02,275 - INFO - 知识库无需更新
+2025-04-25 14:06:02,275 - INFO - 向量数据库测试成功
+2025-04-25 14:08:21,345 - INFO - 已加载 2 条对话历史记录
+2025-04-25 14:08:23,893 - INFO - Use pytorch device_name: cuda
+2025-04-25 14:08:23,893 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-25 14:08:24,220 - INFO - 加载现有向量数据库: faiss_index
+2025-04-25 14:08:24,221 - INFO - Loading faiss with AVX512 support.
+2025-04-25 14:08:24,231 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 14:08:24,233 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 14:08:31,805 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 14:08:41,762 - INFO - 已保存 3 条对话历史记录
+2025-04-25 14:09:01,652 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 14:09:05,094 - INFO - 已保存 4 条对话历史记录
+2025-04-25 14:09:22,231 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 14:09:22,460 - INFO - 已保存 5 条对话历史记录
+2025-04-25 14:14:38,674 - INFO - 已加载 5 条对话历史记录
+2025-04-25 14:14:41,156 - INFO - Use pytorch device_name: cuda
+2025-04-25 14:14:41,156 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-25 14:14:41,489 - INFO - 加载现有向量数据库: faiss_index
+2025-04-25 14:14:41,490 - INFO - Loading faiss with AVX512 support.
+2025-04-25 14:14:41,502 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 14:14:41,505 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 14:14:45,406 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 14:14:56,883 - INFO - 已保存 6 条对话历史记录
+2025-04-25 14:16:47,968 - INFO - 已加载 6 条对话历史记录
+2025-04-25 14:16:50,918 - INFO - Use pytorch device_name: cuda
+2025-04-25 14:16:50,918 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-25 14:16:51,276 - INFO - 加载现有向量数据库: faiss_index
+2025-04-25 14:16:51,286 - INFO - Loading faiss with AVX512 support.
+2025-04-25 14:16:51,297 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 14:16:51,300 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 14:16:53,726 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 14:16:59,870 - INFO - 已保存 7 条对话历史记录

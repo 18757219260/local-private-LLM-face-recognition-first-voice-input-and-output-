@@ -1,169 +1,262 @@
 import sys
 import os
-sys.path.append(os.path.abspath("/home/wuye/vscode/chatbox"))
 import json
-import os
 import logging
+from typing import List, Dict, Any
 from datetime import datetime
-from langchain_huggingface import HuggingFaceEmbeddings
-from langchain_community.vectorstores import FAISS
-from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain_core.documents import Document
 from langchain.chains import RetrievalQA
 from langchain_ollama import OllamaLLM
 import nest_asyncio
 
+# 导入MkFaiss类
+from mk_faiss import MkFaiss
 
+# 应用nest_asyncio以确保在notebook环境中asyncio兼容性
 nest_asyncio.apply()
+
+# 设置日志
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[logging.FileHandler("chat.log"), logging.StreamHandler()]
+    handlers=[logging.FileHandler("chatqa.log"), logging.StreamHandler()]
 )
 
 class KnowledgeQA:
+    """基于本地LLM的知识问答类"""
+    
     def __init__(
-    self,
-    knowledge_path: str = "knowledge.json",
-    faiss_index_path: str = "faiss_index",
-    llm_model: str = "qwen2.5:7b",
-):
-    
-        self.history_log = "chat_history.json"  
-        self.conversation_history = self._load_history() 
+        self,
+        knowledge_path: str = "knowledge.json",
+        faiss_index_path: str = "faiss_index",
+        embedding_model_path: str = "./bge-base-zh-v1.5",
+        llm_model: str = "qwen2.5:7b",
+        ollama_base_url: str = "http://localhost:11434",
+        history_log_path: str = "chat_history.json",
+        max_history_items: int = 100,
+        max_history_context: int = 5,
+        chunk_size: int = 1000,  # 增加块大小为1000
+        chunk_overlap: int = 200,  # 增加重叠为200
+        temperature: float = 0.1,
+        top_k: int = 3
+    ):
+        """
+        初始化知识问答系统
         
-
-        self.knowledge_path = knowledge_path
-        self.faiss_index_path = faiss_index_path
+        参数:
+            knowledge_path: 知识库JSON文件路径
+            faiss_index_path: FAISS索引存储/加载路径
+            embedding_model_path: 嵌入模型路径或名称
+            llm_model: 使用Ollama的LLM模型名称
+            ollama_base_url: Ollama API的基础URL
+            history_log_path: 对话历史存储路径
+            max_history_items: 存储的最大对话条目数
+            max_history_context: 上下文中包含的最近对话条目数
+            chunk_size: 文档分块大小
+            chunk_overlap: 连续分块之间的重叠
+            temperature: LLM的温度（越高=越有创意）
+            top_k: 检索的相似文档数量
+        """
+        self.history_log_path = history_log_path
+        self.max_history_items = max_history_items
+        self.max_history_context = max_history_context
         self.llm_model = llm_model
-        self.embedding_model = self._init_embeddings()
-        self.vectorstore = self.load_or_create_vectorstore()
-        self.qa_chain = self.init_qa_chain()
-
-    def _init_embeddings(self):
-        """
-        初始化本地 HuggingFace 向量模型（用于文本向量化）。
-        """
-        return HuggingFaceEmbeddings(
-            model_name="./bge-base-zh-v1.5",
-            encode_kwargs={'normalize_embeddings': True}
-        )
-
-    
-
-    def load_data(self):
-        """
-        加载本地知识库（JSON 格式），返回问答对组成的列表。
-        """
-        with open(self.knowledge_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
-
-    def create_documents(self, knowledge_base):  
-        docs = []
-        for item in knowledge_base:
-            question = item.get("question", "")
-            for answer in item.get("answer", []):
-                docs.append(Document(
-                    page_content=f"Q: {question}\nA: {answer}",
-                    metadata={
-                        "question": question,
-                        "source": self.knowledge_path,
-                        "create_time": datetime.now().isoformat()
-                    }
-                ))
-        return docs
-
-    def split_documents(self, documents):
-        """
-        对文档进行分块处理（按字符数划分），便于向量化处理和检索。
-        """
-        splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=200, add_start_index=True)
-        return splitter.split_documents(documents)
-    
-    def load_or_create_vectorstore(self):
-            """
-            加载已有的向量库；如果不存在则从知识库创建向量库，并保存。
-            """
-            if os.path.exists(self.faiss_index_path):
-                return FAISS.load_local(self.faiss_index_path, self.embedding_model, allow_dangerous_deserialization=True)
-            else:
-                data = self.load_data()
-                docs = self.create_documents(data)
-                chunks = self.split_documents(docs)
-                vectorstore = FAISS.from_documents(chunks, self.embedding_model)
-                vectorstore.save_local(self.faiss_index_path)
-                return vectorstore
-
-    def init_qa_chain(self) :
-        """
-        初始化问答链（基于向量检索 + Ollama 本地大模型）。
-        """
-        llm = OllamaLLM(base_url='http://localhost:11434', model=self.llm_model, temperature=0.1)
+        self.ollama_base_url = ollama_base_url
+        self.temperature = temperature
+        self.top_k = top_k
         
-        return RetrievalQA.from_chain_type(
-            llm=llm,
-            retriever=self.vectorstore.as_retriever(search_kwargs={"k": 3}),
-            return_source_documents=False
+        # 加载对话历史
+        self.conversation_history = self._load_history()
+        
+        # 初始化向量存储管理器
+        self.vector_manager = MkFaiss(
+            knowledge_path=knowledge_path,
+            faiss_index_path=faiss_index_path,
+            embedding_model_path=embedding_model_path,
+            chunk_size=chunk_size,
+            chunk_overlap=chunk_overlap
         )
         
-    def _load_history(self) :
-        """
-        加载历史对话记录（如文件存在）；否则返回空列表。
-        """
-        if os.path.exists(self.history_log):
+        # 初始化问答链
+        self.qa_chain = self._init_qa_chain()
+    
+    def _init_qa_chain(self):
+        """使用Ollama LLM和向量检索初始化问答链"""
+        try:
+            llm = OllamaLLM(
+                base_url=self.ollama_base_url,
+                model=self.llm_model,
+                temperature=self.temperature
+            )
+            
+            return RetrievalQA.from_chain_type(
+                llm=llm,
+                retriever=self.vector_manager.get_vectorstore().as_retriever(
+                    search_kwargs={"k": self.top_k}
+                ),
+                return_source_documents=True  # 确保返回源文档
+            )
+            
+        except Exception as e:
+            logging.error(f"初始化问答链失败: {e}")
+            raise RuntimeError(f"问答链初始化失败: {e}")
+    
+    def _load_history(self) -> List[Dict[str, Any]]:
+        """从文件加载对话历史"""
+        if os.path.exists(self.history_log_path):
             try:
-                with open(self.history_log, 'r', encoding='utf-8') as f:
-                    return json.load(f)
+                with open(self.history_log_path, 'r', encoding='utf-8') as f:
+                    history = json.load(f)
+                logging.info(f"已加载 {len(history)} 条对话历史记录")
+                return history
             except json.JSONDecodeError:
+                logging.warning(f"无法解析 {self.history_log_path}，将使用空历史记录")
                 return []
         return []
-
-    def _save_history(self) :
-        """
-        将对话记录保存到本地文件（最多保存最新100条）。
-        """
-        with open(self.history_log, 'w', encoding='utf-8') as f:
-            json.dump(self.conversation_history[-100:], f, ensure_ascii=False, indent=2)
-
-    def update_knowledge(self):
-        """
-        重新加载知识库并更新向量库内容，适用于知识库有修改的场景。
-        """
-        knowledge = self.load_data()
-        docs = self.create_documents(knowledge)  
-        chunks = self.split_documents(docs)
-        self.vectorstore = FAISS.from_documents(chunks, self.embedding_model)
-        self.vectorstore.save_local(self.faiss_index_path)
-        logging.info("知识库更新成功！")
+    
+    def _save_history(self):
+        """保存对话历史到文件"""
+        try:
+            # 只保留最近的记录，最多保存max_history_items条
+            history_to_save = self.conversation_history[-self.max_history_items:]
+            
+            with open(self.history_log_path, 'w', encoding='utf-8') as f:
+                json.dump(history_to_save, f, ensure_ascii=False, indent=2)
+                
+            logging.info(f"已保存 {len(history_to_save)} 条对话历史记录")
+            
+        except Exception as e:
+            logging.error(f"保存对话历史失败: {e}")
+    
+    def _format_history_context(self) -> str:
+        """将最近的对话历史格式化为LLM的上下文"""
+        if not self.conversation_history:
+            return ""
+            
+        # 获取最近的对话项
+        recent_history = self.conversation_history[-self.max_history_context:]
         
-    def ask(self, question: str) -> str:
+        # 格式化历史记录
+        formatted_history = []
+        for item in recent_history:
+            timestamp = item.get("timestamp", "N/A")
+            user_query = item.get("user", "")
+            bot_response = item.get("bot", "")
+            formatted_history.append(f"[{timestamp}] User: {user_query}\nBot: {bot_response}")
+            
+        return "\n\n".join(formatted_history)
+    
+    def ask(self, question: str) -> Dict[str, Any]:
         """
-        用户提问接口。整合历史上下文，向 LLM 提问并记录回答。
+        处理用户问题并生成答案
+        
+        参数:
+            question: 用户的问题
+            
+        返回:
+            包含答案和元数据的字典
+        """
+        # 检查知识库是否需要更新
+        self.vector_manager.check_and_update_if_needed()
+        
+        # 准备系统提示
+        system_prompt = """
+        请以纯文本形式回答，务必不包含任何代码块、Markdown格式或其他格式化内容。
+        你是个专业的甘薯知识问答助手，严格根据知识库内容回答问题。
+        如果知识库中没有相关信息，请明确告知用户"知识库中没有关于甘薯的这方面信息"，不要编造答案。
+        回答要简洁明了，直接针对问题给出答案。
         """
         
-        prompt = """
-        请以纯文本形式回答，务必不包含任何代码块、Markdown格式或其他格式化内容。你同时是个甘薯个专家，严格根据知识库内容回答问题。
-        """
+        # 获取对话历史上下文
+        history_context = self._format_history_context()
+        
+        # 创建完整查询，包含历史上下文和系统提示
+        if history_context:
+            full_query = f"{system_prompt}\n\n---\n\n历史对话:\n{history_context}\n\n---\n\n新问题: {question}"
+        else:
+            full_query = f"{system_prompt}\n\n---\n\n问题: {question}"
+        
+        # 调用问答链
+        try:
+            result = self.qa_chain.invoke({"query": full_query})
+            
+            answer = result["result"]
+            source_documents = result.get("source_documents", [])
+            
+            # 格式化来源信息
+            sources = []
+            for doc in source_documents:
+                if doc.metadata and "question" in doc.metadata:
+                    sources.append({
+                        "question": doc.metadata["question"],
+                        "content": doc.page_content
+                    })
+            
+            # 创建响应
+            response = {
+                "answer": answer,
+                "sources": sources
+            }
+            
+            # 记录对话
+            record = {
+                "timestamp": datetime.now().isoformat(),
+                "user": question,
+                "bot": answer,
+                "sources": [s["question"] for s in sources]
+            }
+            
+            self.conversation_history.append(record)
+            self._save_history()
+            
+            return response
+            
+        except Exception as e:
+            error_msg = f"处理问题时出错: {str(e)}"
+            logging.error(error_msg)
+            return {"answer": error_msg, "sources": []}
 
-        knowledge_last_modified = os.path.getmtime(self.knowledge_path)
-        if hasattr(self, "last_knowledge_update") and self.last_knowledge_update != knowledge_last_modified:
-            logging.info("知识库有更新，正在重新加载...")
-            self.update_knowledge()
-            self.last_knowledge_update = knowledge_last_modified  
-        history = "".join(
-            f"[{h.get('timestamp', 'N/A')}] User: {h.get('user', '')}\nBot: {h.get('bot', '')}"
-            for h in self.conversation_history[-5:]
+
+# CLI示例
+if __name__ == "__main__":
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="知识问答系统")
+    parser.add_argument("--knowledge", default="knowledge.json", help="知识库JSON文件路径")
+    parser.add_argument("--index", default="faiss_index", help="FAISS索引目录路径")
+    parser.add_argument("--model", default="qwen2.5:7b", help="Ollama模型名称")
+    parser.add_argument("--question", help="要提问的问题（如不提供则进入交互模式）")
+    args = parser.parse_args()
+    
+    try:
+        qa_system = KnowledgeQA(
+            knowledge_path=args.knowledge,
+            faiss_index_path=args.index,
+            llm_model=args.model
         )
-        full_query = f"Conversation History:\n{history}\n\n新问题: {question}\n\n{prompt}"
-        result = self.qa_chain.invoke({"query": full_query})  
-        answer = result["result"]
-
-        # 保存对话历史
-        record = {
-            "timestamp": datetime.now().isoformat(),
-            "user": question,
-            "bot": answer
-        }
-        self.conversation_history.append(record)
-        self._save_history()
-        return answer
+        
+        if args.question:
+            # 单问题模式
+            response = qa_system.ask(args.question)
+            print(f"\n回答: {response['answer']}\n")
+            if response['sources']:
+                print("参考来源:")
+                for src in response['sources']:
+                    print(f"- {src['question']}")
+        else:
+            # 交互模式
+            print("知识问答系统已启动。输入'退出'或'exit'结束对话。")
+            while True:
+                user_input = input("\n请输入您的问题: ")
+                if user_input.lower() in ['退出', 'exit', 'quit', 'q']:
+                    break
+                    
+                response = qa_system.ask(user_input)
+                print(f"\n回答: {response['answer']}\n")
+                if response['sources']:
+                    print("参考来源:")
+                    for src in response['sources']:
+                        print(f"- {src['question']}")
+                        
+    except Exception as e:
+        logging.error(f"程序执行出错: {e}")
+        print(f"程序执行出错: {e}")

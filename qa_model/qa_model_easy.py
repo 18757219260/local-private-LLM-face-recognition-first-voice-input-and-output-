@@ -122,6 +122,44 @@ class KnowledgeQA:
             logging.error(f"Error in ask_stream: {e}")
             yield "抱歉，处理您的问题时出现了错误，请稍后再试。"
 
+    def ask(self, question):
+        """
+        用户提问接口。向LLM提问并直接返回完整答案，不使用流式输出。
+        """
+        if not question or not question.strip():
+            return "我没有听清楚您的问题，请重新提问。"
+        
+        try:
+            # 设置提示词
+            prompt = """你是个甘薯专家，请以纯文本形式回答，输出为一段。如果输入问题和甘薯一点关系都没有，请直接回答"我不知道"。输出的内容要简洁明了，避免使用复杂的术语和长句子。请确保回答是准确的，并且与问题相关。请不要添加任何额外的解释或背景信息。"""
+            
+            # 获取相关文档
+            retriever = self.vectorstore.as_retriever(search_kwargs={"k": self.k_documents})
+            docs = retriever.invoke(question)
+            
+            if not docs:
+                return "我没有找到相关的甘薯知识，请尝试其他问题。"
+                
+            # 构建上下文
+            context = "\n\n".join([doc.page_content for doc in docs])
+            final_prompt = f"已知内容:\n{context}\n\n问题: {question}\n\n{prompt}"
+            
+            # 计时
+            start_time = time.time()
+            
+            # 调用模型获取完整回答
+            result = self.llm.invoke(final_prompt)
+            
+            # 记录耗时
+            logging.info(f"问答耗时: {time.time() - start_time:.2f}秒")
+            
+            return result
+            
+        except Exception as e:
+            logging.error(f"问答出错: {e}")
+            return "抱歉，处理您的问题时出现了错误，请稍后再试。"
+
+
 async def main():
     qa = KnowledgeQA()
     question = "甘薯的贮藏特性"
