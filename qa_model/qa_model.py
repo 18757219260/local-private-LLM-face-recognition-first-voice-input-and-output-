@@ -7,8 +7,6 @@ from datetime import datetime
 from langchain.chains import RetrievalQA
 from langchain_ollama import OllamaLLM
 import nest_asyncio
-
-# 导入MkFaiss类
 from mk_faiss import MkFaiss
 
 # 应用nest_asyncio以确保在notebook环境中asyncio兼容性
@@ -26,18 +24,18 @@ class KnowledgeQA:
     
     def __init__(
         self,
-        knowledge_path: str = "knowledge.json",
-        faiss_index_path: str = "faiss_index",
-        embedding_model_path: str = "./bge-base-zh-v1.5",
-        llm_model: str = "qwen2.5:7b",
-        ollama_base_url: str = "http://localhost:11434",
-        history_log_path: str = "chat_history.json",
-        max_history_items: int = 100,
-        max_history_context: int = 5,
-        chunk_size: int = 1000,  # 增加块大小为1000
-        chunk_overlap: int = 200,  # 增加重叠为200
-        temperature: float = 0.1,
-        top_k: int = 3
+        knowledge_path = "knowledge.json",
+        faiss_index_path= "faiss_index",
+        embedding_model_path= "./bge-base-zh-v1.5",
+        llm_model= "qwen2.5:7b",
+        ollama_base_url= "http://localhost:11434",
+        history_log_path = "chat_history.json",
+        max_history_items= 100,
+        max_history_context = 5,
+        chunk_size = 1000,  # 增加块大小为1000
+        chunk_overlap = 200,  # 增加重叠为200
+        temperature = 0.1,
+        top_k = 3
     ):
         """
         初始化知识问答系统
@@ -127,7 +125,7 @@ class KnowledgeQA:
         except Exception as e:
             logging.error(f"保存对话历史失败: {e}")
     
-    def _format_history_context(self) -> str:
+    def _format_history_context(self):
         """将最近的对话历史格式化为LLM的上下文"""
         if not self.conversation_history:
             return ""
@@ -160,8 +158,7 @@ class KnowledgeQA:
         
         # 准备系统提示
         system_prompt = """
-        请以纯文本形式回答，务必不包含任何代码块、Markdown格式或其他格式化内容。
-        你是个专业的甘薯知识问答助手，严格根据知识库内容回答问题。
+        请以纯文本形式回答。你是个专业的甘薯知识问答助手，严格根据知识库内容回答问题。
         如果知识库中没有相关信息，请明确告知用户"知识库中没有关于甘薯的这方面信息"，不要编造答案。
         回答要简洁明了，直接针对问题给出答案。
         """

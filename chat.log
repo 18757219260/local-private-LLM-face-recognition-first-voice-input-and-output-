@@ -753,3 +753,238 @@ KeyboardInterrupt
 2025-04-25 16:50:24,674 - INFO - 正在关闭系统...
 2025-04-25 16:50:25,175 - INFO - mpg123播放器已关闭
 2025-04-25 16:50:25,185 - INFO - 所有资源已清理，系统已安全关闭
+2025-04-25 17:49:48,882 - INFO - Use pytorch device_name: cuda
+2025-04-25 17:49:48,882 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 17:49:50,225 - INFO - Loading faiss with AVX512 support.
+2025-04-25 17:49:50,244 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 17:49:50,246 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 17:50:19,523 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main.py:50> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main.py", line 84, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main.py", line 75, in main
+    await run_sweet_potato_system()
+  File "/home/wuye/vscode/chatbox/main.py", line 47, in run_sweet_potato_system
+    await tts.text_to_speech("11感谢使用甘薯知识助手，再见！")
+  File "/home/wuye/vscode/chatbox/TTS/tts.py", line 92, in text_to_speech
+    await self.speak(text)
+  File "/home/wuye/vscode/chatbox/TTS/tts.py", line 74, in speak
+    result = subprocess.run(["mpg123", output_file], capture_output=True, text=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/subprocess.py", line 550, in run
+    stdout, stderr = process.communicate(input, timeout=timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/subprocess.py", line 1209, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/subprocess.py", line 2113, in _communicate
+    ready = selector.select(timeout)
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/selectors.py", line 415, in select
+    fd_event_list = self._selector.poll(timeout)
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+KeyboardInterrupt
+2025-04-25 17:50:28,549 - ERROR - 语音播放失败：[Errno 2] No such file or directory: 'temp_audio_126854027139152.mp3'
+2025-04-25 17:50:53,877 - INFO - Use pytorch device_name: cuda
+2025-04-25 17:50:53,877 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 17:50:54,697 - INFO - Loading faiss with AVX512 support.
+2025-04-25 17:50:54,709 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 17:50:54,712 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 17:51:13,437 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 17:51:16,926 - INFO - 问答耗时: 5.82秒
+2025-04-25 17:51:58,012 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 17:52:08,834 - INFO - 问答耗时: 11.14秒
+2025-04-25 17:54:03,964 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 17:54:07,056 - INFO - 问答耗时: 3.41秒
+2025-04-25 17:54:44,121 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 17:54:51,999 - ERROR - 语音播放失败：[Errno 2] 没有那个文件或目录: 'temp_audio_133258695226832.mp3'
+2025-04-25 17:55:03,174 - INFO - 开始人脸认证...
+2025-04-25 17:55:03,175 - INFO - mpg123播放器已启动
+2025-04-25 17:55:10,195 - INFO - 认证成功: wudawang
+2025-04-25 17:55:16,752 - INFO - mpg123播放器已关闭
+2025-04-25 17:55:16,753 - INFO - 正在初始化甘薯问答系统...
+2025-04-25 17:55:19,299 - INFO - Use pytorch device_name: cuda
+2025-04-25 17:55:19,299 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 17:55:20,082 - INFO - Loading faiss with AVX512 support.
+2025-04-25 17:55:20,094 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 17:55:20,097 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 17:55:20,199 - INFO - 系统初始化完成
+2025-04-25 17:55:20,200 - INFO - mpg123播放器已启动
+2025-04-25 17:55:27,517 - INFO - 等待用户输入...
+2025-04-25 17:55:34,699 - INFO - 用户问题: 背一首李白的诗。
+2025-04-25 17:55:34,699 - INFO - 正在处理问题...
+2025-04-25 17:55:35,259 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 17:55:39,007 - INFO - 流式回答花费了 4.19 seconds
+2025-04-25 17:55:39,007 - INFO - 完整响应 (4.31秒)：当然可以，下面是一首李白的《静夜思》：
+
+```
+床前明月光，
+疑是地上霜。
+举头望明月，
+低头思故乡。
+``` 
+
+这首诗表达了诗人对家乡的深深思念之情。希望你喜欢！如果你有其他想要背诵的李白诗歌或者其他问题，欢迎告诉我。
+2025-04-25 17:55:56,731 - INFO - 等待用户输入...
+2025-04-25 17:56:03,974 - INFO - 用户问题: 问你还是问或者她问题那你告诉我。
+2025-04-25 17:56:03,974 - INFO - 正在处理问题...
+2025-04-25 17:56:04,334 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 17:56:11,629 - INFO - 流式回答花费了 7.62 seconds
+2025-04-25 17:56:11,629 - INFO - 完整响应 (7.65秒)：看起来您是在询问关于“物价卓”的对话内容以及甘薯的贮藏特性的问题。根据您提供的信息，第一个问题是关于“物价卓”是否回了话，回答是“物价卓那时镇回了。”这可能是一个虚拟人物或角色在某个情境中的对话。
+
+第二个问题则是关于甘薯的贮藏特性的详细介绍，包括甘薯的各种别名、生产国以及主要种植地区等信息。
+
+至于您最后的问题：“问你还是问或者她问题那你告诉我”，如果您的意思是想确认是我在回答您的问题，请明确指出具体的问题。我会尽力帮助解答有关甘薯或其他相关问题的信息。
+2025-04-25 17:56:50,005 - INFO - 等待用户输入...
+2025-04-25 17:56:57,535 - INFO - 用户问题: 我们建议关注求答案有关关关关系。
+2025-04-25 17:56:57,535 - INFO - 正在处理问题...
+2025-04-25 17:56:57,873 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 17:57:00,262 - INFO - 收到退出信号
+2025-04-25 17:57:02,243 - ERROR - 播放语音时出错: [Errno 32] 断开的管道
+2025-04-25 17:57:05,105 - INFO - mpg123播放器已启动
+2025-04-25 17:57:07,190 - INFO - 流式回答花费了 9.63 seconds
+2025-04-25 17:57:07,190 - INFO - 完整响应 (9.66秒)：从您提供的信息来看，似乎存在一些混淆或错误的地方。首先，“物价卓”和“物价卓那时镇回了”看起来并不是与吴佳卓相关的信息。“吴佳卓”的高考成绩描述中出现了不合理的分数（如数学250, 英语1000, 物理3000, 化学40000, 生物30），这些分数明显不符合实际的高考评分标准。
+
+另外，您提到“建议关注求答案有关关关关系”，这句话可能需要进一步澄清。如果您是指希望了解与吴佳卓相关的更多信息，请提供更具体的问题或主题，比如他的学习经历、成就等，这样我可以更好地帮助您获取相关信息。如果您的意思是想确认信息的准确性或者有其他问题，请明确指出。
+2025-04-25 17:57:11,477 - INFO - 收到退出信号
+2025-04-25 17:57:11,477 - INFO - 收到退出信号
+2025-04-25 17:57:11,477 - INFO - 收到退出信号
+2025-04-25 17:57:11,481 - INFO - 收到退出信号
+2025-04-25 17:57:13,866 - INFO - mpg123播放器已启动
+2025-04-25 17:57:39,303 - INFO - 正在关闭系统...
+2025-04-25 17:57:39,805 - INFO - mpg123播放器已关闭
+2025-04-25 17:57:39,811 - INFO - 所有资源已清理，系统已安全关闭
+2025-04-25 17:59:33,570 - INFO - Use pytorch device_name: cuda
+2025-04-25 17:59:33,570 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 17:59:34,372 - INFO - Loading faiss with AVX512 support.
+2025-04-25 17:59:34,385 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 17:59:34,387 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 17:59:53,834 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 18:00:01,967 - INFO - 问答耗时: 8.56秒
+2025-04-25 18:01:35,587 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 18:01:46,460 - INFO - 问答耗时: 11.19秒
+2025-04-25 18:04:35,316 - INFO - Use pytorch device_name: cuda
+2025-04-25 18:04:35,316 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 18:04:36,583 - INFO - Loading faiss with AVX512 support.
+2025-04-25 18:04:36,596 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 18:04:36,599 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 18:04:55,923 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 18:05:07,624 - INFO - 问答耗时: 11.78秒
+2025-04-25 18:06:35,656 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 18:06:48,938 - INFO - 问答耗时: 13.70秒
+2025-04-25 18:08:18,014 - INFO - Use pytorch device_name: cuda
+2025-04-25 18:08:18,014 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 18:08:18,828 - INFO - Loading faiss with AVX512 support.
+2025-04-25 18:08:18,841 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 18:08:18,844 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 18:08:38,426 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 18:08:46,040 - INFO - 问答耗时: 7.95秒
+2025-04-25 20:23:31,682 - INFO - Use pytorch device_name: cuda
+2025-04-25 20:23:31,683 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 20:23:32,492 - INFO - Loading faiss with AVX512 support.
+2025-04-25 20:23:32,504 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 20:23:32,507 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 20:23:51,154 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 20:23:56,072 - INFO - 问答耗时: 6.67秒
+2025-04-25 20:24:14,252 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 20:24:17,273 - INFO - 问答耗时: 3.48秒
+2025-04-25 20:24:40,146 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 20:24:45,528 - INFO - 问答耗时: 5.76秒
+2025-04-25 20:25:41,875 - INFO - Use pytorch device_name: cuda
+2025-04-25 20:25:41,875 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 20:25:42,795 - INFO - Loading faiss with AVX512 support.
+2025-04-25 20:25:42,816 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 20:25:42,818 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 20:26:54,167 - INFO - Use pytorch device_name: cuda
+2025-04-25 20:26:54,167 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 20:26:55,040 - INFO - Loading faiss with AVX512 support.
+2025-04-25 20:26:55,054 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 20:26:55,056 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 20:27:12,340 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 20:27:16,456 - INFO - 问答耗时: 4.58秒
+2025-04-25 20:27:33,899 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 20:27:37,802 - INFO - 问答耗时: 4.36秒
+2025-04-25 20:54:10,798 - INFO - VAD已初始化，使用双重检测模式
+2025-04-25 20:54:10,927 - INFO - 开始查找音频输入设备...
+2025-04-25 20:54:10,934 - INFO - 设备 [4] sof-hda-dsp: - (hw:1,0) 支持的采样率: [48000]
+2025-04-25 20:54:10,940 - INFO - 设备 [8] sof-hda-dsp: - (hw:1,6) 支持的采样率: [48000]
+2025-04-25 20:54:10,945 - INFO - 设备 [9] sof-hda-dsp: - (hw:1,7) 支持的采样率: [16000]
+2025-04-25 20:54:10,989 - INFO - 设备 [12] pulse 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-25 20:54:11,027 - INFO - 设备 [13] default 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-25 20:54:11,027 - INFO - 找到 5 个音频输入设备:
+2025-04-25 20:54:11,027 - INFO -   [4] sof-hda-dsp: - (hw:1,0) - 支持的采样率: [48000]
+2025-04-25 20:54:11,027 - INFO -   [8] sof-hda-dsp: - (hw:1,6) - 支持的采样率: [48000]
+2025-04-25 20:54:11,027 - INFO -   [9] sof-hda-dsp: - (hw:1,7) - 支持的采样率: [16000]
+2025-04-25 20:54:11,027 - INFO -   [12] pulse - 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-25 20:54:11,027 - INFO -   [13] default - 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-25 20:54:11,027 - INFO - 选择 pulse 音频设备: [12] pulse
+2025-04-25 20:54:11,027 - INFO - 已调整VAD帧大小: 采样率 16000Hz, 帧大小 320 字节 (约20ms)
+2025-04-25 20:54:11,027 - ERROR - 更新VAD帧大小时出错: 'Vad' object has no attribute 'get_mode'
+2025-04-25 20:54:11,027 - INFO - 已选择输入设备: [12] pulse 采样率: 16000Hz
+2025-04-25 20:54:36,506 - INFO - Use pytorch device_name: cuda
+2025-04-25 20:54:36,506 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 20:54:37,909 - INFO - Loading faiss with AVX512 support.
+2025-04-25 20:54:37,928 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 20:54:37,931 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 20:54:37,945 - INFO - VAD已初始化，使用双重检测模式
+2025-04-25 20:54:37,945 - INFO - 开始查找音频输入设备...
+2025-04-25 20:54:37,993 - INFO - 设备 [4] sof-hda-dsp: - (hw:1,0) 支持的采样率: [48000]
+2025-04-25 20:54:44,139 - WARNING - 设备 [8] sof-hda-dsp: - (hw:1,6) 可能不支持任何标准采样率
+2025-04-25 20:54:44,145 - INFO - 设备 [9] sof-hda-dsp: - (hw:1,7) 支持的采样率: [16000]
+2025-04-25 20:54:44,192 - INFO - 设备 [12] pulse 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-25 20:54:44,229 - INFO - 设备 [13] default 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-25 20:54:44,230 - INFO - 找到 5 个音频输入设备:
+2025-04-25 20:54:44,230 - INFO -   [4] sof-hda-dsp: - (hw:1,0) - 支持的采样率: [48000]
+2025-04-25 20:54:44,230 - INFO -   [8] sof-hda-dsp: - (hw:1,6) - 支持的采样率: []
+2025-04-25 20:54:44,230 - INFO -   [9] sof-hda-dsp: - (hw:1,7) - 支持的采样率: [16000]
+2025-04-25 20:54:44,230 - INFO -   [12] pulse - 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-25 20:54:44,230 - INFO -   [13] default - 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-25 20:54:44,230 - INFO - 选择 pulse 音频设备: [12] pulse
+2025-04-25 20:54:44,230 - INFO - 已调整VAD帧大小: 采样率 16000Hz, 帧大小 320 字节 (约20ms)
+2025-04-25 20:54:44,230 - ERROR - 更新VAD帧大小时出错: 'Vad' object has no attribute 'get_mode'
+2025-04-25 20:54:44,230 - INFO - 已选择输入设备: [12] pulse 采样率: 16000Hz
+2025-04-25 20:54:53,837 - INFO - 尝试以采样率 16000Hz 打开输入流...
+2025-04-25 20:54:53,866 - INFO - 成功打开输入流，使用采样率: 16000Hz
+2025-04-25 20:54:53,901 - INFO - 成功读取测试音频数据，长度: 640 字节
+2025-04-25 20:54:53,901 - INFO - 已调整VAD帧大小: 采样率 16000Hz, 帧大小 320 字节 (约20ms)
+2025-04-25 20:54:53,901 - ERROR - 更新VAD帧大小时出错: 'Vad' object has no attribute 'get_mode'
+2025-04-25 20:54:53,901 - INFO - 测试麦克风音量级别...
+2025-04-25 20:54:54,092 - INFO - 麦克风音量: 4734.16 RMS (-16.80 dB)
+2025-04-25 20:54:54,092 - INFO - 麦克风音量正常。
+2025-04-25 20:54:54,092 - INFO - 测试VAD语音检测功能...
+2025-04-25 20:54:54,694 - INFO - 语音检测测试: 检测到 30/30 帧包含语音 (100.00%)
+2025-04-25 20:54:54,694 - WARNING - 检测到大量背景噪音，这可能导致误触发。考虑使用降噪麦克风或在安静环境中使用。
+2025-04-25 20:55:03,222 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 20:55:08,085 - INFO - 问答耗时: 6.56秒
+2025-04-25 20:55:08,085 - INFO - --------------------------------------------------
+2025-04-25 20:55:08,085 - INFO - 开始播放: 这句话似乎是一段对话中的某一方重复了自己之前说的话,表达了一种无奈或失望的情绪,从你提供的信息来看,没有直接的相关内容可以对应,但可以根据上下文推测,可能是某人在等待某个结果或回应,而当对方终于回应时...
+2025-04-25 20:55:08,086 - INFO - --------------------------------------------------
+2025-04-25 20:55:08,086 - INFO - 分析背景噪音...
+2025-04-25 20:55:08,086 - INFO - 环境噪音较大 (100.00%)，已调整至低灵敏度
+2025-04-25 20:55:12,886 - INFO - 音频文件已保存: temp_audio_1745585708_131827890391696.mp3
+2025-04-25 20:55:12,887 - INFO - 开始监听中断...
+2025-04-25 20:55:12,889 - INFO - 检测到用户语音，准备中断... (连续帧数: 1, 语音比例: 1.00)
+2025-04-25 20:55:12,889 - INFO - 停止监听中断
+2025-04-25 20:55:13,090 - INFO - 音频播放已停止
+2025-04-25 20:55:13,091 - INFO - 语音输出已被用户中断
+2025-04-25 20:55:13,091 - INFO - 处理中断...
+2025-04-25 20:55:17,449 - INFO - 请问您有什么需要？
+2025-04-25 20:55:17,953 - INFO - 请说话...
+2025-04-25 20:55:17,966 - INFO - 检测到语音输入...
+2025-04-25 20:55:19,492 - INFO - 临时音频文件已删除: temp_audio_1745585708_131827890391696.mp3
+2025-04-25 20:55:19,493 - INFO - 输入流已关闭
+2025-04-25 20:55:19,494 - INFO - 已清理所有音频资源
+2025-04-25 20:55:25,432 - INFO - 已清理所有音频资源
