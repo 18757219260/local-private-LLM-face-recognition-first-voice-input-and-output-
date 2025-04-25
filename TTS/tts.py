@@ -1,7 +1,6 @@
 import sys
 import os
 sys.path.append(os.path.abspath("/home/wuye/vscode/chatbox"))
-
 from qa_model.qa_model_easy import KnowledgeQA
 import asyncio
 import edge_tts
@@ -33,6 +32,16 @@ class TTSHelper:
         text = text.replace("，", ",")
         text = text.replace("。", ",")
         text = text.replace("、", ",")
+        text = text.replace("；", ",")
+        text = text.replace("：", ",")
+        text = text.replace("！", ",")
+        text = text.replace("？", ",")
+        text = text.replace("“", ',')
+        text = text.replace("”", ',')
+        text = text.replace("‘", ',')
+        text = text.replace("’", ',')
+        text = text.replace("《", ',')
+        text = text.replace("》", ',')
         text = re.sub(r'[\x00-\x1F\x7F]', '', text)
  
         # print(f"预处理后的文本：{text}")

@@ -9,6 +9,7 @@ import time
 from qa_model.qa_model_easy import KnowledgeQA
 from ASR.asr import ASRhelper
 from TTS.tts_stream import TTSStreamer  
+from face.face_recognize import FaceRecognizer
 
 # 配置日志
 logging.basicConfig(
@@ -26,6 +27,42 @@ class SweetPotatoChatbox:
         self.qa = None
         self.tts = None
         self.asr = None
+        self.face_auth_success = False
+        self.recognized_user = None
+        
+    async def authenticate_user(self):
+        """使用人脸识别进行用户认证"""
+        logging.info("开始人脸认证...")
+        
+        # 初始化TTS用于提示信息
+        temp_tts = TTSStreamer(voice=self.voice)
+        await temp_tts.speak_text("11开始人脸认证，请面向摄像头", wait=True)
+        
+        # 初始化人脸识别系统
+        face_system = FaceRecognizer()
+        if not face_system.initialize():
+            logging.error("人脸识别系统初始化失败")
+            await temp_tts.speak_text("11人脸识别系统初始化失败，请检查人脸模型", wait=True)
+            await temp_tts.shutdown()
+            return False, None
+        
+        # 执行人脸认证
+        auth_success, user_name = face_system.recognize_face()
+        
+        # 根据认证结果提供语音反馈
+        if auth_success:
+            welcome_message = f"11欢迎你，{user_name}。已进入甘薯知识系统。"
+            logging.info(f"认证成功: {user_name}")
+            await temp_tts.speak_text(welcome_message, wait=True)
+        else:
+            deny_message = "11你是谁？我不认识你。系统将退出。"
+            logging.info("认证失败，拒绝访问")
+            await temp_tts.speak_text(deny_message, wait=True)
+        
+        # 关闭临时TTS
+        await temp_tts.shutdown()
+        
+        return auth_success, user_name
         
     async def initialize(self):
         """初始化所有组件"""
@@ -50,8 +87,6 @@ class SweetPotatoChatbox:
             signal.signal(sig, lambda s, f: asyncio.create_task(
                 asyncio.to_thread(signal_handler)))
     
-# Modification for process_user_input in SweetPotatoChatbox class
-
     async def process_user_input(self):
         """处理用户语音输入"""
         logging.info("等待用户输入...")
@@ -90,8 +125,6 @@ class SweetPotatoChatbox:
             
         return question
         
-    # Modification for process_llm_response in SweetPotatoChatbox class
-
     async def process_llm_response(self, question):
         """处理LLM响应并流式输出"""
         if not question:
@@ -125,7 +158,7 @@ class SweetPotatoChatbox:
                         await self.tts.speak_segment('11' + current_segment)
                         first_segment = False
                     else:
-                        await self.tts.speak_segment(current_segment)
+                        await self.tts.speak_segment('11'+current_segment)
                         
                     current_segment = ""
             
@@ -138,7 +171,7 @@ class SweetPotatoChatbox:
                 if first_segment:
                     await self.tts.speak_segment('11' + current_segment)
                 else:
-                    await self.tts.speak_segment(current_segment)
+                    await self.tts.speak_segment('11'+current_segment)
                 
             # 输出完整响应到控制台
             logging.info(f"完整响应 ({time.time() - start_time:.2f}秒)：{total_response}")
@@ -150,12 +183,20 @@ class SweetPotatoChatbox:
             logging.error(f"处理响应时出错: {e}")
             try:
                 # 尝试播放错误提示
-                await self.tts.speak_text("抱歉，处理您的问题时出现了错误。", wait=True)
+                await self.tts.speak_text("11抱歉，处理您的问题时出现了错误。", wait=True)
             except:
                 pass
     
     async def run(self):
         """运行主循环"""
+        # 首先进行人脸认证
+        self.face_auth_success, self.recognized_user = await self.authenticate_user()
+        
+        # 如果人脸认证失败，退出程序
+        if not self.face_auth_success:
+            return
+            
+        # 人脸认证成功后，初始化系统组件
         if not await self.initialize():
             return
             
@@ -164,12 +205,13 @@ class SweetPotatoChatbox:
         # 启动提示
         print("\n" + "=" * 80)
         print(f"{'甘薯知识问答系统已启动':^80}")
+        print(f"{'用户: ' + self.recognized_user:^80}")
         print(f"{'按 Ctrl+C 退出':^80}")
         print("=" * 80 + "\n")
         
         try:
             # 初始欢迎语
-            await self.tts.speak_text("甘薯知识问答系统已启动，请问您有什么关于甘薯的问题？", wait=True)
+            await self.tts.speak_text(f"{self.recognized_user}，甘薯知识问答系统已启动，请问您有什么关于甘薯的问题？", wait=True)
             
             while not self.shutdown_event.is_set():
                 # 获取用户问题

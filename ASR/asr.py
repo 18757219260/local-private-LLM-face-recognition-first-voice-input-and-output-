@@ -37,7 +37,7 @@ class ASRhelper:
         return p, stream
 
     def real_time_recognition(self):
-        """Perform real-time speech recognition with VAD."""
+        """实时语音识别"""
         print('*'*40,"可以说话咯😁","*"*40)
 
         #输入流

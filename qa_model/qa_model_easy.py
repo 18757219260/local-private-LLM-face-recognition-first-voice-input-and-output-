@@ -1,7 +1,6 @@
 import sys
 import os
 sys.path.append(os.path.abspath("/home/wuye/vscode/chatbox"))
-import os
 import logging
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_community.vectorstores import FAISS
@@ -101,7 +100,7 @@ class KnowledgeQA:
             return
         
         try:
-            prompt = """你是个甘薯专家，请以纯文本形式回答，输出为一段。如果输入问题和甘薯一点关系都没有，请直接回答"我不知道"。输出的内容要简洁明了，避免使用复杂的术语和长句子。请确保回答是准确的，并且与问题相关。请不要添加任何额外的解释或背景信息。"""
+            # prompt = """你是个甘薯专家，请以纯文本形式回答，输出为一段。如果输入问题和甘薯一点关系都没有，请直接回答"我不知道"。输出的内容要简洁明了，避免使用复杂的术语和长句子。请确保回答是准确的，并且与问题相关。请不要添加任何额外的解释或背景信息。"""
             
             retriever = self.vectorstore.as_retriever(search_kwargs={"k": self.k_documents})
             docs = await asyncio.to_thread(retriever.invoke, question)
@@ -111,7 +110,7 @@ class KnowledgeQA:
                 return
                 
             context = "\n\n".join([doc.page_content for doc in docs])
-            final_prompt = f"已知内容:\n{context}\n\n问题: {question}\n\n{prompt}"
+            final_prompt = f"已知内容:\n{context}\n\n问题: {question}" #\n\n{prompt}"
             
             start_time = time.time()
             async for chunk in self.llm.astream(final_prompt):
@@ -131,7 +130,7 @@ class KnowledgeQA:
         
         try:
             # 设置提示词
-            prompt = """你是个甘薯专家，请以纯文本形式回答，输出为一段。如果输入问题和甘薯一点关系都没有，请直接回答"我不知道"。输出的内容要简洁明了，避免使用复杂的术语和长句子。请确保回答是准确的，并且与问题相关。请不要添加任何额外的解释或背景信息。"""
+            # prompt = """你是个甘薯专家，请以纯文本形式回答，输出为一段。如果输入问题和甘薯一点关系都没有，请直接回答"我不知道"。输出的内容要简洁明了，避免使用复杂的术语和长句子。请确保回答是准确的，并且与问题相关。请不要添加任何额外的解释或背景信息。"""
             
             # 获取相关文档
             retriever = self.vectorstore.as_retriever(search_kwargs={"k": self.k_documents})
@@ -142,7 +141,7 @@ class KnowledgeQA:
                 
             # 构建上下文
             context = "\n\n".join([doc.page_content for doc in docs])
-            final_prompt = f"已知内容:\n{context}\n\n问题: {question}\n\n{prompt}"
+            final_prompt = f"已知内容:\n{context}\n\n问题: {question}"#\n\n{prompt}"
             
             # 计时
             start_time = time.time()

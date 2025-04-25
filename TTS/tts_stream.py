@@ -6,11 +6,8 @@ import edge_tts
 import subprocess
 import io
 import logging
-import time
 import re
-import tempfile
-from pydub import AudioSegment
-from pydub.playback import play
+
 
 
 class TTSStreamer:
@@ -32,13 +29,22 @@ class TTSStreamer:
             """
             预处理文本，替换不标准的标点并清理可能导致问题的字符
             """
-            if not text:
-                return ""
-                
             text = text.replace("，", ",")
-            text = text.replace("。", ".")  # Changed to period for better speech pauses
+            text = text.replace("。", ",")
+            text = text.replace("、", ",")
+            text = text.replace("；", ",")
+            text = text.replace("：", ",")
+            text = text.replace("！", ",")
+            text = text.replace("？", ",")
+            text = text.replace("“", ',')
+            text = text.replace("”", ',')
+            text = text.replace("‘", ',')
+            text = text.replace("’", ',')
+            text = text.replace("《", ',')
+            text = text.replace("》", ',')
             text = re.sub(r'[\x00-\x1F\x7F]', '', text)
-            text = text.strip("，。！？")
+    
+            # print(f"预处理后的文本：{text}")
             return text
 
     async def start_player(self):
