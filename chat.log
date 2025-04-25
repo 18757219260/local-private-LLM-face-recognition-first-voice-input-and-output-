@@ -169,3 +169,40 @@ KeyboardInterrupt
 2025-04-25 13:03:40,780 - ERROR - 音频播放错误: [Errno 32] Broken pipe
 2025-04-25 13:03:40,781 - INFO - 等待 1.5 秒后再次开始监听...
 2025-04-25 13:03:42,283 - ERROR - 清理资源时出错: [Errno 32] Broken pipe
+2025-04-25 13:07:53,446 - INFO - Use pytorch device_name: cuda
+2025-04-25 13:07:53,446 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-25 13:07:54,451 - INFO - Loading faiss with AVX512 support.
+2025-04-25 13:07:54,462 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-25 13:07:54,465 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-25 13:08:00,841 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:08:00,884 - INFO - 流式回答花费了 0.28 seconds
+2025-04-25 13:08:00,885 - INFO - 等待 1.5 秒后再次开始监听...
+2025-04-25 13:08:08,476 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:08:08,520 - INFO - 流式回答花费了 0.27 seconds
+2025-04-25 13:08:08,520 - INFO - 等待 1.5 秒后再次开始监听...
+2025-04-25 13:08:15,833 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:08:17,179 - INFO - 正在准备TTS音频: 甘薯不同品种耐贮性差异较大.紫薯比红薯耐贮藏,大叶红、烟薯2...
+2025-04-25 13:08:19,438 - INFO - TTS音频准备完成，耗时: 2.26秒
+2025-04-25 13:08:19,440 - INFO - mpg123 进程开启
+2025-04-25 13:08:23,445 - INFO - TTS 处理总耗时: 6.27秒
+2025-04-25 13:08:23,452 - INFO - 正在准备TTS音频: 、纺锤形、表皮薄、糖含量高的红薯不耐贮藏,北京553、红香蕉...
+2025-04-25 13:08:25,746 - INFO - TTS音频准备完成，耗时: 2.29秒
+2025-04-25 13:08:31,935 - INFO - TTS 处理总耗时: 8.48秒
+2025-04-25 13:08:31,940 - INFO - 流式回答花费了 16.37 seconds
+2025-04-25 13:08:31,940 - INFO - 正在准备TTS音频: 厚、糖含量低的红薯耐贮性稍好....
+2025-04-25 13:08:34,054 - INFO - TTS音频准备完成，耗时: 2.11秒
+2025-04-25 13:08:35,556 - INFO - TTS 处理总耗时: 3.62秒
+2025-04-25 13:08:35,557 - INFO - 等待 1.5 秒后再次开始监听...
+2025-04-25 13:08:43,997 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:08:45,138 - INFO - 正在准备TTS音频: 我知道甘薯原产于美洲中部或南美洲西北部的热带地区,16世纪初...
+2025-04-25 13:08:47,326 - INFO - TTS音频准备完成，耗时: 2.19秒
+2025-04-25 13:08:51,330 - INFO - TTS 处理总耗时: 6.19秒
+2025-04-25 13:08:51,331 - INFO - 流式回答花费了 7.69 seconds
+2025-04-25 13:08:51,331 - INFO - 正在准备TTS音频: 、广东栽培....
+2025-04-25 13:08:53,452 - INFO - TTS音频准备完成，耗时: 2.12秒
+2025-04-25 13:08:54,053 - INFO - TTS 处理总耗时: 2.72秒
+2025-04-25 13:08:54,053 - INFO - 等待 1.5 秒后再次开始监听...
+2025-04-25 13:09:02,204 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-25 13:09:02,250 - INFO - 流式回答花费了 0.27 seconds
+2025-04-25 13:09:02,250 - INFO - 等待 1.5 秒后再次开始监听...
+2025-04-25 13:09:03,952 - INFO - mpg123 进程已关闭
