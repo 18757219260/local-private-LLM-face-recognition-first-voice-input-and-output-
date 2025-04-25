@@ -19,89 +19,114 @@ logging.basicConfig(
     handlers=[logging.FileHandler("chat.log"), logging.StreamHandler()]
 )
 
+
 class KnowledgeQA:
     def __init__(
         self,
-        # knowledge_path: str = "knowledge.json",
         faiss_index_path: str = "faiss_index",
         llm_model: str = "qwen2.5:7b",
+        temperature: float = 0.4,
+        ollama_url: str = 'http://localhost:11434',
+        k_documents: int = 2
     ):
-        """
-        初始化知识问答系统，嵌入模型、向量库和问答链。
-        """
-        # self.knowledge_path = knowledge_path
+        """初始化qa配置"""
         self.faiss_index_path = faiss_index_path
         self.llm_model = llm_model
-        self.embedding_model = HuggingFaceEmbeddings(
-            model_name="bge-base-zh-v1.5",
-            encode_kwargs={'normalize_embeddings': True}
-        )
-        # self.embedding_model = self._init_embeddings()
-        self.vectorstore = self.load_or_create_vectorstore()
-        self.qa_chain = self.init_qa_chain()
+        self.temperature = temperature
+        self.ollama_url = ollama_url
+        self.k_documents = k_documents
 
-
+        self.embedding_model = self._init_embeddings()
+        self.vectorstore = self._load_vectorstore_with_retry()
+        self.llm = self._init_llm()
+        self.qa_chain = self._init_qa_chain()
     
-    def load_or_create_vectorstore(self) :
-        """
-        加载已有的向量库；如果不存在则从知识库创建向量库，并保存。
-        """
-       
-        return FAISS.load_local(self.faiss_index_path, self.embedding_model, allow_dangerous_deserialization=True)
-
-
-    def init_qa_chain(self):
-        ''''初始化问答链，使用指定的 LLM 模型和向量库。'''
-        self.llm = OllamaLLM(
-            base_url='http://localhost:11434',
-            model=self.llm_model,
-            temperature=0.4
-        )
-
-        return RetrievalQA.from_chain_type(
-            llm=self.llm,
-            retriever=self.vectorstore.as_retriever(search_kwargs={"k": 2}),
-            return_source_documents=False
-        )
-
-        
-
-
-    def ask(self, question):
-        start=time.time()   
-        """
-        用户提问接口。整合历史上下文，向 LLM 提问并记录回答。
-        """
-        
-        prompt = """
-        你是个甘薯个专家请以纯文本形式回答,输出为一段。如果输入问题和甘薯一点关系都没有，请直接回答“我不知道”。输出的内容要简洁明了，避免使用复杂的术语和长句子。请确保回答是准确的，并且与问题相关。请不要添加任何额外的解释或背景信息。
-        """
-        query = f"问题: {question}\n\n{prompt}"
-        result = self.qa_chain.invoke({"query": query})  
-        answer = result["result"]
-        end=time.time()
-        logging.info(f"模型问答耗时: {end-start:.2f}秒")
-        
-        return answer
+    def _init_embeddings(self):
+        """初始化向量模型"""
+        try:
+            return HuggingFaceEmbeddings(
+                model_name="bge-base-zh-v1.5",
+                encode_kwargs={'normalize_embeddings': True}
+            )
+        except Exception as e:
+            logging.error(f"错误初始化向量化模型: {e}")
+            raise
+    
+    def _load_vectorstore_with_retry(self, max_retries=3):
+        """下载向量模型"""
+        for attempt in range(max_retries):
+            try:
+                return FAISS.load_local(
+                    self.faiss_index_path, 
+                    self.embedding_model, 
+                    allow_dangerous_deserialization=True
+                )
+            except Exception as e:
+                if attempt < max_retries - 1:
+                    logging.warning(f"重新加载向量模型{attempt+1}/{max_retries} : {e}")
+                    time.sleep(1)
+                else:
+                    logging.error(f" 多次尝试失败加载{max_retries} : {e}")
+                    raise
+    
+    def _init_llm(self):
+        """初始化大模型"""
+        try:
+            return OllamaLLM(
+                base_url=self.ollama_url,
+                model=self.llm_model,
+                temperature=self.temperature
+            )
+        except Exception as e:
+            logging.error(f"初始化llm错误: {e}")
+            raise
+    
+    def _init_qa_chain(self):
+        """初始化问答链（基于向量检索 + Ollama 本地大模型）"""
+        try:
+            return RetrievalQA.from_chain_type(
+                llm=self.llm,
+                retriever=self.vectorstore.as_retriever(search_kwargs={"k": self.k_documents}),
+                return_source_documents=False
+            )
+        except Exception as e:
+            logging.error(f"QA模型链初始化失败: {e}")
+            raise
     
 
     async def ask_stream(self, question):
-            prompt = """你是个甘薯个专家请以纯文本形式回答,输出为一段。如果输入问题和甘薯一点关系都没有，请直接回答“我不知道，”。输出的内容要简洁明了，避免使用复杂的术语和长句子。请确保回答是准确的，并且与问题相关。请不要添加任何额外的解释或背景信息。"""
-            query = f"问题: {question}\n\n{prompt}"
-
-            retriever = self.vectorstore.as_retriever(search_kwargs={"k": 2})
-            docs = retriever.invoke(question)
+        """流式回答"""
+        if not question or not question.strip():
+            yield "我没有听清楚您的问题，请重新提问。"
+            return
+        
+        try:
+            prompt = """你是个甘薯专家，请以纯文本形式回答，输出为一段。如果输入问题和甘薯一点关系都没有，请直接回答"我不知道"。输出的内容要简洁明了，避免使用复杂的术语和长句子。请确保回答是准确的，并且与问题相关。请不要添加任何额外的解释或背景信息。"""
+            
+            retriever = self.vectorstore.as_retriever(search_kwargs={"k": self.k_documents})
+            docs = await asyncio.to_thread(retriever.invoke, question)
+            
+            if not docs:
+                yield "我没有找到相关的甘薯知识，请尝试其他问题。"
+                return
+                
             context = "\n\n".join([doc.page_content for doc in docs])
-            final_prompt = f"已知内容:\n{context}\n\n{query}"
-
+            final_prompt = f"已知内容:\n{context}\n\n问题: {question}\n\n{prompt}"
+            
+            start_time = time.time()
             async for chunk in self.llm.astream(final_prompt):
                 yield chunk
+            logging.info(f"流式回答花费了 {time.time() - start_time:.2f} seconds")
+            
+        except Exception as e:
+            logging.error(f"Error in ask_stream: {e}")
+            yield "抱歉，处理您的问题时出现了错误，请稍后再试。"
 
 async def main():
     qa = KnowledgeQA()
     question = "甘薯的贮藏特性"
     async for chunk in qa.ask_stream(question):
-        print(chunk, end='', flush=True)  # Stream the output as it arrives
+        print(chunk, end='', flush=True)  
 
 if __name__ == "__main__":
     asyncio.run(main())

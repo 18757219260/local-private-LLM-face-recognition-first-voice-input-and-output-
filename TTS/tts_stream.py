@@ -17,6 +17,10 @@ class TTStreaming:
         self.audio_queue = asyncio.Queue()
         self.mpg123_process = None
         self.min_buffer_size = 6400
+        self._lock = asyncio.Lock()
+
+
+
 
     def preprocess_text(self, text):
         """
@@ -30,15 +34,21 @@ class TTStreaming:
         return text
 
     async def start_audio_player(self):
-        """启动单一的 mpg123 进程"""
-        if not self.mpg123_process:
-            self.mpg123_process = subprocess.Popen(
-                ["mpg123", "-"],
-                stdin=subprocess.PIPE,
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL,
-            )
-            print("mpg123 进程启动")
+        """开启mpg123进程"""
+        async with self._lock:
+            if not self.mpg123_process or self.mpg123_process.poll() is not None:
+                try:
+                    self.mpg123_process = subprocess.Popen(
+                        ["mpg123", "-"],
+                        stdin=subprocess.PIPE,
+                        stdout=subprocess.DEVNULL,
+                        stderr=subprocess.DEVNULL,
+                    )
+                    logging.info("mpg123 进程开启")
+                except Exception as e:
+                    logging.error(f"mpg123进程开启失败: {e}")
+                    self.mpg123_process = None
+                    raise
 
     async def stop_audio_player(self):
         """关闭 mpg123 进程"""
