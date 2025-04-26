@@ -988,3 +988,285 @@ KeyboardInterrupt
 2025-04-25 20:55:19,493 - INFO - 输入流已关闭
 2025-04-25 20:55:19,494 - INFO - 已清理所有音频资源
 2025-04-25 20:55:25,432 - INFO - 已清理所有音频资源
+2025-04-26 14:39:41,390 - INFO - VAD已初始化，使用双重检测模式
+2025-04-26 14:39:41,518 - INFO - 开始查找音频输入设备...
+2025-04-26 14:39:41,526 - INFO - 设备 [4] sof-hda-dsp: - (hw:1,0) 支持的采样率: [48000]
+2025-04-26 14:39:41,532 - INFO - 设备 [8] sof-hda-dsp: - (hw:1,6) 支持的采样率: [48000]
+2025-04-26 14:39:41,537 - INFO - 设备 [9] sof-hda-dsp: - (hw:1,7) 支持的采样率: [16000]
+2025-04-26 14:39:41,576 - INFO - 设备 [12] pulse 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-26 14:39:41,608 - INFO - 设备 [13] default 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-26 14:39:41,608 - INFO - 找到 5 个音频输入设备:
+2025-04-26 14:39:41,608 - INFO -   [4] sof-hda-dsp: - (hw:1,0) - 支持的采样率: [48000]
+2025-04-26 14:39:41,608 - INFO -   [8] sof-hda-dsp: - (hw:1,6) - 支持的采样率: [48000]
+2025-04-26 14:39:41,608 - INFO -   [9] sof-hda-dsp: - (hw:1,7) - 支持的采样率: [16000]
+2025-04-26 14:39:41,608 - INFO -   [12] pulse - 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-26 14:39:41,608 - INFO -   [13] default - 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-26 14:39:41,608 - INFO - 选择 pulse 音频设备: [12] pulse
+2025-04-26 14:39:41,609 - INFO - 已调整VAD帧大小: 采样率 16000Hz, 帧大小 320 字节 (约20ms)
+2025-04-26 14:39:41,609 - INFO - 已重新初始化主VAD，灵敏度: 3
+2025-04-26 14:39:41,609 - INFO - 已重新初始化敏感VAD
+2025-04-26 14:39:41,609 - INFO - 已选择输入设备: [12] pulse 采样率: 16000Hz
+2025-04-26 14:40:04,483 - INFO - Use pytorch device_name: cuda
+2025-04-26 14:40:04,483 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 14:40:30,462 - INFO - 已清理所有音频资源
+2025-04-26 14:40:30,733 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main/main_interupt.py:97> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main/main_interupt.py", line 145, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main_interupt.py", line 130, in main
+    await run_sweet_potato_system()
+  File "/home/wuye/vscode/chatbox/main/main_interupt.py", line 24, in run_sweet_potato_system
+    qa = KnowledgeQA()
+         ^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 38, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 46, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1702, in _load_sbert_model
+    self.model_card_data.set_base_model(model_name_or_path, revision=revision)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/model_card.py", line 757, in set_base_model
+    model_info = get_model_info(model_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2591, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+2025-04-26 14:52:02,501 - INFO - VAD已初始化，使用双重检测模式
+2025-04-26 14:52:02,628 - INFO - 开始查找音频输入设备...
+2025-04-26 14:52:02,636 - INFO - 设备 [4] sof-hda-dsp: - (hw:1,0) 支持的采样率: [48000]
+2025-04-26 14:52:02,642 - INFO - 设备 [8] sof-hda-dsp: - (hw:1,6) 支持的采样率: [48000]
+2025-04-26 14:52:02,648 - INFO - 设备 [9] sof-hda-dsp: - (hw:1,7) 支持的采样率: [16000]
+2025-04-26 14:52:02,694 - INFO - 设备 [12] pulse 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-26 14:52:02,728 - INFO - 设备 [13] default 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-26 14:52:02,728 - INFO - 找到 5 个音频输入设备
+2025-04-26 14:52:02,728 - INFO - 选择pulse音频设备: [12] pulse
+2025-04-26 14:52:02,728 - INFO - 已调整VAD帧大小: 采样率 16000Hz, 帧大小 320 字节
+2025-04-26 14:52:02,728 - INFO - 已选择输入设备: [12] pulse 采样率: 16000Hz
+2025-04-26 14:52:27,475 - INFO - Use pytorch device_name: cuda
+2025-04-26 14:52:27,475 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 14:52:27,876 - INFO - Loading faiss with AVX512 support.
+2025-04-26 14:52:27,895 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 14:52:27,898 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 14:52:27,910 - INFO - VAD已初始化，使用双重检测模式
+2025-04-26 14:52:27,910 - INFO - 开始查找音频输入设备...
+2025-04-26 14:52:27,955 - INFO - 设备 [4] sof-hda-dsp: - (hw:1,0) 支持的采样率: [48000]
+2025-04-26 14:52:34,117 - WARNING - 设备 [8] sof-hda-dsp: - (hw:1,6) 可能不支持任何标准采样率
+2025-04-26 14:52:34,123 - INFO - 设备 [9] sof-hda-dsp: - (hw:1,7) 支持的采样率: [16000]
+2025-04-26 14:52:34,158 - INFO - 设备 [12] pulse 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-26 14:52:34,191 - INFO - 设备 [13] default 支持的采样率: [8000, 11025, 16000, 22050, 44100, 48000]
+2025-04-26 14:52:34,191 - INFO - 找到 5 个音频输入设备
+2025-04-26 14:52:34,191 - INFO - 选择pulse音频设备: [12] pulse
+2025-04-26 14:52:34,191 - INFO - 已调整VAD帧大小: 采样率 16000Hz, 帧大小 320 字节
+2025-04-26 14:52:34,191 - INFO - 已选择输入设备: [12] pulse 采样率: 16000Hz
+2025-04-26 14:53:01,055 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 14:53:09,249 - INFO - 问答耗时: 11.35秒
+2025-04-26 14:53:09,249 - INFO - --------------------------------------------------
+2025-04-26 14:53:09,257 - INFO - 开始播放: 根据已知内容,甘薯（红薯）的贮藏特性可以从以下几个方面来总结,1, ,,品种差异,,,不同品种的甘薯耐贮性有所不同,通常来说,紫薯比普通红薯更耐贮藏,2, ,,形态和结构特点,,,   - 体积小,形...
+2025-04-26 14:53:09,257 - INFO - --------------------------------------------------
+2025-04-26 14:53:10,258 - INFO - 尝试以采样率 16000Hz 打开输入流...
+2025-04-26 14:53:10,270 - INFO - 成功打开输入流，使用采样率: 16000Hz
+2025-04-26 14:53:10,296 - INFO - 成功读取测试音频数据，长度: 640 字节
+2025-04-26 14:53:10,296 - INFO - 已调整VAD帧大小: 采样率 16000Hz, 帧大小 320 字节
+2025-04-26 14:53:10,296 - INFO - 分析背景噪音...
+2025-04-26 14:53:11,280 - INFO - 非常嘈杂的环境 (100.00%)，调整为最低敏感度
+2025-04-26 14:53:11,281 - INFO - 校准音频级别...
+2025-04-26 14:53:13,289 - INFO - 音频校准完成。阈值设置为: 5000.00
+2025-04-26 14:53:17,269 - INFO - 音频文件已保存: temp_audio_1745650393_135283678213712.mp3
+2025-04-26 14:53:17,270 - INFO - 开始监听中断...
+2025-04-26 14:53:17,271 - INFO - 检测到用户语音，准备中断... (连续帧数: 1, 语音比例: 1.00)
+2025-04-26 14:53:17,271 - INFO - 停止监听中断
+2025-04-26 14:53:17,473 - INFO - 音频播放已停止
+2025-04-26 14:53:17,473 - INFO - 语音输出已被用户中断
+2025-04-26 14:53:17,473 - INFO - 处理中断...
+2025-04-26 14:53:21,022 - INFO - 请问您有什么需要？
+2025-04-26 14:53:21,528 - INFO - 请说话...
+2025-04-26 14:53:21,540 - INFO - 检测到语音输入...
+2025-04-26 14:53:23,118 - INFO - 临时音频文件已删除: temp_audio_1745650393_135283678213712.mp3
+2025-04-26 14:53:23,119 - INFO - 输入流已关闭
+2025-04-26 14:53:23,120 - INFO - 已清理所有音频资源
+2025-04-26 14:53:28,294 - INFO - 已清理所有音频资源
+2025-04-26 14:58:17,798 - INFO - VAD已初始化，使用高灵敏度模式
+2025-04-26 14:58:17,964 - INFO - 成功打开输入流，使用采样率: 16000Hz
+2025-04-26 14:58:43,533 - INFO - Use pytorch device_name: cuda
+2025-04-26 14:58:43,533 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 14:59:09,956 - INFO - 输入流已关闭
+2025-04-26 14:59:09,956 - INFO - 已清理所有音频资源
+2025-04-26 14:59:10,238 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main/main_interupt.py:96> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main/main_interupt.py", line 140, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main_interupt.py", line 126, in main
+    await run_sweet_potato_system()
+  File "/home/wuye/vscode/chatbox/main/main_interupt.py", line 23, in run_sweet_potato_system
+    qa = KnowledgeQA()
+         ^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 38, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 46, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1702, in _load_sbert_model
+    self.model_card_data.set_base_model(model_name_or_path, revision=revision)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/model_card.py", line 757, in set_base_model
+    model_info = get_model_info(model_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2591, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+2025-04-26 14:59:33,430 - INFO - VAD已初始化，使用高灵敏度模式
+2025-04-26 14:59:33,577 - INFO - 成功打开输入流，使用采样率: 16000Hz
+2025-04-26 14:59:58,744 - INFO - Use pytorch device_name: cuda
+2025-04-26 14:59:58,744 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 14:59:59,137 - INFO - Loading faiss with AVX512 support.
+2025-04-26 14:59:59,150 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 14:59:59,153 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 14:59:59,165 - INFO - VAD已初始化，使用高灵敏度模式
+2025-04-26 14:59:59,176 - INFO - 成功打开输入流，使用采样率: 16000Hz
+2025-04-26 15:00:13,473 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:00:25,300 - INFO - 问答耗时: 13.45秒
+2025-04-26 15:00:25,300 - INFO - --------------------------------------------------
+2025-04-26 15:00:25,300 - INFO - 开始播放: 甘薯（又称番薯,红薯,地瓜,红苕,白薯）的贮藏特性主要受到品种的影响,不同品种之间存在较大的差异,1, ,,品种及耐贮性,,,紫薯比普通红薯更耐贮藏,而大叶红,烟薯25,济薯26等体积较小,形状为纺锤...
+2025-04-26 15:00:25,300 - INFO - --------------------------------------------------
+2025-04-26 15:00:33,624 - INFO - 音频文件已保存: temp_audio_1745650825_137186561488784.mp3
+2025-04-26 15:00:33,625 - INFO - 开始监听中断...
+2025-04-26 15:00:33,626 - INFO - 检测到用户语音，准备中断... (连续帧数: 3)
+2025-04-26 15:00:33,626 - INFO - 停止监听中断
+2025-04-26 15:00:33,828 - INFO - 音频播放已停止
+2025-04-26 15:00:33,828 - INFO - 语音输出已被用户中断
+2025-04-26 15:00:33,828 - INFO - 处理中断...
+2025-04-26 15:00:37,686 - INFO - 请问您有什么需要？
+2025-04-26 15:00:37,686 - INFO - 请说话...
+2025-04-26 15:00:37,686 - INFO - 检测到语音输入...
+2025-04-26 15:00:44,698 - INFO - 达到最大录音时间
+2025-04-26 15:00:44,700 - INFO - 上传 1454720 字节到百度API
+2025-04-26 15:00:46,737 - INFO - 用户说: 甘薯的贮藏特性，嗯，对吧为什么这个那个暂停。
+2025-04-26 15:00:46,746 - INFO - 临时音频文件已删除: temp_audio_1745650825_137186561488784.mp3
+2025-04-26 15:00:47,048 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:00:57,251 - INFO - 问答耗时: 10.49秒
+2025-04-26 15:00:57,251 - INFO - --------------------------------------------------
+2025-04-26 15:00:57,251 - INFO - 开始播放: 看来你在描述甘薯的贮藏特性时遇到了一些中断或停顿的情况,让我们来整理一下相关信息,1, ,,品种及耐贮性,,,   - 不同品种的甘薯耐贮性差异较大,   - 紫薯比红薯更耐贮藏,   - 大叶红,烟...
+2025-04-26 15:00:57,251 - INFO - --------------------------------------------------
+2025-04-26 15:01:01,143 - INFO - 音频文件已保存: temp_audio_1745650857_137186561488784.mp3
+2025-04-26 15:01:01,144 - INFO - 开始监听中断...
+2025-04-26 15:01:01,145 - INFO - 检测到用户语音，准备中断... (连续帧数: 3)
+2025-04-26 15:01:01,145 - INFO - 停止监听中断
+2025-04-26 15:01:01,347 - INFO - 音频播放已停止
+2025-04-26 15:01:01,347 - INFO - 语音输出已被用户中断
+2025-04-26 15:01:01,347 - INFO - 处理中断...
+2025-04-26 15:01:04,249 - INFO - 临时音频文件已删除: temp_audio_1745650857_137186561488784.mp3
+2025-04-26 15:01:04,257 - INFO - 输入流已关闭
+2025-04-26 15:01:04,257 - INFO - 已清理所有音频资源
+2025-04-26 15:01:09,308 - INFO - 输入流已关闭
+2025-04-26 15:01:09,313 - INFO - 已清理所有音频资源

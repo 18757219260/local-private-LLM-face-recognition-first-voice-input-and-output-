@@ -2,15 +2,14 @@ import sys
 import os
 sys.path.append(os.path.abspath("/home/wuye/vscode/chatbox"))
 import asyncio
-import os
 import time
 import logging
 from face.face_recognize import FaceRecognizer
 from qa_model.qa_model_easy import KnowledgeQA
 from ASR.asr import ASRhelper
-from interupt import InterruptibleTTS  
+from interupt import SimpleInterruptibleTTS  # 使用简化版的 TTS 类
 
-
+# 设置日志
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
@@ -18,27 +17,22 @@ logging.basicConfig(
 )
 
 async def run_sweet_potato_system():
-    """运行甘薯知识系统的交互过程，增加中断功能"""
+    """运行甘薯知识系统的交互过程"""
     # 初始化模块
     asr = ASRhelper()
     qa = KnowledgeQA()
-    tts = InterruptibleTTS(voice="zh-CN-XiaoyiNeural", rate="+0%", volume="+0%")
+    tts = SimpleInterruptibleTTS(voice="zh-CN-XiaoyiNeural", rate="+0%", volume="+0%")
 
     print("\n🎉 甘薯知识助手已启动")
     
     # 播放欢迎信息
-    await tts.text_to_speech("甘薯知识助手已启动，请问有什么可以帮助你的？")
-    # 确保音频完全播放完毕，额外等待
-    await asyncio.sleep(2.0)  # 缩短欢迎语的等待时间
+    await tts.text_to_speech("11甘薯知识助手已启动，请问有什么可以帮助你的？")
+    
     
     while True:
         try:
             # 步骤 1：语音转文本
             print("\n📢 等待语音输入...")
-            
-            # 确保在每次循环开始时都可用一个有效的输入流
-            if not hasattr(tts, 'input_stream') or tts.input_stream is None:
-                tts.setup_input_stream()
             
             # 执行语音识别
             question_data = asr.real_time_recognition()
@@ -46,13 +40,13 @@ async def run_sweet_potato_system():
             # 检查语音识别是否成功
             if question_data['err_no'] != 0:
                 print(f"❌ 语音识别失败: {question_data['err_msg']}")
-                await tts.text_to_speech("抱歉，我没听清楚，请再说一次。")
-                await asyncio.sleep(1.0)  # 缩短错误信息的等待时间
+                await tts.text_to_speech("11抱歉，我没听清楚，请再说一次。")
+                await asyncio.sleep(1.0)
                 continue
-                
+            
             question = question_data['result'][0]
             if not question:
-                continue  
+                continue  # 没识别到就跳过
                 
             print(f"🧠 问题：{question}")
 
@@ -60,7 +54,7 @@ async def run_sweet_potato_system():
             answer = qa.ask(question)
             print(f"💬 答案：{answer}")
 
-            # 步骤 3：文本转语音输出（可中断版本）
+            # 步骤 3：文本转语音输出（支持中断）
             was_interrupted, interrupt_question = await tts.speak_with_interrupt(answer)
             
             # 如果被中断，处理中断后的问题
@@ -73,6 +67,11 @@ async def run_sweet_potato_system():
                 
                 # 输出中断后问题的答案
                 await tts.speak_with_interrupt(interrupt_answer)
+            else:
+                # 增加等待时间，确保语音完全播放完毕
+                wait_time = len(answer) * 0.04 + 3.0  
+                print(f"等待语音播放完成，等待时间: {wait_time:.2f}秒")
+                await asyncio.sleep(wait_time)
 
         except KeyboardInterrupt:
             print("\n🛑 停止交互")
@@ -80,9 +79,8 @@ async def run_sweet_potato_system():
         except Exception as e:
             logging.error(f"系统错误: {e}", exc_info=True)
             print(f"❌ 出错：{e}")
-            await tts.text_to_speech("抱歉，系统遇到了一些问题，请再试一次")
-            # 同样为错误信息等待足够时间
-            await asyncio.sleep(2.0)
+            await tts.text_to_speech("11抱歉，系统遇到了一些问题，请再试一次")
+            await asyncio.sleep(4.0)
 
     # 清理资源
     if hasattr(asr, 'stop_recording'):
@@ -91,7 +89,7 @@ async def run_sweet_potato_system():
         tts.cleanup()
         
     print("👋 感谢使用甘薯知识助手，再见！")
-    await tts.text_to_speech("感谢使用甘薯知识助手，再见！")
+    await tts.text_to_speech("11感谢使用甘薯知识助手，再见！")
 
 
 async def main():
@@ -99,23 +97,21 @@ async def main():
     print("🚀 启动系统...")
     
     # 初始化TTS用于欢迎消息
-    tts = InterruptibleTTS(voice="zh-CN-XiaoyiNeural", rate="+0%", volume="+0%")
+    tts = SimpleInterruptibleTTS(voice="zh-CN-XiaoyiNeural", rate="+0%", volume="+0%")
     
     try:
         # 初始化人脸认证系统
         face_system = FaceRecognizer()
         if not face_system.initialize():
             print("系统初始化失败，程序退出")
-            await tts.text_to_speech("系统初始化失败，请检查人脸模型")
-            # 等待消息播放完毕
-            await asyncio.sleep(2.0)
+            await tts.text_to_speech("11系统初始化失败，请检查人脸模型")
+            await asyncio.sleep(3.0)
             return
         
         # 执行人脸认证
         print("开始人脸认证，请面向摄像头")
-        await tts.text_to_speech("开始人脸认证，请面向摄像头")
-        # 等待消息播放完毕
-        await asyncio.sleep(2.0)
+        await tts.text_to_speech("11开始人脸认证，请面向摄像头")
+        await asyncio.sleep(3.0)
         
         auth_success, user_name = face_system.recognize_face()
         
@@ -124,16 +120,14 @@ async def main():
             welcome_message = f"欢迎你，{user_name}。已进入甘薯知识系统。"
             print(welcome_message)
             await tts.text_to_speech(welcome_message)
-            # 等待欢迎消息播放完毕
-            await asyncio.sleep(2.0)
+            await asyncio.sleep(5.0)
             
             await run_sweet_potato_system()
         else:
-            deny_message = "你是谁呀？我不认识你。系统将退出。"
+            deny_message = "11你是谁呀？我不认识你。系统将退出。"
             print("认证失败，拒绝访问")
             await tts.text_to_speech(deny_message)
-            # 等待拒绝消息播放完毕
-            await asyncio.sleep(2.0)
+            await asyncio.sleep(5.0)
     finally:
         # 确保资源被正确清理
         if hasattr(tts, 'cleanup'):
