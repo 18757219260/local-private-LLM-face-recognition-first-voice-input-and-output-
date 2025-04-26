@@ -38,7 +38,7 @@ class ASRhelper:
 
     def real_time_recognition(self):
         """实时语音识别"""
-        print('*'*40,"可以说话咯😁","*"*40)
+        # print('*'*40,"可以说话咯😁","*"*40)
 
         #输入流
         input= []
@@ -79,9 +79,10 @@ class ASRhelper:
             audio_data = b"".join(input)
             print(f"上传 {len(audio_data)} 个字节到🪰")
             result = client.asr(audio_data, 'pcm', self.RATE, {'dev_pid': 1537})
-            if result['err_no'] == 0:
-                print("🧠 用户问：:", result['result'][0])
-            else:
+            if result['err_no'] != 0:
+                # print("🧠 用户问：:", result['result'][0])
+
+            
                 print("❌ 识别失败:", result['err_msg'], "错误码:", result['err_no'])
         else:
             print("没有录到语音")

@@ -1270,3 +1270,1355 @@ KeyboardInterrupt
 2025-04-26 15:01:04,257 - INFO - 已清理所有音频资源
 2025-04-26 15:01:09,308 - INFO - 输入流已关闭
 2025-04-26 15:01:09,313 - INFO - 已清理所有音频资源
+2025-04-26 15:02:45,483 - INFO - 开始人脸认证...
+2025-04-26 15:02:45,484 - INFO - mpg123播放器已启动
+2025-04-26 15:02:52,225 - INFO - 认证成功: wudawang
+2025-04-26 15:02:56,733 - INFO - mpg123播放器已关闭
+2025-04-26 15:02:56,734 - INFO - 正在初始化甘薯问答系统...
+2025-04-26 15:02:59,163 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:02:59,163 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:03:32,740 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main/main_stream.py:254> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 271, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 268, in main
+    await chatbox.run()
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 200, in run
+    if not await self.initialize():
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 71, in initialize
+    self.qa = KnowledgeQA(llm_model=self.model)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 38, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 46, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1702, in _load_sbert_model
+    self.model_card_data.set_base_model(model_name_or_path, revision=revision)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/model_card.py", line 757, in set_base_model
+    model_info = get_model_info(model_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2591, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+2025-04-26 15:03:48,474 - INFO - 开始人脸认证...
+2025-04-26 15:03:48,475 - INFO - mpg123播放器已启动
+2025-04-26 15:03:56,082 - INFO - 认证成功: wudawang
+2025-04-26 15:04:00,240 - INFO - mpg123播放器已关闭
+2025-04-26 15:04:00,241 - INFO - 正在初始化甘薯问答系统...
+2025-04-26 15:04:02,659 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:04:02,659 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:04:03,015 - INFO - Loading faiss with AVX512 support.
+2025-04-26 15:04:03,028 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 15:04:03,031 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 15:04:03,126 - INFO - 系统初始化完成
+2025-04-26 15:04:03,127 - INFO - mpg123播放器已启动
+2025-04-26 15:04:08,290 - INFO - 等待用户输入...
+2025-04-26 15:04:15,020 - INFO - 用户问题: 甘薯的贮藏特。
+2025-04-26 15:04:15,020 - INFO - 正在处理问题...
+2025-04-26 15:04:15,391 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:04:23,751 - INFO - 流式回答花费了 8.61 seconds
+2025-04-26 15:04:23,751 - INFO - 完整响应 (8.73秒)：根据已知内容，甘薯（又称番薯、红薯、地瓜、红苕、白薯）的贮藏特性主要包括以下几个方面：
+
+1. **品种差异**：不同品种的甘薯耐贮性存在较大差异。例如，紫薯通常比普通红薯更耐贮藏。
+
+2. **形态特征与糖含量的影响**：
+   - 表皮薄、体积小且呈纺锤形的甘薯（如大叶红、烟薯25等）耐贮性较差。
+   - 糖分含量高的甘薯（如上述品种）也不太耐贮藏。
+   - 相对而言，表皮较厚、糖分较低、体积较大且呈现球形的甘薯（如北京553、红香蕉等）具有较好的耐贮性。
+
+在实际贮藏过程中，需要根据这些特点来选择适宜的品种，并采取相应的管理措施以确保甘薯的质量和延长其保鲜期。
+2025-04-26 15:05:17,834 - INFO - 等待用户输入...
+2025-04-26 15:05:25,690 - INFO - 用户问题: 可以做，实际上做数据的，我们就很重要相亲。
+2025-04-26 15:05:25,690 - INFO - 正在处理问题...
+2025-04-26 15:05:25,940 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:05:29,487 - INFO - 流式回答花费了 3.77 seconds
+2025-04-26 15:05:29,487 - INFO - 完整响应 (3.80秒)：这句话似乎有些混乱和不连贯，可能是在表达某种意思时出现了错误或混淆。能否请您提供更多的背景信息或者重新表述一下您的问题？这样我才能更准确地理解并帮助您解答。根据您提供的信息，“可以做，实际上做数据的，我们就很重要相亲”这部分内容不太清晰，不知道您是想询问关于数据处理工作的重要性、还是其他方面的内容。
+2025-04-26 15:05:55,550 - INFO - 等待用户输入...
+2025-04-26 15:06:03,526 - INFO - 用户问题: 对这个问题，我们1111111111111111。
+2025-04-26 15:06:03,527 - INFO - 正在处理问题...
+2025-04-26 15:06:03,804 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:06:09,625 - INFO - 流式回答花费了 6.08 seconds
+2025-04-26 15:06:09,625 - INFO - 完整响应 (6.10秒)：看来您提供的信息中包含了一些不寻常的数据和表述方式。根据给出的内容，“物价卓那时镇回了”可能是一个地方方言或特定情境下的表达，而关于吴佳卓的高考成绩部分则包含了异常高的分数，这显然不符合实际的考试评分规则。
+
+对于“1111111111111111”，这部分信息似乎没有直接相关性。如果您有具体的问题或者想要了解的信息，请提供更多的背景或明确您的问题，我会尽力帮助您。例如，如果这是想表达对上述内容的看法或是提问关于吴佳卓的情况，可以重新表述一下，这样我可以更好地理解并给出合适的回答。
+2025-04-26 15:06:56,444 - INFO - 等待用户输入...
+2025-04-26 15:07:02,982 - INFO - 用户问题: 如何？
+2025-04-26 15:07:02,982 - INFO - 正在处理问题...
+2025-04-26 15:07:02,983 - INFO - 收到退出信号
+2025-04-26 15:07:03,209 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:07:06,617 - ERROR - 播放语音时出错: [Errno 32] 断开的管道
+2025-04-26 15:07:07,697 - INFO - 流式回答花费了 4.68 seconds
+2025-04-26 15:07:07,697 - INFO - 完整响应 (4.71秒)：从给出的内容来看，“物价卓”似乎是一位名叫吴博士的人。他在浙江大学获得了博士学位，并且以“额擦学”（可能是指博弈论或相关的经济理论）见长，被尊称为“圣人”。不过，这段对话看起来更像是某种虚构情境或者幽默表达，因为现实中的学术领域和称呼通常不会这样命名。
+
+如果这是某个特定故事、梗或者是某种创意写作的一部分，那么“物价卓”的形象就被赋予了特殊的含义。如果有更具体的问题或需要进一步的信息，请告诉我！
+2025-04-26 15:07:08,390 - INFO - mpg123播放器已启动
+2025-04-26 15:07:17,555 - INFO - 收到退出信号
+2025-04-26 15:07:19,719 - INFO - mpg123播放器已启动
+2025-04-26 15:07:22,020 - ERROR - 播放语音时出错: [Errno 32] 断开的管道
+2025-04-26 15:07:22,026 - INFO - 收到退出信号
+2025-04-26 15:07:22,328 - INFO - 收到退出信号
+2025-04-26 15:07:22,403 - INFO - 收到退出信号
+2025-04-26 15:07:22,694 - INFO - 收到退出信号
+2025-04-26 15:07:22,858 - INFO - 收到退出信号
+2025-04-26 15:07:22,971 - INFO - 收到退出信号
+2025-04-26 15:07:23,313 - INFO - mpg123播放器已启动
+2025-04-26 15:07:25,316 - INFO - 收到退出信号
+2025-04-26 15:07:25,316 - INFO - 收到退出信号
+2025-04-26 15:07:25,316 - INFO - 收到退出信号
+2025-04-26 15:07:25,316 - INFO - 收到退出信号
+2025-04-26 15:07:25,317 - INFO - 收到退出信号
+2025-04-26 15:07:25,317 - INFO - 收到退出信号
+2025-04-26 15:07:25,317 - INFO - 收到退出信号
+2025-04-26 15:07:25,317 - INFO - 收到退出信号
+2025-04-26 15:07:25,317 - INFO - 收到退出信号
+2025-04-26 15:07:25,318 - INFO - 收到退出信号
+2025-04-26 15:07:25,318 - INFO - 收到退出信号
+2025-04-26 15:07:25,318 - INFO - 收到退出信号
+2025-04-26 15:07:25,318 - INFO - 收到退出信号
+2025-04-26 15:07:25,318 - INFO - 收到退出信号
+2025-04-26 15:07:25,318 - INFO - 收到退出信号
+2025-04-26 15:07:25,318 - INFO - 收到退出信号
+2025-04-26 15:07:25,318 - INFO - 收到退出信号
+2025-04-26 15:07:25,318 - INFO - 收到退出信号
+2025-04-26 15:07:25,319 - INFO - 收到退出信号
+2025-04-26 15:07:25,319 - INFO - 收到退出信号
+2025-04-26 15:07:25,319 - INFO - 收到退出信号
+2025-04-26 15:07:26,320 - INFO - 正在关闭系统...
+2025-04-26 15:07:26,822 - INFO - mpg123播放器已关闭
+2025-04-26 15:07:26,822 - INFO - 收到退出信号
+2025-04-26 15:07:26,828 - INFO - 所有资源已清理，系统已安全关闭
+2025-04-26 15:14:22,840 - INFO - 开始人脸认证...
+2025-04-26 15:14:22,841 - INFO - mpg123播放器已启动
+2025-04-26 15:14:28,508 - INFO - 认证成功: wudawang
+2025-04-26 15:14:32,651 - INFO - mpg123播放器已关闭
+2025-04-26 15:14:32,654 - INFO - 正在初始化甘薯问答系统...
+2025-04-26 15:14:35,089 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:14:35,090 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:14:53,732 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main/main_stream.py:256> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 273, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 270, in main
+    await chatbox.run()
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 204, in run
+    if not await self.initialize():
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 71, in initialize
+    self.qa = KnowledgeQA(llm_model=self.model)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 38, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 46, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1702, in _load_sbert_model
+    self.model_card_data.set_base_model(model_name_or_path, revision=revision)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/model_card.py", line 757, in set_base_model
+    model_info = get_model_info(model_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2591, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+2025-04-26 15:15:04,506 - INFO - 开始人脸认证...
+2025-04-26 15:15:04,507 - INFO - mpg123播放器已启动
+2025-04-26 15:15:09,971 - INFO - 认证成功: wudawang
+2025-04-26 15:15:14,433 - INFO - mpg123播放器已关闭
+2025-04-26 15:15:14,436 - INFO - 正在初始化甘薯问答系统...
+2025-04-26 15:15:16,781 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:15:16,781 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:16:07,101 - INFO - 开始人脸认证...
+2025-04-26 15:16:07,102 - INFO - mpg123播放器已启动
+2025-04-26 15:16:15,161 - INFO - 认证成功: wudawang
+2025-04-26 15:16:19,390 - INFO - mpg123播放器已关闭
+2025-04-26 15:16:19,392 - INFO - 正在初始化甘薯问答系统...
+2025-04-26 15:16:21,745 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:16:21,745 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:16:34,277 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main/main_stream.py:256> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 273, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 270, in main
+    await chatbox.run()
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 204, in run
+    if not await self.initialize():
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 71, in initialize
+    self.qa = KnowledgeQA(llm_model=self.model)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 38, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 46, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1702, in _load_sbert_model
+    self.model_card_data.set_base_model(model_name_or_path, revision=revision)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/model_card.py", line 757, in set_base_model
+    model_info = get_model_info(model_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2591, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+2025-04-26 15:17:03,527 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:17:03,527 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:17:03,892 - INFO - Loading faiss with AVX512 support.
+2025-04-26 15:17:03,904 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 15:17:03,906 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 15:17:24,030 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:17:30,771 - INFO - 问答耗时: 8.35秒
+2025-04-26 15:18:29,457 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:18:32,361 - INFO - 问答耗时: 3.11秒
+2025-04-26 15:19:12,075 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:19:23,629 - INFO - 问答耗时: 11.90秒
+2025-04-26 15:21:01,947 - INFO - 开始人脸认证...
+2025-04-26 15:21:01,948 - INFO - mpg123播放器已启动
+2025-04-26 15:21:07,694 - INFO - 认证成功: wudawang
+2025-04-26 15:21:11,859 - INFO - mpg123播放器已关闭
+2025-04-26 15:21:11,860 - INFO - 正在初始化甘薯问答系统...
+2025-04-26 15:21:14,386 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:21:14,386 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:21:25,041 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main/main_stream.py:256> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 273, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 270, in main
+    await chatbox.run()
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 204, in run
+    if not await self.initialize():
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main_stream.py", line 71, in initialize
+    self.qa = KnowledgeQA(llm_model=self.model)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 38, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 46, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1702, in _load_sbert_model
+    self.model_card_data.set_base_model(model_name_or_path, revision=revision)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/model_card.py", line 757, in set_base_model
+    model_info = get_model_info(model_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2591, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+2025-04-26 15:21:55,418 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:21:55,418 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:22:25,662 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main/main.py:81> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main/main.py", line 124, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main.py", line 113, in main
+    await run_sweet_potato_system()
+  File "/home/wuye/vscode/chatbox/main/main.py", line 16, in run_sweet_potato_system
+    qa = KnowledgeQA()
+         ^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 38, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 46, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1702, in _load_sbert_model
+    self.model_card_data.set_base_model(model_name_or_path, revision=revision)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/model_card.py", line 757, in set_base_model
+    model_info = get_model_info(model_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2591, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+2025-04-26 15:23:19,978 - ERROR - 语音播放失败：[Errno 2] No such file or directory: 'temp_audio_124086733492496.mp3'
+2025-04-26 15:23:46,771 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:23:46,771 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:24:19,377 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main/main.py:81> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main/main.py", line 124, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main.py", line 113, in main
+    await run_sweet_potato_system()
+  File "/home/wuye/vscode/chatbox/main/main.py", line 16, in run_sweet_potato_system
+    qa = KnowledgeQA()
+         ^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 38, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 46, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1702, in _load_sbert_model
+    self.model_card_data.set_base_model(model_name_or_path, revision=revision)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/model_card.py", line 757, in set_base_model
+    model_info = get_model_info(model_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2591, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+2025-04-26 15:25:42,494 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:25:42,494 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:25:54,030 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main/main.py:78> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main/main.py", line 121, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main.py", line 110, in main
+    await run_sweet_potato_system()
+  File "/home/wuye/vscode/chatbox/main/main.py", line 16, in run_sweet_potato_system
+    qa = KnowledgeQA()
+         ^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 38, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 46, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1702, in _load_sbert_model
+    self.model_card_data.set_base_model(model_name_or_path, revision=revision)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/model_card.py", line 757, in set_base_model
+    model_info = get_model_info(model_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2591, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+2025-04-26 15:27:22,880 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:27:22,880 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:28:22,546 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:28:22,547 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:28:41,094 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main/main.py:77> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main/main.py", line 120, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main.py", line 109, in main
+    await run_sweet_potato_system()
+  File "/home/wuye/vscode/chatbox/main/main.py", line 16, in run_sweet_potato_system
+    qa = KnowledgeQA()
+         ^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 38, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 46, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1702, in _load_sbert_model
+    self.model_card_data.set_base_model(model_name_or_path, revision=revision)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/model_card.py", line 757, in set_base_model
+    model_info = get_model_info(model_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2591, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+2025-04-26 15:29:10,182 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:29:10,182 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:29:29,097 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main/main.py:77> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main/main.py", line 120, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main.py", line 109, in main
+    await run_sweet_potato_system()
+  File "/home/wuye/vscode/chatbox/main/main.py", line 16, in run_sweet_potato_system
+    qa = KnowledgeQA()
+         ^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 38, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 46, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1702, in _load_sbert_model
+    self.model_card_data.set_base_model(model_name_or_path, revision=revision)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/model_card.py", line 757, in set_base_model
+    model_info = get_model_info(model_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2591, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+2025-04-26 15:31:17,926 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:31:17,926 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:32:24,014 - ERROR - Task exception was never retrieved
+future: <Task finished name='Task-1' coro=<main() done, defined at /home/wuye/vscode/chatbox/main/main.py:77> exception=KeyboardInterrupt()>
+Traceback (most recent call last):
+  File "/home/wuye/vscode/chatbox/main/main.py", line 120, in <module>
+    asyncio.run(main())
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 30, in run
+    return loop.run_until_complete(task)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 92, in run_until_complete
+    self._run_once()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/nest_asyncio.py", line 133, in _run_once
+    handle._run()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 360, in __wakeup
+    self.__step()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/asyncio/tasks.py", line 277, in __step
+    result = coro.send(None)
+             ^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/main/main.py", line 109, in main
+    await run_sweet_potato_system()
+  File "/home/wuye/vscode/chatbox/main/main.py", line 16, in run_sweet_potato_system
+    qa = KnowledgeQA()
+         ^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 38, in __init__
+    self.embedding_model = self._init_embeddings()
+                           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/vscode/chatbox/qa_model/qa_model_easy.py", line 46, in _init_embeddings
+    return HuggingFaceEmbeddings(
+           ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/langchain_huggingface/embeddings/huggingface.py", line 59, in __init__
+    self._client = sentence_transformers.SentenceTransformer(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 309, in __init__
+    modules, self.module_kwargs = self._load_sbert_model(
+                                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/SentenceTransformer.py", line 1702, in _load_sbert_model
+    self.model_card_data.set_base_model(model_name_or_path, revision=revision)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/sentence_transformers/model_card.py", line 757, in set_base_model
+    model_info = get_model_info(model_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_validators.py", line 114, in _inner_fn
+    return fn(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/hf_api.py", line 2591, in model_info
+    r = get_session().get(path, headers=headers, timeout=timeout, params=params)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 602, in get
+    return self.request("GET", url, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 589, in request
+    resp = self.send(prep, **send_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/sessions.py", line 703, in send
+    r = adapter.send(request, **kwargs)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/huggingface_hub/utils/_http.py", line 96, in send
+    return super().send(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/requests/adapters.py", line 667, in send
+    resp = conn.urlopen(
+           ^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 787, in urlopen
+    response = self._make_request(
+               ^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 464, in _make_request
+    self._validate_conn(conn)
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connectionpool.py", line 1093, in _validate_conn
+    conn.connect()
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 704, in connect
+    self.sock = sock = self._new_conn()
+                       ^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/connection.py", line 198, in _new_conn
+    sock = connection.create_connection(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/wuye/miniconda3/envs/chatbox/lib/python3.11/site-packages/urllib3/util/connection.py", line 73, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt
+2025-04-26 15:34:11,331 - ERROR - 语音播放失败：503, message='Invalid response status', url='wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=6A5AA1D4EAFF4E9FB37E23D68491D6F4&Sec-MS-GEC=9083CD98CB5459E32B40CBB1E518F10C2F118AB6D34056F41B7AB6A01D214D05&Sec-MS-GEC-Version=1-130.0.2849.68&ConnectionId=c618eb7314af48ee831dbc4736ad6a5f'
+2025-04-26 15:36:45,264 - ERROR - TTS尝试 1/3 失败: 503, message='Invalid response status', url='wss://speech.platform.bing.com/consumer/speech/synthesize/readaloud/edge/v1?TrustedClientToken=6A5AA1D4EAFF4E9FB37E23D68491D6F4&Sec-MS-GEC=48C29A8B367368B0D83BF7EFEE20E65AC18210E2257871C39484EBA53A3703ED&Sec-MS-GEC-Version=1-130.0.2849.68&ConnectionId=ec2083d4d3414699902505cd39a09067'
+2025-04-26 15:37:10,559 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:37:10,559 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:38:40,984 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:38:40,984 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:38:41,879 - INFO - Loading faiss with AVX512 support.
+2025-04-26 15:38:41,899 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 15:38:41,902 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 15:39:16,545 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:39:25,091 - INFO - 问答耗时: 11.96秒
+2025-04-26 15:40:42,774 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:40:46,719 - INFO - 问答耗时: 4.16秒
+2025-04-26 15:46:17,087 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:46:17,087 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:46:17,955 - INFO - Loading faiss with AVX512 support.
+2025-04-26 15:46:17,967 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 15:46:17,970 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 15:46:43,597 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:46:51,567 - INFO - 问答耗时: 9.67秒
+2025-04-26 15:48:17,394 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:48:22,951 - INFO - 问答耗时: 5.73秒
+2025-04-26 15:49:58,199 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:49:58,199 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:49:59,030 - INFO - Loading faiss with AVX512 support.
+2025-04-26 15:49:59,042 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 15:49:59,046 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 15:50:15,416 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:50:18,997 - INFO - 问答耗时: 3.83秒
+2025-04-26 15:51:11,380 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:51:11,430 - INFO - 问答耗时: 0.43秒
+2025-04-26 15:51:30,122 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:51:30,164 - INFO - 问答耗时: 0.20秒
+2025-04-26 15:51:47,229 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:51:47,271 - INFO - 问答耗时: 0.21秒
+2025-04-26 15:52:05,848 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:52:07,308 - INFO - 问答耗时: 1.84秒
+2025-04-26 15:52:36,470 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:52:36,512 - INFO - 问答耗时: 0.37秒
+2025-04-26 15:55:33,760 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:55:33,760 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:55:34,742 - INFO - Loading faiss with AVX512 support.
+2025-04-26 15:55:34,755 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 15:55:34,757 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 15:55:50,246 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:55:53,172 - INFO - 问答耗时: 3.18秒
+2025-04-26 15:56:31,125 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:56:32,650 - INFO - 问答耗时: 1.81秒
+2025-04-26 15:57:00,206 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:57:00,249 - INFO - 问答耗时: 0.26秒
+2025-04-26 15:57:16,466 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:57:16,508 - INFO - 问答耗时: 0.37秒
+2025-04-26 15:57:34,573 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:57:34,615 - INFO - 问答耗时: 0.27秒
+2025-04-26 15:57:51,245 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:57:53,196 - INFO - 问答耗时: 2.16秒
+2025-04-26 15:58:58,204 - INFO - Use pytorch device_name: cuda
+2025-04-26 15:58:58,204 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 15:58:59,161 - INFO - Loading faiss with AVX512 support.
+2025-04-26 15:58:59,174 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 15:58:59,176 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 15:59:13,897 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:59:13,938 - INFO - 问答耗时: 0.23秒
+2025-04-26 15:59:31,583 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 15:59:31,625 - INFO - 问答耗时: 0.31秒
+2025-04-26 16:04:51,142 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:04:51,142 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:04:52,007 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:04:52,019 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:04:52,022 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:06:39,651 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:06:39,651 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:06:40,461 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:06:40,472 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:06:40,474 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:06:57,700 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:06:57,745 - INFO - 问答耗时: 1.61秒
+2025-04-26 16:07:14,881 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:07:14,926 - INFO - 问答耗时: 0.24秒
+2025-04-26 16:08:15,708 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:08:15,708 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:08:16,559 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:08:16,571 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:08:16,573 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:08:31,552 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:08:31,647 - INFO - 问答耗时: 0.15秒
+2025-04-26 16:09:14,329 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:09:14,329 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:09:15,283 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:09:15,296 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:09:15,299 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:09:30,567 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:09:30,612 - INFO - 问答耗时: 0.10秒
+2025-04-26 16:13:59,626 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:13:59,626 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:14:00,617 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:14:00,628 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:14:00,630 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:14:15,593 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:14:15,638 - INFO - 问答耗时: 0.11秒
+2025-04-26 16:15:16,577 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:15:16,577 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:15:17,466 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:15:17,478 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:15:17,480 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:21:43,208 - INFO - 开始人脸认证...
+2025-04-26 16:21:43,209 - INFO - mpg123播放器已启动
+2025-04-26 16:21:50,320 - INFO - 认证成功: wudawang
+2025-04-26 16:21:56,045 - INFO - mpg123播放器已关闭
+2025-04-26 16:21:56,048 - INFO - 正在初始化甘薯问答系统...
+2025-04-26 16:21:56,050 - INFO - mpg123播放器已启动
+2025-04-26 16:22:00,836 - INFO - 初始化语音识别...
+2025-04-26 16:22:00,924 - INFO - 正在加载知识模型，这可能需要一些时间...
+2025-04-26 16:22:09,854 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:22:09,855 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:22:10,801 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:22:10,814 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:22:10,817 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:22:10,829 - INFO - 系统初始化完成
+2025-04-26 16:22:18,400 - INFO - 等待用户输入...
+2025-04-26 16:22:28,238 - INFO - 用户问题: 甘薯的贮藏特性。
+2025-04-26 16:22:28,238 - INFO - 正在处理问题...
+2025-04-26 16:22:30,021 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:22:33,411 - INFO - 流式回答花费了 5.06 seconds
+2025-04-26 16:22:33,412 - INFO - 完整响应 (5.17秒)：甘薯不同品种耐贮性差异较大。紫薯比红薯耐贮藏，大叶红、烟薯25、济薯26等体积小、纺锤形、表皮薄、糖含量高的红薯耐贮性差，北京553、红香蕉等体积大、球形、表皮厚、糖含量低的红薯耐贮性稍好。
+2025-04-26 16:22:33,412 - INFO - 等待用户输入...
+2025-04-26 16:23:03,059 - INFO - 用户问题: 那住宿舍好，那你还有什么位置呢？
+2025-04-26 16:23:03,059 - INFO - 正在处理问题...
+2025-04-26 16:23:03,347 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:23:03,394 - INFO - 流式回答花费了 0.31 seconds
+2025-04-26 16:23:03,394 - INFO - 完整响应 (0.33秒)：我不知道
+2025-04-26 16:23:03,394 - INFO - 等待用户输入...
+2025-04-26 16:23:17,180 - INFO - 用户问题: 什么建议？
+2025-04-26 16:23:17,180 - INFO - 正在处理问题...
+2025-04-26 16:23:17,502 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:23:19,267 - INFO - 流式回答花费了 2.07 seconds
+2025-04-26 16:23:19,267 - INFO - 完整响应 (2.09秒)：建议不要生吃甘薯，煮时要适当延长蒸煮时间，烂甘薯和发芽的甘薯不能吃，可以将甘薯制成各种食品，最好和米面搭配食用。
+2025-04-26 16:23:19,267 - INFO - 等待用户输入...
+2025-04-26 16:23:40,601 - INFO - 用户问题: 你说什么问题呢？
+2025-04-26 16:23:40,601 - INFO - 正在处理问题...
+2025-04-26 16:23:40,859 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:23:41,745 - INFO - 流式回答花费了 1.12 seconds
+2025-04-26 16:23:41,746 - INFO - 完整响应 (1.14秒)：甘薯在贮藏过程中容易腐烂变质、表皮皱缩、干缩糠心。
+2025-04-26 16:23:41,746 - INFO - 等待用户输入...
+2025-04-26 16:23:57,387 - INFO - 用户问题: 退出了。
+2025-04-26 16:23:57,387 - INFO - 正在处理问题...
+2025-04-26 16:23:57,610 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:23:57,656 - INFO - 流式回答花费了 0.26 seconds
+2025-04-26 16:23:57,656 - INFO - 完整响应 (0.27秒)：我不知道
+2025-04-26 16:23:57,656 - INFO - 等待用户输入...
+2025-04-26 16:24:12,173 - INFO - 用户问题: 退出。
+2025-04-26 16:24:12,173 - INFO - ==================================================
+2025-04-26 16:24:12,173 - INFO - 收到退出命令: '退出。'，lower() 结果是: '退出。'
+2025-04-26 16:24:12,173 - INFO - ==================================================
+2025-04-26 16:24:17,917 - INFO - 正在关闭系统...
+2025-04-26 16:24:18,419 - INFO - mpg123播放器已关闭
+2025-04-26 16:24:18,426 - INFO - ASR资源已释放
+2025-04-26 16:24:18,426 - INFO - 所有资源已清理，系统已安全关闭
+2025-04-26 16:25:45,290 - INFO - 开始人脸认证...
+2025-04-26 16:25:45,290 - INFO - mpg123播放器已启动
+2025-04-26 16:25:53,458 - INFO - 认证成功: wudawang
+2025-04-26 16:26:00,213 - INFO - mpg123播放器已关闭
+2025-04-26 16:26:00,213 - INFO - 正在初始化甘薯问答系统...
+2025-04-26 16:26:00,224 - INFO - mpg123播放器已启动
+2025-04-26 16:26:04,539 - INFO - 初始化语音识别...
+2025-04-26 16:26:04,621 - INFO - 正在加载知识模型，这可能需要一些时间...
+2025-04-26 16:26:14,188 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:26:14,189 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:26:15,074 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:26:15,086 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:26:15,088 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:26:15,099 - INFO - 系统初始化完成
+2025-04-26 16:26:22,714 - INFO - 等待用户输入...
+2025-04-26 16:26:34,059 - INFO - 用户问题: 
+2025-04-26 16:26:34,059 - INFO - 等待用户输入...
+2025-04-26 16:26:34,072 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:26:43,570 - INFO - 用户问题: 
+2025-04-26 16:26:43,570 - INFO - 正在关闭系统...
+2025-04-26 16:26:44,072 - INFO - mpg123播放器已关闭
+2025-04-26 16:26:44,077 - INFO - ASR资源已释放
+2025-04-26 16:26:44,077 - INFO - 所有资源已清理，系统已安全关闭
+2025-04-26 16:29:36,889 - INFO - 开始人脸认证...
+2025-04-26 16:29:36,889 - INFO - mpg123播放器已启动
+2025-04-26 16:29:44,341 - INFO - 认证成功: wudawang
+2025-04-26 16:29:50,397 - INFO - mpg123播放器已关闭
+2025-04-26 16:29:50,399 - INFO - 正在初始化甘薯问答系统...
+2025-04-26 16:29:50,401 - INFO - mpg123播放器已启动
+2025-04-26 16:29:53,644 - INFO - 初始化语音识别...
+2025-04-26 16:29:53,732 - INFO - 正在加载知识模型，这可能需要一些时间...
+2025-04-26 16:30:01,448 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:30:01,449 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:30:02,428 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:30:02,442 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:30:02,444 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:30:02,456 - INFO - 系统初始化完成
+2025-04-26 16:30:08,537 - INFO - 等待用户输入...
+2025-04-26 16:30:14,637 - INFO - 用户问题: 请问你有什么问题的，什么问题？
+2025-04-26 16:30:14,637 - INFO - 正在处理问题...
+2025-04-26 16:30:16,411 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:30:16,459 - INFO - 流式回答花费了 1.69 seconds
+2025-04-26 16:30:16,459 - INFO - 完整响应 (1.82秒)：我不知道
+2025-04-26 16:30:16,459 - INFO - 等待用户输入...
+2025-04-26 16:30:35,741 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:37,286 - INFO - mpg123播放器已启动
+2025-04-26 16:30:47,478 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:47,672 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:47,801 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:47,972 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:48,125 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:48,231 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:48,402 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:48,897 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:48,926 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:48,955 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:48,986 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,016 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,047 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,076 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,106 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,136 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,167 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,196 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,226 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,257 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,286 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,316 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,346 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,376 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,406 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,436 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,466 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,496 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,527 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,557 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,587 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,618 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,647 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,677 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,708 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,738 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,769 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,799 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,829 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,859 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,890 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,919 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,950 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:49,980 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:51,365 - INFO - mpg123播放器已启动
+2025-04-26 16:30:53,002 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:53,219 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:53,722 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:53,750 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:53,773 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:53,804 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:53,833 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:53,864 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:53,894 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:53,924 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:53,955 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:53,985 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:54,015 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:54,045 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:54,076 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:54,107 - INFO - 收到系统退出信号，正在安全退出...
+2025-04-26 16:30:55,471 - INFO - mpg123播放器已启动
+2025-04-26 16:33:37,667 - INFO - 开始人脸认证...
+2025-04-26 16:33:37,668 - INFO - mpg123播放器已启动
+2025-04-26 16:33:46,458 - INFO - 认证成功: wudawang
+2025-04-26 16:33:52,093 - INFO - mpg123播放器已关闭
+2025-04-26 16:33:52,093 - INFO - 正在初始化甘薯问答系统...
+2025-04-26 16:33:52,094 - INFO - mpg123播放器已启动
+2025-04-26 16:33:56,770 - INFO - 初始化语音识别...
+2025-04-26 16:33:56,863 - INFO - 正在加载知识模型，这可能需要一些时间...
+2025-04-26 16:34:05,477 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:34:05,478 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:34:06,457 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:34:06,470 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:34:06,473 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:34:06,485 - INFO - 系统初始化完成
+2025-04-26 16:34:13,496 - INFO - 音频缓冲区已清理
+2025-04-26 16:34:13,496 - INFO - 等待用户输入...
+2025-04-26 16:34:18,991 - INFO - 音频缓冲区已清理
+2025-04-26 16:34:24,811 - INFO - 用户问题: 甘薯的贮藏特性。
+2025-04-26 16:34:24,811 - INFO - 正在处理问题...
+2025-04-26 16:34:25,242 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:34:27,367 - INFO - 流式回答花费了 2.45 seconds
+2025-04-26 16:34:27,367 - INFO - 完整响应 (2.56秒)：甘薯不同品种耐贮性差异大。紫薯比红薯耐贮藏，北京553、红香蕉等体积大、球形、表皮厚、糖含量低的红薯耐贮性稍好。
+2025-04-26 16:34:27,368 - INFO - 等待用户输入...
+2025-04-26 16:34:50,306 - INFO - 音频缓冲区已清理
+2025-04-26 16:34:56,014 - INFO - 用户问题: 甘肃的。
+2025-04-26 16:34:56,015 - INFO - 正在处理问题...
+2025-04-26 16:34:56,430 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:34:56,479 - INFO - 流式回答花费了 0.43 seconds
+2025-04-26 16:34:56,479 - INFO - 完整响应 (0.46秒)：我不知道
+2025-04-26 16:34:56,479 - INFO - 等待用户输入...
+2025-04-26 16:35:05,475 - INFO - 音频缓冲区已清理
+2025-04-26 16:35:10,905 - INFO - 用户问题: 甘肃的使用建议。
+2025-04-26 16:35:10,905 - INFO - 正在处理问题...
+2025-04-26 16:35:11,356 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:35:11,406 - INFO - 流式回答花费了 0.49 seconds
+2025-04-26 16:35:11,406 - INFO - 完整响应 (0.50秒)：我不知道
+2025-04-26 16:35:11,406 - INFO - 等待用户输入...
+2025-04-26 16:35:19,959 - INFO - 音频缓冲区已清理
+2025-04-26 16:35:25,464 - INFO - 用户问题: 退出。
+2025-04-26 16:35:25,464 - INFO - ==================================================
+2025-04-26 16:35:25,473 - INFO - 收到退出命令: '退出。'，lower() 结果是: '退出。'
+2025-04-26 16:35:25,473 - INFO - ==================================================
+2025-04-26 16:35:30,781 - INFO - 正在关闭系统...
+2025-04-26 16:35:31,283 - INFO - mpg123播放器已关闭
+2025-04-26 16:35:31,296 - INFO - ASR资源已释放
+2025-04-26 16:35:31,297 - INFO - 所有资源已清理，系统已安全关闭
+2025-04-26 16:39:25,949 - ERROR - 主程序错误: name 'self' is not defined
+2025-04-26 16:40:10,765 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:40:10,765 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:40:11,706 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:40:11,718 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:40:11,721 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:41:01,308 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:41:01,308 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:41:02,162 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:41:02,175 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:41:02,178 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:41:18,236 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:41:18,279 - INFO - 问答耗时: 1.61秒
+2025-04-26 16:41:34,458 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:41:34,504 - INFO - 问答耗时: 0.23秒
+2025-04-26 16:41:51,348 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:41:51,391 - INFO - 问答耗时: 0.21秒
+2025-04-26 16:47:54,170 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:47:54,170 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:47:55,068 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:47:55,080 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:47:55,083 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:48:12,481 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:48:16,233 - INFO - 问答耗时: 5.46秒
+2025-04-26 16:48:55,370 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:48:57,114 - INFO - 问答耗时: 2.10秒
+2025-04-26 16:50:53,622 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:50:53,622 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:50:54,466 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:50:54,478 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:50:54,480 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:50:54,492 - ERROR - 系统运行出错: name 'user_name' is not defined
+2025-04-26 16:52:53,223 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:52:53,223 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:52:54,064 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:52:54,076 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:52:54,079 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 16:53:10,894 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 16:53:14,482 - INFO - 问答耗时: 3.91秒
+2025-04-26 16:56:48,039 - INFO - Use pytorch device_name: cuda
+2025-04-26 16:56:48,040 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 16:56:48,965 - INFO - Loading faiss with AVX512 support.
+2025-04-26 16:56:48,979 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 16:56:48,981 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 17:01:27,374 - INFO - 🔐 开始人脸认证...
+2025-04-26 17:01:27,375 - INFO - mpg123播放器已启动
+2025-04-26 17:01:34,929 - INFO - ✅ 认证成功: wudawang
+2025-04-26 17:01:40,357 - INFO - mpg123播放器已关闭
+2025-04-26 17:01:40,357 - INFO - 🚀 正在初始化甘薯问答系统...
+2025-04-26 17:01:40,459 - INFO - mpg123播放器已启动
+2025-04-26 17:01:44,101 - INFO - 🎤 初始化语音识别...
+2025-04-26 17:01:44,202 - INFO - 🧠 正在加载知识模型，这可能需要一些时间...
+2025-04-26 17:01:52,894 - INFO - Use pytorch device_name: cuda
+2025-04-26 17:01:52,895 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 17:01:53,757 - INFO - Loading faiss with AVX512 support.
+2025-04-26 17:01:53,770 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 17:01:53,772 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 17:01:53,793 - INFO - ✨ 系统初始化完成
+2025-04-26 17:01:58,864 - INFO - 🧹 音频缓冲区已清理
+2025-04-26 17:01:58,865 - INFO - 
+🎤 等待语音输入
+2025-04-26 17:02:04,894 - INFO - 🧹 音频缓冲区已清理
+2025-04-26 17:02:50,241 - INFO - 🔐 开始人脸认证...
+2025-04-26 17:02:50,242 - INFO - mpg123播放器已启动
+2025-04-26 17:03:01,008 - INFO - ✅ 认证成功: wudawang
+2025-04-26 17:03:06,851 - INFO - mpg123播放器已关闭
+2025-04-26 17:03:06,852 - INFO - 🚀 正在初始化甘薯问答系统...
+2025-04-26 17:03:06,962 - INFO - mpg123播放器已启动
+2025-04-26 17:03:10,943 - INFO - 🎤 初始化语音识别...
+2025-04-26 17:03:11,044 - INFO - 🧠 正在加载知识模型，这可能需要一些时间...
+2025-04-26 17:03:18,331 - INFO - Use pytorch device_name: cuda
+2025-04-26 17:03:18,331 - INFO - Load pretrained SentenceTransformer: bge-base-zh-v1.5
+2025-04-26 17:03:19,147 - INFO - Loading faiss with AVX512 support.
+2025-04-26 17:03:19,160 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-26 17:03:19,163 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-26 17:03:19,228 - INFO - ✨ 系统初始化完成
+2025-04-26 17:03:24,433 - INFO - 🧹 音频缓冲区已清理
+2025-04-26 17:03:24,433 - INFO - 
+🎤 等待语音输入
+2025-04-26 17:03:29,715 - INFO - 🧹 音频缓冲区已清理
+2025-04-26 17:03:35,428 - INFO - 💬 问题: 退出了。
+2025-04-26 17:03:35,428 - INFO - 🧠 正在处理问题...
+2025-04-26 17:03:37,130 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 17:03:37,178 - INFO - 流式回答花费了 1.62 seconds
+2025-04-26 17:03:37,178 - INFO - ✅ 回答完成 (用时: 1.74秒)
+2025-04-26 17:03:37,178 - INFO - 
+🎤 等待语音输入
+2025-04-26 17:03:44,415 - INFO - 🧹 音频缓冲区已清理
+2025-04-26 17:03:49,823 - INFO - 💬 问题: 退出你说。
+2025-04-26 17:03:49,823 - INFO - 🧠 正在处理问题...
+2025-04-26 17:03:50,159 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
+2025-04-26 17:03:50,225 - INFO - 流式回答花费了 0.39 seconds
+2025-04-26 17:03:50,225 - INFO - ✅ 回答完成 (用时: 0.40秒)
+2025-04-26 17:03:50,225 - INFO - 
+🎤 等待语音输入
+2025-04-26 17:03:57,592 - INFO - 🧹 音频缓冲区已清理
+2025-04-26 17:04:02,898 - INFO - 💬 问题: 退出。
+2025-04-26 17:04:02,898 - INFO - ==================================================
+2025-04-26 17:04:02,898 - INFO - 🚪 收到退出命令: '退出。'，lower() 结果是: '退出。'
+2025-04-26 17:04:02,898 - INFO - ==================================================
+2025-04-26 17:04:06,939 - INFO - 🧹 正在关闭系统...
+2025-04-26 17:04:07,440 - INFO - mpg123播放器已关闭
+2025-04-26 17:04:07,451 - INFO - ✅ ASR资源已释放
+2025-04-26 17:04:07,540 - INFO - ✅ 所有资源已清理，系统已安全关闭

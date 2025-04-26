@@ -26,26 +26,22 @@ class TTSStreamer:
         self.speech_task = None
 
     def preprocess_text(self, text):
-            """
-            预处理文本，替换不标准的标点并清理可能导致问题的字符
-            """
-            text = text.replace("，", ",")
-            text = text.replace("。", ",")
-            text = text.replace("、", ",")
-            text = text.replace("；", ",")
-            text = text.replace("：", ",")
-            text = text.replace("！", ",")
-            text = text.replace("？", ",")
-            text = text.replace("“", ',')
-            text = text.replace("”", ',')
-            text = text.replace("‘", ',')
-            text = text.replace("’", ',')
-            text = text.replace("《", ',')
-            text = text.replace("》", ',')
-            text = re.sub(r'[\x00-\x1F\x7F]', '', text)
-    
-            # print(f"预处理后的文本：{text}")
-            return text
+        """
+        预处理文本，替换不标准的标点并清理可能导致问题的字符
+        """
+        text = text.replace("，", ",")
+        text = text.replace("。", ",")
+        text = text.replace("、", ",")
+        text = text.replace("；", ",")
+        text = text.replace("：", ",")
+        text = text.replace("*", ',')
+        text = text.replace(".", ',')
+        text = text.replace("#", ',')
+        text = text.replace("？", ',')
+        text = re.sub(r'[\x00-\x1F\x7F]', '', text)
+ 
+        # print(f"预处理后的文本：{text}")
+        return text
 
     async def start_player(self):
         """启动mpg123进程，确保只存在一个实例"""
