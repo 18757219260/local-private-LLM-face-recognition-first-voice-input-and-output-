@@ -79,9 +79,9 @@ class TTSStreamer:
                     logging.error(f"关闭mpg123时出错: {e}")
 
     async def _generate_speech(self, text):
-        """生成语音数据（完整缓冲）"""
+        """生成语音数据并获取实际音频长度"""
         if not text or not text.strip():
-            return None
+            return None, 0  # 返回None和0时长
             
         try:
             communicate = edge_tts.Communicate(
@@ -92,19 +92,26 @@ class TTSStreamer:
             )
             
             audio_data = io.BytesIO()
+            audio_length = 0  # 音频长度（秒）
+            
             async for chunk in communicate.stream():
                 if chunk["type"] == "audio":
                     audio_data.write(chunk["data"])
+                elif chunk["type"] == "WordBoundary":
+                    # 更新最后一个词的结束时间
+                    if "audioOffset" in chunk and "audioDuration" in chunk:
+                        end_time = (chunk["audioOffset"] + chunk["audioDuration"]) / 10000  # 转换为秒
+                        audio_length = max(audio_length, end_time)
                     
-            # 返回完整数据
+            # 返回完整数据和音频长度
             if audio_data.tell() > 0:
                 audio_data.seek(0)
-                return audio_data.getvalue()
+                return audio_data.getvalue(), audio_length
             else:
-                return None
+                return None, 0
         except Exception as e:
             logging.error(f"生成语音时出错: {e}")
-            return None
+            return None, 0
             
     async def _speech_processor(self):
         """处理语音队列的后台任务"""
@@ -120,8 +127,8 @@ class TTSStreamer:
                     break
                     
                 try:
-                    # 生成语音数据
-                    audio_data = await self._generate_speech(text)
+                    # 生成语音数据和获取实际音频长度
+                    audio_data, audio_length = await self._generate_speech(text)
                     
                     if audio_data:
                         # 播放语音
@@ -129,16 +136,26 @@ class TTSStreamer:
                             self.mpg123_process.stdin.write(audio_data)
                             self.mpg123_process.stdin.flush()
                             
-                            # 估计播放时间
-                            estimated_duration = len(text) * 0.1
-                            await asyncio.sleep(estimated_duration)
+                            # 使用实际音频时长，加上小缓冲
+                            if audio_length > 0:
+                                await asyncio.sleep(audio_length + 0.1)  # 添加0.1秒缓冲
+                            else:
+                                # 备用估计（如果无法获取实际长度）
+                                estimated_duration = len(text) * 0.1
+                                await asyncio.sleep(estimated_duration)
                         else:
                             # 重启播放器
                             await self.start_player()
                             if self.mpg123_process:
                                 self.mpg123_process.stdin.write(audio_data)
                                 self.mpg123_process.stdin.flush()
-                                await asyncio.sleep(len(text) * 0.1)
+                                
+                                # 同样使用实际音频长度
+                                if audio_length > 0:
+                                    await asyncio.sleep(audio_length + 0.1)
+                                else:
+                                    estimated_duration = len(text) * 0.1
+                                    await asyncio.sleep(estimated_duration)
                 except Exception as e:
                     logging.error(f"播放语音时出错: {e}")
                 
@@ -192,14 +209,14 @@ class TTSStreamer:
         self._speech_complete_event.set()
         
     async def speak_text(self, text, wait=False):
-        """流式处理较长文本，分段播放"""
+        """流式处理较长文本，使用更智能的分段"""
         text = self.preprocess_text(text)
         
-        # 分割文本为自然段落
+        # 更智能的分段逻辑
         segments = []
         
-        # 基于句子分割
-        sentences = re.split(r'([.!?。！？])', text)
+        # 基于句子分割，最大长度为50个字符
+        sentences = re.split(r'([,])', text)
         
         # 重新组合句子和标点
         current_segment = ""
@@ -210,7 +227,7 @@ class TTSStreamer:
                 sentence = sentences[i]
                 
             # 如果当前段落已经太长，存储并开始新段落
-            if len(current_segment) + len(sentence) > 100:  # 适当的段落长度
+            if len(current_segment) + len(sentence) > 50:  # 更短的段落长度
                 segments.append(current_segment)
                 current_segment = sentence
             else:
@@ -228,6 +245,8 @@ class TTSStreamer:
         for segment in segments:
             if segment.strip():
                 await self.speak_segment(segment)
+                # 添加一个非常短的间隔，使得连续播放更自然
+                await asyncio.sleep(0.03)
                 
         # 如果需要等待完成
         if wait:
