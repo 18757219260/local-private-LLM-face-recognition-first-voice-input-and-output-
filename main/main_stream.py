@@ -197,8 +197,8 @@ class SweetPotatoChatbox:
     
     async def process_user_input(self):
         """处理用户语音输入"""
-        logging.info("\n🎤 等待语音输入")
-        print("\n🎤 等待语音输入...")
+        logging.info("\n🎤 等待语音播放完🎤")
+        # print("\n🎤 等待语音输入...")
         
         # 确保TTS完全结束并额外等待，防止自我收听
         await self.tts.wait_until_done()
@@ -266,108 +266,7 @@ class SweetPotatoChatbox:
             
         return question
         
-    async def process_llm_response(self, question):
-        """处理LLM响应并流式输出"""
-        if not question:
-            return
             
-        logging.info("🧠 正在处理问题...")
-        print("🧠 正在思考回答...")
-        
-        # 显示思考动画
-        thinking_spinner = LoadingAnimation("AI正在组织回答")
-        thinking_spinner.start()
-        
-        # 统计收到的文本块
-        total_response = ""
-        current_segment = ""
-        segment_size = 60  # 每个语音段的大致字符数量
-        first_segment = True  # 标记是否是第一个段落
-        
-        try:
-            # 开始计时
-            start_time = time.time()
-            
-            # 使用流式接口获取回复的第一部分
-            first_chunk_received = False
-            
-            # 使用流式接口获取回复
-            async for chunk in self.qa.ask_stream(question):
-                # 接收到第一个响应时停止加载动画
-                if not first_chunk_received:
-                    first_chunk_received = True
-                    thinking_spinner.stop()
-                    print("💬 回答: ", end="", flush=True)
-                
-                # 检查是否收到退出信号
-                if self.shutdown_event.is_set():
-                    break
-                    
-                # 添加到总响应
-                total_response += chunk
-                current_segment += chunk
-                
-                # 输出到控制台
-                print(chunk, end="", flush=True)
-                
-                # 当前段达到一定长度，启动TTS
-                if len(current_segment) >= segment_size:
-                    if self.debug:
-                        print(f"\n🔊 播放段落: {current_segment}")
-                    
-                    try:
-                        if first_segment:
-                            await self.tts.speak_segment('11' + current_segment)
-                            first_segment = False
-                        else:
-                            await self.tts.speak_segment('11'+current_segment)
-                    except Exception as e:
-                        logging.error(f"⚠️ 语音播放段落失败: {e}")
-                        # 控制台已经有输出了，不需要再打印
-                            
-                    current_segment = ""
-            
-            # 如果没有收到任何响应，停止加载动画
-            if not first_chunk_received:
-                thinking_spinner.stop()
-            
-            # 处理最后剩余部分
-            if current_segment and not self.shutdown_event.is_set():
-                if self.debug:
-                    print(f"\n🔊 播放最后段落: {current_segment}")
-                
-                try:
-                    if first_segment:
-                        await self.tts.speak_segment('11' + current_segment)
-                    else:
-                        await self.tts.speak_segment('11'+current_segment)
-                except Exception as e:
-                    logging.error(f"⚠️ 语音播放最后段落失败: {e}")
-                
-            # 输出完整响应耗时到日志
-            logging.info(f"✅ 回答完成 (用时: {time.time() - start_time:.2f}秒)")
-            print(f"\n\n⏱️ 回答用时: {time.time() - start_time:.2f}秒")
-            
-        except asyncio.CancelledError:
-            # 确保动画停止
-            if 'thinking_spinner' in locals() and thinking_spinner.thread and thinking_spinner.thread.is_alive():
-                thinking_spinner.stop()
-            
-            logging.info("🛑 流式回答任务被取消")
-            print("\n🛑 回答任务被取消")
-            raise
-        except Exception as e:
-            # 确保动画停止
-            if 'thinking_spinner' in locals() and thinking_spinner.thread and thinking_spinner.thread.is_alive():
-                thinking_spinner.stop()
-            
-            logging.error(f"❌ 处理响应时出错: {e}")
-            print(f"\n❌ 处理响应时出错: {e}")
-            try:
-                # 尝试播放错误提示
-                await self.tts.speak_text("11抱歉，处理您的问题时出现了错误。", wait=True)
-            except:
-                print("⚠️ 抱歉，处理您的问题时出现了错误。")
     
     async def run(self):
         """运行主循环"""
@@ -412,7 +311,27 @@ class SweetPotatoChatbox:
                 
                 # 处理问题并回答
                 if question:
-                    await self.process_llm_response(question)
+                    try:
+                        answer_loader = LoadingAnimation("正在思考")
+                        answer_loader.start()
+                        
+                        # 获取答案
+                        answer = await self.qa.ask_stream(question)
+                        
+                        # 停止加载动画
+                        answer_loader.stop()
+                        # 播放答案
+                        if answer:
+                            logging.info(f"💡 答案: {answer}")
+                            print(f"💡 答案: {answer}")
+                            try:
+                                await self.tts.speak_text(answer, wait=False)
+                            except Exception as e:
+                                logging.error(f"⚠️ 播放答案失败: {e}")
+                                print(f"⚠️ 播放答案失败: {e}")
+                    except Exception as e:
+                        logging.error(f"❌ 处理问题时出错: {e}")
+                        print(f"❌ 处理问题时出错: {e}")
                     
         except KeyboardInterrupt:
             logging.info("⌨️ 收到键盘中断信号")
