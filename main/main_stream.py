@@ -183,11 +183,11 @@ class SweetPotatoChatbox:
         self.shutdown_event.set()
     
     async def clear_audio_buffer(self):
-        """清理音频缓冲区"""
+        """清理音频缓冲区 - 更快速的清理"""
         try:
             if hasattr(self.asr, 'stream'):
-                # 清除缓冲区中残留的音频数据
-                time.sleep(0.2)  # 短暂等待以确保任何未处理的数据都到达缓冲区
+                # 减少清理次数，加快处理速度
+                time.sleep(0.1)  # 从0.2减少到0.1
                 while self.asr.stream.get_read_available() > 0:
                     self.asr.stream.read(self.asr.CHUNK, exception_on_overflow=False)
                     
@@ -196,16 +196,21 @@ class SweetPotatoChatbox:
             logging.warning(f"⚠️ 清理音频缓冲区时出错: {e}")
     
     async def process_user_input(self):
-        """处理用户语音输入"""
+        """处理用户语音输入 - 优化时序，提高响应速度"""
         logging.info("\n🎤 等待语音播放完🎤")
-        # print("\n🎤 等待语音输入...")
         
-        # 确保TTS完全结束并额外等待，防止自我收听
+        # 确保TTS完全结束
         await self.tts.wait_until_done()
         
-        # 提示文本，区分第一次交互和后续交互
+        # 减少等待时间，仅保留必要的缓冲
+        await asyncio.sleep(0.5)  
+        
+        # 清空音频缓冲区
+        await self.clear_audio_buffer()
+        
+        # 提示文本
         prompt_text = "11请问您有什么关于甘薯的问题？" if self.first_interaction else "11您还有什么问题吗？"
-        self.first_interaction = False  # 重置第一次交互标志
+        self.first_interaction = False
         
         try:
             await self.tts.speak_text(prompt_text, wait=True)
@@ -213,10 +218,10 @@ class SweetPotatoChatbox:
             logging.error(f"⚠️ 语音提示失败: {e}")
             print(prompt_text.replace("11", ""))
         
-        # 等待一小段时间确保语音完全播放完毕，防止捕获自己的声音
-        await asyncio.sleep(1.0)
+        # 减少提示后的等待时间
+        await asyncio.sleep(0.3)  # 从1.5减少到0.3秒
         
-        # 清空音频缓冲，防止捕获系统自己的语音输出
+        # 清空音频缓冲
         await self.clear_audio_buffer()
         
         # 显示监听指示器
@@ -229,14 +234,13 @@ class SweetPotatoChatbox:
         # 停止监听指示器
         listening_spinner.stop()
         
-        # 处理结果
+        # [处理结果部分保持不变...]
         if not question_result or 'result' not in question_result or not question_result['result']:
             logging.info("❌ 未检测到有效语音输入")
             print("❌ 未检测到有效语音输入")
             try:
                 await self.tts.speak_text("11我没有听到您的问题，请再说一次。", wait=True)
-                # 等待确保提示语音播放完毕
-                await asyncio.sleep(0.5)
+                await asyncio.sleep(0.3)  # 减少等待时间
                 await self.clear_audio_buffer()
             except:
                 print("🔄 我没有听到您的问题，请再说一次。")
@@ -265,7 +269,6 @@ class SweetPotatoChatbox:
             return None
             
         return question
-        
             
     
     async def run(self):
@@ -315,17 +318,18 @@ class SweetPotatoChatbox:
                         answer_loader = LoadingAnimation("正在思考")
                         answer_loader.start()
                         
-                        # 获取答案
-                        answer = await self.qa.ask_stream(question)
+                        full_answer = ""
+                        async for chunk in self.qa.ask_stream(question):
+                            full_answer += chunk
                         
                         # 停止加载动画
                         answer_loader.stop()
                         # 播放答案
-                        if answer:
-                            logging.info(f"💡 答案: {answer}")
-                            print(f"💡 答案: {answer}")
+                        if full_answer:
+                            logging.info(f"💡 答案: {full_answer}")
+                            
                             try:
-                                await self.tts.speak_text(answer, wait=False)
+                                await self.tts.speak_text(full_answer, wait=False)
                             except Exception as e:
                                 logging.error(f"⚠️ 播放答案失败: {e}")
                                 print(f"⚠️ 播放答案失败: {e}")

@@ -119,3 +119,19 @@ If this is a private repository, make sure to pass a token having permission to 
 2025-04-25 14:16:51,300 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
 2025-04-25 14:16:53,726 - INFO - HTTP Request: POST http://localhost:11434/api/generate "HTTP/1.1 200 OK"
 2025-04-25 14:16:59,870 - INFO - 已保存 7 条对话历史记录
+2025-04-28 14:19:31,064 - INFO - Use pytorch device_name: cuda
+2025-04-28 14:19:31,064 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-28 14:19:31,518 - INFO - 加载现有向量数据库: faiss_index
+2025-04-28 14:19:31,520 - INFO - Loading faiss with AVX512 support.
+2025-04-28 14:19:31,637 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-28 14:19:31,639 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-28 14:19:31,641 - INFO - 知识库无需更新
+2025-04-28 14:19:31,641 - INFO - 向量数据库测试成功
+2025-04-28 14:27:21,491 - INFO - Use pytorch device_name: cuda
+2025-04-28 14:27:21,491 - INFO - Load pretrained SentenceTransformer: ./bge-base-zh-v1.5
+2025-04-28 14:27:21,808 - INFO - 加载现有向量数据库: faiss_index
+2025-04-28 14:27:21,809 - INFO - Loading faiss with AVX512 support.
+2025-04-28 14:27:21,923 - INFO - Successfully loaded faiss with AVX512 support.
+2025-04-28 14:27:21,926 - INFO - Failed to load GPU Faiss: name 'GpuIndexIVFFlat' is not defined. Will not load constructor refs for GPU indexes.
+2025-04-28 14:27:21,926 - INFO - 知识库无需更新
+2025-04-28 14:27:21,926 - INFO - 向量数据库测试成功

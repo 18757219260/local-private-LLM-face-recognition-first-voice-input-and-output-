@@ -1,13 +1,10 @@
-import sys
-import os
-sys.path.append(os.path.abspath("/home/wuye/vscode/chatbox"))
 import asyncio
 import edge_tts
 import subprocess
 import io
 import logging
 import re
-
+import time
 
 
 class TTSStreamer:
@@ -18,17 +15,14 @@ class TTSStreamer:
         self.is_speaking = False
         self._lock = asyncio.Lock()
         self.mpg123_process = None
-        self.min_buffer_size = 4096
-        self.buffered_audio = bytearray()
         self.speech_queue = asyncio.Queue()
-        self._speech_complete_event = asyncio.Event()
-        self._speech_complete_event.set()  
         self.speech_task = None
+        self._playback_complete = asyncio.Event()
+        self._playback_complete.set()  # Initially set
+        self._last_audio_time = 0
 
     def preprocess_text(self, text):
-        """
-        预处理文本，替换不标准的标点并清理可能导致问题的字符
-        """
+        """预处理文本，替换标点符号"""
         text = text.replace("，", ",")
         text = text.replace("。", ",")
         text = text.replace("、", ",")
@@ -39,21 +33,19 @@ class TTSStreamer:
         text = text.replace("#", ',')
         text = text.replace("？", ',')
         text = re.sub(r'[\x00-\x1F\x7F]', '', text)
- 
-        # print(f"预处理后的文本：{text}")
         return text
 
     async def start_player(self):
-        """启动mpg123进程，确保只存在一个实例"""
+        """启动mpg123进程"""
         async with self._lock:
             if self.mpg123_process is None or self.mpg123_process.poll() is not None:
                 try:
                     self.mpg123_process = subprocess.Popen(
-                        ["mpg123", "-q", "-"],  # 安静模式
+                        ["mpg123", "-q", "-"],
                         stdin=subprocess.PIPE,
                         stdout=subprocess.DEVNULL,
                         stderr=subprocess.DEVNULL,
-                        bufsize=1024*8  # 大缓冲区
+                        bufsize=1024*8
                     )
                     logging.info("mpg123播放器已启动")
                 except Exception as e:
@@ -79,9 +71,9 @@ class TTSStreamer:
                     logging.error(f"关闭mpg123时出错: {e}")
 
     async def _generate_speech(self, text):
-        """生成语音数据并获取实际音频长度"""
+        """生成语音数据"""
         if not text or not text.strip():
-            return None, 0  # 返回None和0时长
+            return None
             
         try:
             communicate = edge_tts.Communicate(
@@ -92,80 +84,74 @@ class TTSStreamer:
             )
             
             audio_data = io.BytesIO()
-            audio_length = 0  # 音频长度（秒）
             
             async for chunk in communicate.stream():
                 if chunk["type"] == "audio":
                     audio_data.write(chunk["data"])
-                elif chunk["type"] == "WordBoundary":
-                    # 更新最后一个词的结束时间
-                    if "audioOffset" in chunk and "audioDuration" in chunk:
-                        end_time = (chunk["audioOffset"] + chunk["audioDuration"]) / 10000  # 转换为秒
-                        audio_length = max(audio_length, end_time)
                     
-            # 返回完整数据和音频长度
             if audio_data.tell() > 0:
                 audio_data.seek(0)
-                return audio_data.getvalue(), audio_length
+                return audio_data.getvalue()
             else:
-                return None, 0
+                return None
         except Exception as e:
             logging.error(f"生成语音时出错: {e}")
-            return None, 0
+            return None
             
     async def _speech_processor(self):
-        """处理语音队列的后台任务"""
+        """处理语音队列的后台任务，使用优化的延迟策略"""
         try:
             await self.start_player()
             
             while True:
-                # 获取下一段语音文本
                 text = await self.speech_queue.get()
                 
-                # None作为结束信号
-                if text is None:
+                if text is None:  # 结束信号
                     break
                     
                 try:
-                    # 生成语音数据和获取实际音频长度
-                    audio_data, audio_length = await self._generate_speech(text)
+                    self._playback_complete.clear()
+                    self.is_speaking = True
+                    
+                    audio_data = await self._generate_speech(text)
                     
                     if audio_data:
-                        # 播放语音
                         if self.mpg123_process and self.mpg123_process.poll() is None:
                             self.mpg123_process.stdin.write(audio_data)
                             self.mpg123_process.stdin.flush()
                             
-                            # 使用实际音频时长，加上小缓冲
-                            if audio_length > 0:
-                                await asyncio.sleep(audio_length + 0.1)  # 添加0.1秒缓冲
-                            else:
-                                # 备用估计（如果无法获取实际长度）
-                                estimated_duration = len(text) * 0.1
-                                await asyncio.sleep(estimated_duration)
+                            # 优化延迟策略 - 更准确的估算
+                            text_length = len(text)
+                            base_delay = 0.15  
+                            min_delay = 0.8    
+                            max_delay = 8.0    
+                            
+                            delay = max(min_delay, min(max_delay, text_length * base_delay))
+                            await asyncio.sleep(delay + 0.3)  
+                            
                         else:
-                            # 重启播放器
                             await self.start_player()
                             if self.mpg123_process:
                                 self.mpg123_process.stdin.write(audio_data)
                                 self.mpg123_process.stdin.flush()
                                 
-                                # 同样使用实际音频长度
-                                if audio_length > 0:
-                                    await asyncio.sleep(audio_length + 0.1)
-                                else:
-                                    estimated_duration = len(text) * 0.1
-                                    await asyncio.sleep(estimated_duration)
+                                text_length = len(text)
+                                delay = max(0.8, min(8.0, text_length * 0.12))
+                                await asyncio.sleep(delay + 0.3)
+                    
+                    self._last_audio_time = time.time()
+                    
                 except Exception as e:
                     logging.error(f"播放语音时出错: {e}")
                 
-                # 标记此项已完成
-                self.speech_queue.task_done()
+                finally:
+                    self.is_speaking = False
+                    self._playback_complete.set()
+                    self.speech_queue.task_done()
                 
         except Exception as e:
             logging.error(f"语音处理任务出错: {e}")
         finally:
-            # 确保播放器关闭
             await self.stop_player()
             
     async def start_speech_processor(self):
@@ -176,85 +162,64 @@ class TTSStreamer:
     async def stop_speech_processor(self):
         """停止语音处理任务"""
         if self.speech_task and not self.speech_task.done():
-            # 发送结束信号
             await self.speech_queue.put(None)
-            # 等待任务结束
             await self.speech_task
             self.speech_task = None
 
-    async def speak_segment(self, text):
-        """将文本段加入语音队列"""
-        if not text or not text.strip():
-            return
+    async def speak_text(self, text, wait=False):
+        """流式处理文本"""
+        text = self.preprocess_text(text)
+        
+        # 简单分段，不要太复杂
+        segments = []
+        max_length = 50  # 每段最大长度
+        
+        # 按逗号分割
+        parts = text.split(',')
+        current_segment = ""
+        
+        for part in parts:
+            if len(current_segment) + len(part) > max_length and current_segment:
+                segments.append(current_segment.strip())
+                current_segment = part
+            else:
+                current_segment += part + ","
+                
+        if current_segment:
+            segments.append(current_segment.strip())
+            
+        # 如果没有分段，就作为整体
+        if not segments:
+            segments = [text]
             
         # 确保处理器运行
         await self.start_speech_processor()
         
-        # 修改状态
-        self.is_speaking = True
-        self._speech_complete_event.clear()
-        
-        # 放入队列
-        text = self.preprocess_text(text)
-        await self.speech_queue.put(text)
-        
-        # 注意：这里不等待播放完成，允许并行处理
-        
-    async def wait_until_done(self):
-        """等待所有语音播放完成"""
-        if self.speech_queue.qsize() > 0:
-            await self.speech_queue.join()
-        
-        self.is_speaking = False
-        self._speech_complete_event.set()
-        
-    async def speak_text(self, text, wait=False):
-        """流式处理较长文本，使用更智能的分段"""
-        text = self.preprocess_text(text)
-        
-        # 更智能的分段逻辑
-        segments = []
-        
-        # 基于句子分割，最大长度为50个字符
-        sentences = re.split(r'([,])', text)
-        
-        # 重新组合句子和标点
-        current_segment = ""
-        for i in range(0, len(sentences)-1, 2):
-            if i+1 < len(sentences):
-                sentence = sentences[i] + sentences[i+1]
-            else:
-                sentence = sentences[i]
-                
-            # 如果当前段落已经太长，存储并开始新段落
-            if len(current_segment) + len(sentence) > 50:  # 更短的段落长度
-                segments.append(current_segment)
-                current_segment = sentence
-            else:
-                current_segment += sentence
-                
-        # 添加最后一个段落
-        if current_segment:
-            segments.append(current_segment)
-            
-        # 如果没有找到好的分割点，作为一个段落处理
-        if not segments:
-            segments = [text]
-            
         # 播放所有段落
         for segment in segments:
             if segment.strip():
-                await self.speak_segment(segment)
-                # 添加一个非常短的间隔，使得连续播放更自然
-                await asyncio.sleep(0.03)
+                await self.speech_queue.put(segment)
                 
         # 如果需要等待完成
         if wait:
             await self.wait_until_done()
     
+    # Optimized wait_until_done Method
+
+
+    async def wait_until_done(self):
+        """等待所有语音播放完成 - 使用更智能的策略"""
+        # 等待队列清空
+        if self.speech_queue.qsize() > 0:
+            await self.speech_queue.join()
+        
+        # 等待最后一个音频播放完成
+        await self._playback_complete.wait()
+        
+        # 减少额外等待时间，提高响应速度
+        await asyncio.sleep(0.4)  # 从1.0减少到0.4秒
+
     async def shutdown(self):
         """清理资源"""
-        # 停止处理新的语音请求
         await self.stop_speech_processor()
-        # 确保播放器关闭
         await self.stop_player()
