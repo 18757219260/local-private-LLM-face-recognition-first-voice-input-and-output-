@@ -12,7 +12,7 @@ from qa_model.qa_model_easy import KnowledgeQA
 from ASR.asr import ASRhelper
 from TTS.tts_stream import TTSStreamer  
 from face.face_recognize import FaceRecognizer
-
+import random
 # 配置日志 - 美化日志格式
 logging.basicConfig(
     level=logging.INFO,
@@ -68,6 +68,16 @@ class SweetPotatoChatbox:
         self.face_auth_success = False
         self.recognized_user = None
         self.first_interaction = True  # 标记是否是第一次交互
+        self.follow_up_prompts = [
+    "您还有什么问题吗？",
+    "您还有什么想问的？",
+    "您还想了解些什么？",
+    "还有其他关于甘薯的问题吗？",
+    "想成为吴家卓吗？",
+    "还有什么疑问呢",
+    "嘿嘿嘿你说呀？",
+    "太豆了你，赶紧说？"
+]
         
     async def authenticate_user(self):
         """使用人脸识别进行用户认证"""
@@ -209,7 +219,7 @@ class SweetPotatoChatbox:
         await self.clear_audio_buffer()
         
         # 提示文本
-        prompt_text = "11请问您有什么关于甘薯的问题？" if self.first_interaction else "11您还有什么问题吗？"
+        prompt_text = "11请问您有什么关于甘薯的问题？" if self.first_interaction else "11"+random.choice(self.follow_up_prompts)
         self.first_interaction = False
         
         try:

@@ -9,6 +9,7 @@ from langchain_ollama import OllamaLLM
 import nest_asyncio
 import time
 import asyncio
+import random
 
 nest_asyncio.apply()
 
@@ -39,6 +40,16 @@ class KnowledgeQA:
         self.vectorstore = self._load_vectorstore_with_retry()
         self.llm = self._init_llm()
         self.qa_chain = self._init_qa_chain()
+        self.unknown_responses  = [
+    "我不知道",
+    "这个问题我无法回答",
+    "抱歉我不太会",
+    "我还不了解这方面。",
+    "对不起，我没有这方面的资料。",
+    "我不知道这个答案，不过你可以去问吴家卓",
+    "好像不太会？",
+    "我里个豆阿，你问出这么难的问题我怎么会呢？"
+]
     
     def _init_embeddings(self):
         """初始化向量模型"""
@@ -100,7 +111,7 @@ class KnowledgeQA:
             return
         
         try:
-            # prompt = """你是个甘薯专家，请以纯文本形式回答，输出为一段。如果输入问题和甘薯一点关系都没有，请直接回答"我不知道"。输出的内容要简洁明了，避免使用复杂的术语和长句子。请确保回答是准确的，并且与问题相关。请不要添加任何额外的解释或背景信息。"""
+            query="你是一个甘薯专家，请你以说话的标准回答，请你根据参考内容回答，回答输出为一段，回答内容简洁，如果参考内容中没有相关信息，请回答'{}'。".format(random.choice(self.unknown_responses))
             
             retriever = self.vectorstore.as_retriever(search_kwargs={"k": self.k_documents})
             docs = await asyncio.to_thread(retriever.invoke, question)
@@ -110,7 +121,7 @@ class KnowledgeQA:
                 return
                 
             context = "\n\n".join([doc.page_content for doc in docs])
-            final_prompt = f"已知内容:\n{context}\n\n问题: {question}"#\n\n{prompt}"
+            final_prompt = f"已知内容:\n{context}\n\n问题: {question}\n\n{query}"
             
             start_time = time.time()
             async for chunk in self.llm.astream(final_prompt):
@@ -130,7 +141,7 @@ class KnowledgeQA:
         
         try:
             # 设置提示词
-            prompt = """你是个甘薯专家，请以纯文本形式回答，输出为一段。如果输入问题和甘薯一点关系都没有，请直接回答"我不知道"。输出的内容要简洁明了，避免使用复杂的术语和长句子。请确保回答是准确的，并且与问题相关。请不要添加任何额外的解释或背景信息。"""
+            query="你是一个甘薯专家，请你以说话的标准回答，请你根据参考内容回答，回答输出为一段，回答内容简洁，如果参考内容中没有相关信息，请回答'{}'。".format(random.choice(self.unknown_responses))
             
             # 获取相关文档
             retriever = self.vectorstore.as_retriever(search_kwargs={"k": self.k_documents})
@@ -141,7 +152,7 @@ class KnowledgeQA:
                 
             # 构建上下文
             context = "\n\n".join([doc.page_content for doc in docs])
-            final_prompt = f"已知内容:\n{context}\n\n问题: {question}\n\n{prompt}"
+            final_prompt = f"已知内容:\n{context}\n\n问题: {question}\n\n{query}"
             
             # 计时
             start_time = time.time()
@@ -161,7 +172,7 @@ class KnowledgeQA:
 
 async def main():
     qa = KnowledgeQA()
-    question = "甘薯的贮藏特性"
+    question = "甘薯的未来"
     async for chunk in qa.ask_stream(question):
         print(chunk, end='', flush=True)  
 
