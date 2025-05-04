@@ -1,9 +1,0 @@
-edge_tts
-subprocess
-pyaudio
-langchain
-pickle
-face_recognition
-webrtcvad
-aip
-ollama

@@ -1,7 +1,0 @@
-*.log
-face/images/*
-knowledge.json
-chat_history.json
-.locks/*
-*.pyc
-face/face_model.pkl
